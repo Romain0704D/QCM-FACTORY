@@ -1110,7 +1110,7 @@
         },
         {
             "id": 89,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163253.png",
             "question": "89. Reportez-vous à l’illustration. Actuellement, le routeur R1 utilise une route EIGRP enregistrée via Branch2 pour atteindre le réseau 10.10.0.0/16. Quelle route statique flottante crée une route de secours vers le réseau 10.10.0.0/16 au cas où la liaison entre R1 et Branch2 serait interrompue ?",
             "options": [
                 "ip route 10.10.0.0 255.255.0.0 Serial 0/0/0 100",
