@@ -1449,7 +1449,7 @@
         },
         {
             "id": 111,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2022/06/i210895v1n1_210895.jpg",
             "question": "111. Examinez l’illustration. Un administrateur réseau configure un routeur comme serveur DHCPv6. L’administrateur exécute une commande show ipv6 dhcp pool pour vérifier la configuration. Parmi les propositions suivantes, laquelle décrit la raison pour laquelle le nombre de clients actifs est 0 ?",
             "options": [
                 "Aucune plage d’adresses IPv6 n’est spécifiée pour la configuration du pool DHCP IPv6.",
