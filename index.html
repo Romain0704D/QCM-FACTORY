@@ -78,6 +78,103 @@
             border-radius: 12px;
         }
 
+        .question-navigator {
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        .navigator-title {
+            color: #4ade80;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .question-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .question-nav-btn {
+            background: rgba(17, 24, 39, 0.8);
+            color: #d1d5db;
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .question-nav-btn:hover {
+            border-color: rgba(74, 222, 128, 0.6);
+            background: rgba(74, 222, 128, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .question-nav-btn.current {
+            background: linear-gradient(135deg, #22c55e, #4ade80);
+            color: white;
+            border-color: #22c55e;
+            font-weight: bold;
+        }
+
+        .question-nav-btn.visited {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            color: #93c5fd;
+        }
+
+        .question-nav-btn.error-marked {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+        }
+
+        .question-nav-btn.error-marked.current {
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            border-color: #ef4444;
+        }
+
+        .navigator-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(74, 222, 128, 0.2);
+            font-size: 0.85rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #9ca3af;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .legend-current { background: linear-gradient(135deg, #22c55e, #4ade80); }
+        .legend-visited { background: rgba(59, 130, 246, 0.4); }
+        .legend-error { background: rgba(239, 68, 68, 0.4); }
+        .legend-unvisited { background: rgba(17, 24, 39, 0.8); }
+
         .shuffle-btn {
             background: linear-gradient(135deg, #8b5cf6, #a855f7);
             color: white;
@@ -493,6 +590,32 @@
                 <button onclick="shuffleQuestions()" class="shuffle-btn">🔀 Mélanger les questions</button>
                 <button onclick="resetOrder()" class="shuffle-btn">↩️ Ordre original</button>
             </div>
+            
+            <div id="question-navigator" class="question-navigator">
+                <div class="navigator-title">🗺️ Navigation rapide</div>
+                <div class="question-buttons" id="question-buttons">
+                    <!-- Les boutons seront générés dynamiquement -->
+                </div>
+                <div class="navigator-legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-current"></div>
+                        <span>Actuelle</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-visited"></div>
+                        <span>Visitée</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-error"></div>
+                        <span>Marquée fausse</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-unvisited"></div>
+                        <span>Non visitée</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="question-counter">
                 Question <span id="current-question">1</span> sur <span id="total-questions">5</span>
                 <span class="question-id">ID: <span id="question-id">1</span></span>
@@ -522,6 +645,7 @@
         let originalOrder = []; // Tableau pour conserver l'ordre original
         let errorTracking = {}; // Suivi des erreurs par question
         let answersRevealed = false; // État de révélation des réponses
+        let visitedQuestions = new Set(); // Suivi des questions visitées
 
         // Éléments DOM
         const questionContainer = document.getElementById('question-container');
@@ -561,6 +685,8 @@
             currentQuestionIndex = 0;
             selectedAnswers = [];
             errorTracking = {};
+            visitedQuestions = new Set();
+            createQuestionNavigator();
             displayQuestion();
             updateProgress();
             
@@ -586,6 +712,8 @@
             currentQuestionIndex = 0;
             selectedAnswers = [];
             errorTracking = {};
+            visitedQuestions = new Set();
+            createQuestionNavigator();
             displayQuestion();
             updateProgress();
             
@@ -680,8 +808,72 @@
             questionOrder = [...originalOrder];
             
             totalQuestionsSpan.textContent = qcmData.qcm.length;
+            createQuestionNavigator();
             displayQuestion();
             updateProgress();
+        }
+
+        // Création du navigateur de questions
+        function createQuestionNavigator() {
+            const questionButtonsContainer = document.getElementById('question-buttons');
+            questionButtonsContainer.innerHTML = '';
+            
+            questionOrder.forEach((questionIndex, orderIndex) => {
+                const question = qcmData.qcm[questionIndex];
+                const button = document.createElement('button');
+                button.className = 'question-nav-btn';
+                button.textContent = orderIndex + 1;
+                button.setAttribute('data-question-index', orderIndex);
+                button.setAttribute('title', `Question ${orderIndex + 1}${question.id ? ` (ID: ${question.id})` : ''}`);
+                button.onclick = () => goToQuestion(orderIndex);
+                
+                questionButtonsContainer.appendChild(button);
+            });
+            
+            updateNavigatorDisplay();
+        }
+
+        // Mise à jour de l'affichage du navigateur
+        function updateNavigatorDisplay() {
+            const buttons = document.querySelectorAll('.question-nav-btn');
+            
+            buttons.forEach((button, index) => {
+                const questionIndex = questionOrder[index];
+                
+                // Retirer toutes les classes d'état
+                button.classList.remove('current', 'visited', 'error-marked');
+                
+                // Question actuelle
+                if (index === currentQuestionIndex) {
+                    button.classList.add('current');
+                }
+                // Question visitée
+                else if (visitedQuestions.has(index)) {
+                    button.classList.add('visited');
+                }
+                
+                // Question marquée comme fausse
+                if (errorTracking[questionIndex]) {
+                    button.classList.add('error-marked');
+                }
+            });
+        }
+
+        // Navigation vers une question spécifique
+        function goToQuestion(questionIndex) {
+            if (questionIndex < 0 || questionIndex >= qcmData.qcm.length) return;
+            
+            // Marquer la question actuelle comme visitée avant de partir
+            visitedQuestions.add(currentQuestionIndex);
+            
+            // Changer de question
+            currentQuestionIndex = questionIndex;
+            displayQuestion();
+            updateProgress();
+            updateNavigatorDisplay();
+            
+            // Scroll vers le haut pour voir la nouvelle question
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Fonction pour obtenir la question courante selon l'ordre défini
@@ -700,6 +892,9 @@
             const question = getCurrentQuestion();
             selectedAnswers = [];
             answersRevealed = false;
+            
+            // Marquer la question comme visitée
+            visitedQuestions.add(currentQuestionIndex);
             
             let html = '';
             
@@ -757,6 +952,9 @@
                 document.getElementById('error-checkbox').checked = true;
             }
             
+            // Mettre à jour le navigateur
+            updateNavigatorDisplay();
+            
             clearMessage();
         }
 
@@ -811,6 +1009,9 @@
             } else {
                 delete errorTracking[questionId];
             }
+            
+            // Mettre à jour l'affichage du navigateur
+            updateNavigatorDisplay();
         }
 
         // Gestion de la sélection des options
@@ -981,7 +1182,9 @@
             currentQuestionIndex = 0;
             selectedAnswers = [];
             errorTracking = {};
+            visitedQuestions = new Set();
             validateBtn.style.display = 'block';
+            createQuestionNavigator();
             displayQuestion();
             updateProgress();
         }
@@ -989,7 +1192,14 @@
         // Redémarrage avec mélange
         function restartWithShuffle() {
             questionOrder = shuffleArray(originalOrder);
-            restartQCM();
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            errorTracking = {};
+            visitedQuestions = new Set();
+            validateBtn.style.display = 'block';
+            createQuestionNavigator();
+            displayQuestion();
+            updateProgress();
             showMessage('🔀 Questions mélangées pour ce nouveau QCM !', 'info');
             setTimeout(clearMessage, 2000);
         }
@@ -1007,12 +1217,14 @@
             questionOrder = errorQuestionIndices;
             currentQuestionIndex = 0;
             selectedAnswers = [];
+            visitedQuestions = new Set();
             
             // Réinitialiser le suivi d'erreurs pour cette session de révision
             const previousErrors = {...errorTracking};
             errorTracking = {};
             
             validateBtn.style.display = 'block';
+            createQuestionNavigator();
             displayQuestion();
             updateProgress();
             
