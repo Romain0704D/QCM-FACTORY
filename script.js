@@ -7,6 +7,7 @@ let originalOrder = []; // Tableau pour conserver l'ordre original
 let errorTracking = {}; // Suivi des erreurs par question
 let answersRevealed = false; // État de révélation des réponses
 let visitedQuestions = new Set(); // Suivi des questions visitées
+let navigatorExpanded = true;
 
 // Éléments DOM
 const questionContainer = document.getElementById('question-container');
@@ -111,6 +112,9 @@ async function loadQCMData() {
 
 // Option alternative: Upload de fichier
 function showFileUploadOption() {
+    // Masquer les éléments de navigation et d'interface
+    hideNavigationElements();
+    
     questionContainer.innerHTML = `
         <div class="upload-container">
             <div class="upload-icon">📁</div>
@@ -121,6 +125,45 @@ function showFileUploadOption() {
             <button onclick="loadFromFile()" class="upload-btn">Charger les questions</button>
         </div>
     `;
+}
+
+// Modification de la fonction hideNavigationElements()
+function hideNavigationElements() {
+    const elementsToHide = [
+        document.querySelector('.shuffle-controls'),
+        document.getElementById('question-navigator'),
+        document.querySelector('.question-counter'),
+        document.querySelector('.progress-bar'),
+        document.getElementById('validate-btn'),
+        document.getElementById('scroll-to-top')
+    ];
+    
+    elementsToHide.forEach(element => {
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+}
+
+// Modification de la fonction showNavigationElements()
+function showNavigationElements() {
+    const elementsToShow = [
+        document.querySelector('.shuffle-controls'),
+        document.getElementById('question-navigator'),
+        document.querySelector('.question-counter'),
+        document.querySelector('.progress-bar'),
+        document.getElementById('validate-btn'),
+        document.getElementById('scroll-to-top')
+    ];
+    
+    elementsToShow.forEach(element => {
+        if (element) {
+            element.style.display = '';
+        }
+    });
+    
+    // Restaurer l'état du navigateur
+    setTimeout(restoreNavigatorState, 0);
 }
 
 // Chargement depuis un fichier uploadé
@@ -165,6 +208,9 @@ function loadFromFile() {
 
 // Initialisation
 function init() {
+    // Réafficher les éléments de navigation si ils étaient cachés
+    showNavigationElements();
+    
     // Créer l'ordre initial des questions (indices)
     originalOrder = qcmData.qcm.map((_, index) => index);
     questionOrder = [...originalOrder];
@@ -175,7 +221,7 @@ function init() {
     updateProgress();
 }
 
-// Création du navigateur de questions
+// Modification de la fonction createQuestionNavigator()
 function createQuestionNavigator() {
     const questionButtonsContainer = document.getElementById('question-buttons');
     questionButtonsContainer.innerHTML = '';
@@ -193,6 +239,9 @@ function createQuestionNavigator() {
     });
     
     updateNavigatorDisplay();
+    
+    // Restaurer l'état du navigateur après création
+    setTimeout(restoreNavigatorState, 0);
 }
 
 // Mise à jour de l'affichage du navigateur
@@ -637,3 +686,52 @@ window.addEventListener('load', function() {
     loadQCMData();
     handleScrollToTopVisibility(); // Vérifier l'état initial du scroll
 });
+
+// Fonction pour basculer l'état du navigateur
+function toggleNavigator() {
+    const navigator = document.getElementById('question-navigator');
+    const toggleIcon = document.querySelector('.toggle-icon');
+    
+    if (!navigator || !toggleIcon) {
+        console.error('Éléments du navigateur non trouvés');
+        return;
+    }
+    
+    navigatorExpanded = !navigatorExpanded;
+    
+    if (navigatorExpanded) {
+        navigator.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+    } else {
+        navigator.classList.add('collapsed');
+        toggleIcon.textContent = '▲';
+    }
+    
+    // Sauvegarder l'état dans le localStorage
+    localStorage.setItem('navigatorExpanded', navigatorExpanded.toString());
+}
+
+// Fonction pour restaurer l'état du navigateur depuis le localStorage
+function restoreNavigatorState() {
+    const navigator = document.getElementById('question-navigator');
+    const toggleIcon = document.querySelector('.toggle-icon');
+    
+    if (!navigator || !toggleIcon) {
+        return;
+    }
+    
+    const savedState = localStorage.getItem('navigatorExpanded');
+    if (savedState !== null) {
+        navigatorExpanded = savedState === 'true';
+    } else {
+        navigatorExpanded = true; // État par défaut
+    }
+    
+    if (navigatorExpanded) {
+        navigator.classList.remove('collapsed');
+        toggleIcon.textContent = '▼';
+    } else {
+        navigator.classList.add('collapsed');
+        toggleIcon.textContent = '▲';
+    }
+}
