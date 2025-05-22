@@ -175,6 +175,82 @@
         .legend-error { background: rgba(239, 68, 68, 0.4); }
         .legend-unvisited { background: rgba(17, 24, 39, 0.8); }
 
+        /* Bouton scroll to top */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.15);
+            box-shadow: 0 6px 30px rgba(74, 222, 128, 0.6);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+
+        .scroll-to-top:active {
+            transform: scale(0.95);
+            transition: transform 0.1s ease;
+        }
+
+        .scroll-to-top::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(74, 222, 128, 0.3);
+            transform: scale(0);
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-to-top:active::after {
+            transform: scale(1.5);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        /* Animation de pulsation subtile */
+        @keyframes pulse-subtle {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(74, 222, 128, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(74, 222, 128, 0.6);
+            }
+        }
+
+        .scroll-to-top.visible {
+            animation: pulse-subtle 3s infinite;
+        }
+
+        .scroll-to-top:hover {
+            animation: none;
+        }
+
         .shuffle-btn {
             background: linear-gradient(135deg, #8b5cf6, #a855f7);
             color: white;
@@ -634,6 +710,11 @@
         <div style="text-align: center;">
             <button id="validate-btn" class="validate-btn">Valider</button>
         </div>
+        
+        <!-- Bouton scroll to top -->
+        <button id="scroll-to-top" class="scroll-to-top" title="Remonter en haut">
+            ⬆️
+        </button>
     </div>
 
     <script>
@@ -655,6 +736,7 @@
         const totalQuestionsSpan = document.getElementById('total-questions');
         const questionIdSpan = document.getElementById('question-id');
         const progressFill = document.getElementById('progress-fill');
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
 
         // Fonction pour mélanger un tableau (algorithme Fisher-Yates)
         function shuffleArray(array) {
@@ -873,7 +955,26 @@
             updateNavigatorDisplay();
             
             // Scroll vers le haut pour voir la nouvelle question
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            scrollToTop();
+        }
+
+        // Fonction de scroll vers le haut
+        function scrollToTop() {
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Gestion de l'affichage du bouton scroll to top
+        function handleScrollToTopVisibility() {
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
+            
+            if (scrollY > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
         }
 
         // Fonction pour obtenir la question courante selon l'ordre défini
@@ -1235,6 +1336,12 @@
         // Event listeners
         validateBtn.addEventListener('click', validateAnswer);
 
+        // Event listener pour le bouton scroll to top
+        scrollToTopBtn.addEventListener('click', scrollToTop);
+
+        // Event listener pour le scroll
+        window.addEventListener('scroll', handleScrollToTopVisibility);
+
         // Gestion du clic sur les options
         document.addEventListener('click', function(e) {
             // Si on clique sur une option mais pas directement sur la checkbox
@@ -1246,7 +1353,10 @@
         });
 
         // Initialisation au chargement de la page
-        window.addEventListener('load', loadQCMData);
+        window.addEventListener('load', function() {
+            loadQCMData();
+            handleScrollToTopVisibility(); // Vérifier l'état initial du scroll
+        });
     </script>
 </body>
 </html>
