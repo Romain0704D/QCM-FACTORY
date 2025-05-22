@@ -1225,7 +1225,7 @@
         },
         {
             "id": 95,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/CCNA2-v7-Modules-1-4-Switching-Concepts-VLANs-and-InterVLAN-Routing-Exam-Answers-44.png",
             "question": "95. Examinez l’illustration. Un administrateur réseau vérifie la configuration du routage inter-VLAN. Les utilisateurs se plaignent que PC2 ne peut pas communiquer avec PC1. Sur la base de la sortie, quelle est la cause possible du problème ?",
             "options": [
                 "Gi0/0 n’est pas configuré comme port de jonction.",
