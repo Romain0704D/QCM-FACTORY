@@ -837,12 +837,28 @@ function goToNextError() {
 function goToRandomError() {
     if (errorQuestions.length === 0) return;
     
-    // Choisir un index aléatoire dans la liste des questions marquées fausses
-    const randomIndex = Math.floor(Math.random() * errorQuestions.length);
-    const randomErrorQuestionIndex = errorQuestions[randomIndex];
+    // S'il n'y a qu'une seule question marquée fausse, aller directement dessus
+    if (errorQuestions.length === 1) {
+        const singleErrorQuestionIndex = errorQuestions[0];
+        currentErrorIndex = 0;
+        goToQuestion(singleErrorQuestionIndex);
+        return;
+    }
     
-    // Mettre à jour l'index actuel des erreurs
-    currentErrorIndex = randomIndex;
+    // S'il y a plusieurs questions, éviter la question actuelle
+    let availableErrorQuestions = errorQuestions.filter(questionIndex => questionIndex !== currentQuestionIndex);
+    
+    // Si toutes les questions fausses sont la question actuelle (cas improbable), prendre toutes les questions
+    if (availableErrorQuestions.length === 0) {
+        availableErrorQuestions = [...errorQuestions];
+    }
+    
+    // Choisir un index aléatoire parmi les questions disponibles
+    const randomIndex = Math.floor(Math.random() * availableErrorQuestions.length);
+    const randomErrorQuestionIndex = availableErrorQuestions[randomIndex];
+    
+    // Mettre à jour l'index actuel des erreurs pour correspondre à la nouvelle question
+    currentErrorIndex = errorQuestions.indexOf(randomErrorQuestionIndex);
     
     // Aller à cette question
     goToQuestion(randomErrorQuestionIndex);
