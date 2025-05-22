@@ -1382,7 +1382,7 @@
         },
         {
             "id": 106,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2022/01/2022-01-26_112504.jpg",
             "question": "106. Reportez-vous à l’illustration. Quels sont les trois hôtes qui recevront des requêtes ARP de l’hôte A, dans l’hypothèse où le port Fa0/4 sur les deux commutateurs est configuré pour transporter du trafic pour plusieurs VLAN ? (Choisissez trois réponses.)",
             "options": [
                 "hôte D",
