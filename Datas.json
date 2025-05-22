@@ -1062,7 +1062,7 @@
         },
         {
             "id": 86,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163055.png",
             "question": "86. Examinez l’illustration. R1 a été configuré comme illustré. Cependant, PC1 ne parvient pas à recevoir d’adresse IPv4. Quel est le problème ?",
             "options": [
                 "La commande ip address dhcp n’a pas été exécutée sur l’interface Gi0/1.",
