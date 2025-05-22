@@ -1262,7 +1262,7 @@
         },
         {
             "id": 98,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2022-01-13_090443.jpg",
             "question": "98. Examinez l’illustration. Un commutateur de couche 3 se charge du routage pour trois VLAN et se connecte à un routeur pour la connectivité Internet. Comment le commutateur doit-il être configuré ? (Choisissez deux réponses.)",
             "options": [
                 "Activez globalement la surveillance DHCP (snooping )sur le commutateur.",
