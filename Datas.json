@@ -45,7 +45,7 @@
         },
         {
             "id": 5,
-            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-03_221532.jpg",
+            "image": "https://cdn.discordapp.com/attachments/1295190083816652840/1374902335003955220/2021-12-03_221532.jpg?ex=682fbd15&is=682e6b95&hm=45d2894684404e2550cd9a944b4b45b3f13197e194ceee80af1c789399242093&",
             "question": "5. Reportez-vous à l’illustration. En fonction de la configuration et de la sortie présentées, pourquoi manque-t-il le VLAN 99 ?",
             "options": [
                 "Parce qu’il y a un problème de câblage sur le VLAN 99",
