@@ -173,7 +173,7 @@
                 "MAC source : 00E0.FE91.7799IP source : 10.1.1.10",
                 "MAC source : 00E0.FE91.7799IP source : 10.1.1.1"
             ],
-            "correct_answer": []
+            "correct_answer": 4
         },
         {
             "id": 17,
