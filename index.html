@@ -268,6 +268,11 @@
             transform: translateX(5px);
         }
 
+        .option.correct-answer {
+            border-color: rgba(34, 197, 94, 0.8);
+            background: rgba(34, 197, 94, 0.1);
+        }
+
         .option input[type="checkbox"] {
             width: 20px;
             height: 20px;
@@ -282,6 +287,70 @@
             font-size: 1.1rem;
             color: #d1d5db;
             cursor: pointer;
+        }
+
+        .error-tracking {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .error-tracking input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #ef4444;
+        }
+
+        .error-tracking label {
+            color: #fca5a5;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .learning-controls {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .show-answer-btn {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .show-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .show-answer-btn:disabled {
+            background: rgba(107, 114, 128, 0.5);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .answer-revealed {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 8px;
+            color: #86efac;
         }
 
         .validate-btn {
@@ -342,6 +411,39 @@
             color: #4ade80;
             font-size: 2rem;
             margin-bottom: 20px;
+        }
+
+        .stats-container {
+            background: rgba(17, 24, 39, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 1px solid rgba(74, 222, 128, 0.3);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(31, 41, 55, 0.5);
+            border-radius: 8px;
+        }
+
+        .stat-label {
+            color: #d1d5db;
+            font-size: 1.1rem;
+        }
+
+        .stat-value {
+            color: #4ade80;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .stat-value.error {
+            color: #ef4444;
         }
 
         .restart-btn {
@@ -418,6 +520,8 @@
         let selectedAnswers = [];
         let questionOrder = []; // Tableau pour gérer l'ordre des questions
         let originalOrder = []; // Tableau pour conserver l'ordre original
+        let errorTracking = {}; // Suivi des erreurs par question
+        let answersRevealed = false; // État de révélation des réponses
 
         // Éléments DOM
         const questionContainer = document.getElementById('question-container');
@@ -456,6 +560,7 @@
             // Redémarrer le QCM
             currentQuestionIndex = 0;
             selectedAnswers = [];
+            errorTracking = {};
             displayQuestion();
             updateProgress();
             
@@ -480,6 +585,7 @@
             // Redémarrer le QCM
             currentQuestionIndex = 0;
             selectedAnswers = [];
+            errorTracking = {};
             displayQuestion();
             updateProgress();
             
@@ -584,20 +690,26 @@
             return qcmData.qcm[questionIndex];
         }
 
+        // Fonction pour obtenir l'ID de la question courante
+        function getCurrentQuestionId() {
+            const questionIndex = questionOrder[currentQuestionIndex];
+            return questionIndex;
+        }
+
         function displayQuestion() {
             const question = getCurrentQuestion();
             selectedAnswers = [];
+            answersRevealed = false;
             
             let html = '';
             
             // Image si présente
             if (question.image && question.image.trim() !== '') {
-                console.log('URL de l\'image:', question.image); // Debug
                 html += `
                     <div class="image-container">
                         <img src="${question.image}" alt="Image de la question" class="question-image" 
-                             onload="console.log('Image chargée avec succès'); this.style.opacity='1'" 
-                             onerror="console.log('Erreur de chargement image:', this.src); this.parentElement.innerHTML='<div class=\\'image-error\\'>❌ Impossible de charger l\\'image<br><small>${question.image}</small></div>'">
+                             onload="this.style.opacity='1'" 
+                             onerror="this.parentElement.innerHTML='<div class=\\'image-error\\'>❌ Impossible de charger l\\'image<br><small>${question.image}</small></div>'">
                     </div>
                 `;
             }
@@ -609,18 +721,96 @@
             html += '<div class="options-container">';
             question.options.forEach((option, index) => {
                 html += `
-                    <div class="option" data-option="${index + 1}">
+                    <div class="option" data-option="${index + 1}" id="option-container-${index + 1}">
                         <input type="checkbox" id="option-${index + 1}" value="${index + 1}" onchange="handleOptionChange(${index + 1})">
                         <label for="option-${index + 1}" class="option-text">${option}</label>
                     </div>
                 `;
             });
             html += '</div>';
+
+            // Contrôles d'apprentissage
+            html += `
+                <div class="learning-controls">
+                    <button onclick="showCorrectAnswers()" class="show-answer-btn" id="show-answer-btn">
+                        💡 Afficher la/les bonne(s) réponse(s)
+                    </button>
+                    <div id="answer-display" class="answer-revealed" style="display: none;"></div>
+                </div>
+            `;
+
+            // Suivi des erreurs
+            html += `
+                <div class="error-tracking">
+                    <input type="checkbox" id="error-checkbox" onchange="handleErrorTracking()">
+                    <label for="error-checkbox">❌ J'ai eu faux à cette question</label>
+                </div>
+            `;
             
             questionContainer.innerHTML = html;
             currentQuestionSpan.textContent = currentQuestionIndex + 1;
             questionIdSpan.textContent = question.id || 'N/A';
+            
+            // Restaurer l'état de suivi d'erreur si existant
+            const questionId = getCurrentQuestionId();
+            if (errorTracking[questionId]) {
+                document.getElementById('error-checkbox').checked = true;
+            }
+            
             clearMessage();
+        }
+
+        // Fonction pour afficher les bonnes réponses
+        function showCorrectAnswers() {
+            if (answersRevealed) return;
+            
+            const question = getCurrentQuestion();
+            const correctAnswer = question.correct_answer;
+            const answerDisplay = document.getElementById('answer-display');
+            const showAnswerBtn = document.getElementById('show-answer-btn');
+            
+            // Marquer les options correctes visuellement
+            if (Array.isArray(correctAnswer)) {
+                correctAnswer.forEach(answerNum => {
+                    const optionContainer = document.getElementById(`option-container-${answerNum}`);
+                    if (optionContainer) {
+                        optionContainer.classList.add('correct-answer');
+                    }
+                });
+            } else {
+                const optionContainer = document.getElementById(`option-container-${correctAnswer}`);
+                if (optionContainer) {
+                    optionContainer.classList.add('correct-answer');
+                }
+            }
+            
+            // Afficher le texte des bonnes réponses
+            let correctAnswersText = '';
+            if (Array.isArray(correctAnswer)) {
+                const correctOptions = correctAnswer.map(num => `${num}. ${question.options[num - 1]}`);
+                correctAnswersText = `✅ Bonnes réponses : <br>${correctOptions.join('<br>')}`;
+            } else {
+                correctAnswersText = `✅ Bonne réponse : ${correctAnswer}. ${question.options[correctAnswer - 1]}`;
+            }
+            
+            answerDisplay.innerHTML = correctAnswersText;
+            answerDisplay.style.display = 'block';
+            showAnswerBtn.disabled = true;
+            showAnswerBtn.textContent = '✅ Réponses affichées';
+            
+            answersRevealed = true;
+        }
+
+        // Gestion du suivi des erreurs
+        function handleErrorTracking() {
+            const questionId = getCurrentQuestionId();
+            const isChecked = document.getElementById('error-checkbox').checked;
+            
+            if (isChecked) {
+                errorTracking[questionId] = true;
+            } else {
+                delete errorTracking[questionId];
+            }
         }
 
         // Gestion de la sélection des options
@@ -704,15 +894,82 @@
             messageContainer.innerHTML = '';
         }
 
+        // Calcul des statistiques d'erreurs
+        function calculateErrorStats() {
+            const totalQuestions = qcmData.qcm.length;
+            const questionsWithErrors = Object.keys(errorTracking).length;
+            const successRate = questionsWithErrors > 0 ? 
+                ((questionsWithErrors - questionsWithErrors) / questionsWithErrors * 100).toFixed(1) : 100;
+            const errorRate = totalQuestions > 0 ? 
+                (questionsWithErrors / totalQuestions * 100).toFixed(1) : 0;
+            
+            return {
+                totalQuestions,
+                questionsWithErrors,
+                questionsCorrect: totalQuestions - questionsWithErrors,
+                successRate: ((totalQuestions - questionsWithErrors) / totalQuestions * 100).toFixed(1),
+                errorRate
+            };
+        }
+
         // Fin du QCM
         function showCompletion() {
+            const stats = calculateErrorStats();
+            
             questionContainer.innerHTML = `
                 <div class="completion-card">
                     <h2>🎉 Félicitations !</h2>
                     <p>Vous avez terminé le QCM avec succès !</p>
-                    <p>Vous avez répondu à toutes les ${qcmData.qcm.length} questions.</p>
-                    <button class="restart-btn" onclick="restartQCM()">Recommencer le QCM</button>
-                    <button class="restart-btn" onclick="restartWithShuffle()" style="margin-left: 10px;">Recommencer avec mélange</button>
+                    
+                    <div class="stats-container">
+                        <h3 style="color: #4ade80; margin-bottom: 15px;">📊 Statistiques de performance</h3>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">Total des questions :</span>
+                            <span class="stat-value">${stats.totalQuestions}</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">Questions réussies :</span>
+                            <span class="stat-value">${stats.questionsCorrect}</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">Questions marquées comme fausses :</span>
+                            <span class="stat-value error">${stats.questionsWithErrors}</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">Taux de réussite :</span>
+                            <span class="stat-value">${stats.successRate}%</span>
+                        </div>
+                        
+                        <div class="stat-item">
+                            <span class="stat-label">Taux d'erreur :</span>
+                            <span class="stat-value error">${stats.errorRate}%</span>
+                        </div>
+                    </div>
+                    
+                    ${stats.questionsWithErrors > 0 ? `
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px;">
+                            <p style="color: #fca5a5;">💡 <strong>Conseil :</strong> Vous avez marqué ${stats.questionsWithErrors} question(s) comme fausse(s). 
+                            Pensez à réviser ces points pour améliorer vos connaissances !</p>
+                        </div>
+                    ` : `
+                        <div style="margin: 20px 0; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px;">
+                            <p style="color: #86efac;">🌟 <strong>Excellent !</strong> Vous n'avez marqué aucune question comme fausse. 
+                            Vos connaissances semblent solides sur ce sujet !</p>
+                        </div>
+                    `}
+                    
+                    <button class="restart-btn" onclick="restartQCM()">🔄 Recommencer le QCM</button>
+                    <button class="restart-btn" onclick="restartWithShuffle()" style="margin-left: 10px;">🔀 Recommencer avec mélange</button>
+                    
+                    ${stats.questionsWithErrors > 0 ? `
+                        <button class="restart-btn" onclick="restartErrorQuestions()" style="margin-left: 10px; background: linear-gradient(135deg, #ef4444, #f87171);">
+                            ❌ Réviser les questions fausses
+                        </button>
+                    ` : ''}
                 </div>
             `;
             validateBtn.style.display = 'none';
@@ -723,6 +980,7 @@
         function restartQCM() {
             currentQuestionIndex = 0;
             selectedAnswers = [];
+            errorTracking = {};
             validateBtn.style.display = 'block';
             displayQuestion();
             updateProgress();
@@ -734,6 +992,32 @@
             restartQCM();
             showMessage('🔀 Questions mélangées pour ce nouveau QCM !', 'info');
             setTimeout(clearMessage, 2000);
+        }
+
+        // Révision des questions marquées comme fausses
+        function restartErrorQuestions() {
+            const errorQuestionIndices = Object.keys(errorTracking).map(id => parseInt(id));
+            
+            if (errorQuestionIndices.length === 0) {
+                showMessage('Aucune question marquée comme fausse à réviser !', 'info');
+                return;
+            }
+            
+            // Créer un nouveau QCM avec seulement les questions fausses
+            questionOrder = errorQuestionIndices;
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            
+            // Réinitialiser le suivi d'erreurs pour cette session de révision
+            const previousErrors = {...errorTracking};
+            errorTracking = {};
+            
+            validateBtn.style.display = 'block';
+            displayQuestion();
+            updateProgress();
+            
+            showMessage(`🎯 Mode révision : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
+            setTimeout(clearMessage, 3000);
         }
 
         // Event listeners
