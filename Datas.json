@@ -1188,7 +1188,7 @@
         },
         {
             "id": 94,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163717.png",
             "question": "94. Reportez-vous à l’illustration. Un administrateur réseau configure le routeur R1 pour l’attribution d’adresse IPv6. Sur la base de la configuration partielle, quel système d’attribution d’adresses IPv6 global monodiffusion l’administrateur a-t-il l’intention de mettre en œuvre ?",
             "options": [
                 "configuration manuelle",
