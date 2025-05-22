@@ -216,14 +216,17 @@ function init() {
     // Réafficher les éléments de navigation si ils étaient cachés
     showNavigationElements();
     
-    // Créer l'ordre initial des questions (indices)
-    originalOrder = qcmData.qcm.map((_, index) => index);
-    questionOrder = [...originalOrder];
+    // Vérifier s'il y a une progression sauvegardée
+    const savedProgress = loadSavedProgress();
     
-    totalQuestionsSpan.textContent = qcmData.qcm.length;
-    createQuestionNavigator();
-    displayQuestion();
-    updateProgress();
+    if (savedProgress) {
+        // Afficher la boîte de dialogue de restauration
+        showRestoreDialog(savedProgress);
+        return;
+    }
+    
+    // Pas de progression sauvegardée, démarrer normalement
+    startFreshInit();
 }
 
 // Modification de la fonction createQuestionNavigator()
@@ -316,7 +319,7 @@ function updateErrorQuestionsList() {
     updateErrorNavigationButtons();
 }
 
-// Navigation vers une question spécifique
+// Modifier la fonction goToQuestion() existante en ajoutant la sauvegarde :
 function goToQuestion(questionIndex) {
     if (questionIndex < 0 || questionIndex >= qcmData.qcm.length) return;
     
@@ -331,6 +334,9 @@ function goToQuestion(questionIndex) {
     
     // Bug fix: Mettre à jour la navigation des erreurs après changement de question
     updateErrorQuestionsList();
+    
+    // Sauvegarder la progression
+    saveProgress();
     
     // Scroll vers le haut pour voir la nouvelle question
     scrollToTop();
@@ -478,7 +484,7 @@ function showCorrectAnswers() {
     answersRevealed = true;
 }
 
-// Gestion du suivi des erreurs
+// Modifier la fonction handleErrorTracking() existante en ajoutant la sauvegarde :
 function handleErrorTracking() {
     const questionId = getCurrentQuestionId();
     const isChecked = document.getElementById('error-checkbox').checked;
@@ -494,6 +500,9 @@ function handleErrorTracking() {
     
     // Mettre à jour la navigation des erreurs
     updateErrorQuestionsList();
+    
+    // Sauvegarder la progression
+    saveProgress();
 }
 
 // Gestion de la sélection des options
@@ -515,7 +524,7 @@ function toggleOption(optionNumber) {
     handleOptionChange(optionNumber);
 }
 
-// Validation de la réponse
+// Modifier la fonction validateAnswer() existante en ajoutant la sauvegarde :
 function validateAnswer() {
     if (selectedAnswers.length === 0) {
         showMessage('Veuillez sélectionner au moins une réponse.', 'error');
@@ -544,6 +553,9 @@ function validateAnswer() {
     } else {
         showMessage('❌ Réponse incorrecte. Veuillez recommencer.', 'error');
     }
+    
+    // Sauvegarder la progression après validation
+    saveProgress();
 }
 
 // Question suivante
@@ -661,18 +673,14 @@ function showCompletion() {
 
 // Redémarrage du QCM
 function restartQCM() {
-    currentQuestionIndex = 0;
-    selectedAnswers = [];
-    errorTracking = {};
-    visitedQuestions = new Set();
+    clearSavedProgress();
+    startFreshInit();
     validateBtn.style.display = 'block';
-    createQuestionNavigator();
-    displayQuestion();
-    updateProgress();
 }
 
 // Redémarrage avec mélange
 function restartWithShuffle() {
+    clearSavedProgress();
     questionOrder = shuffleArray(originalOrder);
     currentQuestionIndex = 0;
     selectedAnswers = [];
@@ -694,6 +702,9 @@ function restartErrorQuestions() {
         showMessage('Aucune question marquée comme fausse à réviser !', 'info');
         return;
     }
+    
+    // Effacer la progression car on démarre un mode spécial
+    clearSavedProgress();
     
     // Créer un nouveau QCM avec seulement les questions fausses
     questionOrder = errorQuestionIndices;
@@ -862,4 +873,141 @@ function goToRandomError() {
     
     // Aller à cette question
     goToQuestion(randomErrorQuestionIndex);
+}
+
+function startFreshInit() {
+    // Créer l'ordre initial des questions (indices)
+    originalOrder = qcmData.qcm.map((_, index) => index);
+    questionOrder = [...originalOrder];
+    
+    // Réinitialiser toutes les variables
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
+    errorTracking = {};
+    visitedQuestions = new Set();
+    
+    totalQuestionsSpan.textContent = qcmData.qcm.length;
+    createQuestionNavigator();
+    displayQuestion();
+    updateProgress();
+}
+
+function generateQCMHash(qcmData) {
+    const dataString = JSON.stringify(qcmData.qcm);
+    let hash = 0;
+    for (let i = 0; i < dataString.length; i++) {
+        const char = dataString.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convertir en 32-bit
+    }
+    return hash.toString();
+}
+
+function saveProgress() {
+    if (!qcmData) return;
+    
+    const progressData = {
+        qcmHash: generateQCMHash(qcmData),
+        currentQuestionIndex: currentQuestionIndex,
+        selectedAnswers: [...selectedAnswers],
+        questionOrder: [...questionOrder],
+        originalOrder: [...originalOrder],
+        errorTracking: {...errorTracking},
+        visitedQuestions: Array.from(visitedQuestions),
+        timestamp: Date.now()
+    };
+    
+    localStorage.setItem('qcmProgress', JSON.stringify(progressData));
+}
+
+function loadSavedProgress() {
+    try {
+        const savedData = localStorage.getItem('qcmProgress');
+        if (!savedData) return null;
+        
+        const progressData = JSON.parse(savedData);
+        
+        // Vérifier si c'est le même QCM
+        if (progressData.qcmHash !== generateQCMHash(qcmData)) {
+            return null;
+        }
+        
+        return progressData;
+    } catch (error) {
+        console.error('Erreur lors du chargement de la progression:', error);
+        return null;
+    }
+}
+
+function restoreProgress(progressData) {
+    currentQuestionIndex = progressData.currentQuestionIndex;
+    selectedAnswers = [...progressData.selectedAnswers];
+    questionOrder = [...progressData.questionOrder];
+    originalOrder = [...progressData.originalOrder];
+    errorTracking = {...progressData.errorTracking};
+    visitedQuestions = new Set(progressData.visitedQuestions);
+    
+    createQuestionNavigator();
+    displayQuestion();
+    updateProgress();
+    updateErrorQuestionsList();
+    
+    showMessage(`✅ Progression restaurée ! Vous êtes à la question ${currentQuestionIndex + 1}/${qcmData.qcm.length}`, 'success');
+    setTimeout(clearMessage, 3000);
+}
+
+function clearSavedProgress() {
+    localStorage.removeItem('qcmProgress');
+}
+
+function showRestoreDialog(progressData) {
+    const progressDate = new Date(progressData.timestamp).toLocaleString();
+    const progressPercent = Math.round(((progressData.currentQuestionIndex + 1) / qcmData.qcm.length) * 100);
+    const errorCount = Object.keys(progressData.errorTracking).length;
+    
+    questionContainer.innerHTML = `
+        <div class="restore-dialog">
+            <div class="restore-icon">🔄</div>
+            <h3>Progression sauvegardée détectée</h3>
+            <p>Une progression a été trouvée pour ce QCM :</p>
+            
+            <div class="progress-info">
+                <div class="progress-item">
+                    <span class="progress-label">📅 Dernière session :</span>
+                    <span class="progress-value">${progressDate}</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">📊 Progression :</span>
+                    <span class="progress-value">${progressData.currentQuestionIndex + 1}/${qcmData.qcm.length} questions (${progressPercent}%)</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">❌ Questions marquées fausses :</span>
+                    <span class="progress-value">${errorCount}</span>
+                </div>
+                <div class="progress-item">
+                    <span class="progress-label">👁️ Questions visitées :</span>
+                    <span class="progress-value">${progressData.visitedQuestions.length}</span>
+                </div>
+            </div>
+            
+            <div class="restore-buttons">
+                <button onclick="restoreProgress(${JSON.stringify(progressData).replace(/"/g, '&quot;')})" class="restore-btn primary">
+                    ✅ Continuer où je me suis arrêté
+                </button>
+                <button onclick="startFreshQCM()" class="restore-btn secondary">
+                    🆕 Commencer un nouveau QCM
+                </button>
+            </div>
+            
+            <p class="restore-note">
+                💡 <strong>Note :</strong> Si vous choisissez de continuer, vous retrouverez exactement où vous vous étiez arrêté avec toutes vos réponses et marquages.
+            </p>
+        </div>
+    `;
+}
+
+// Fonction pour démarrer un QCM fresh (sans progression)
+function startFreshQCM() {
+    clearSavedProgress();
+    init();
 }
