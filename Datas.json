@@ -1732,7 +1732,7 @@
         },
         {
             "id": 141,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2022/06/i211586v1n1_Question-5.png",
             "question": "141. Examinez l’illustration. PC-A et PC-B sont tous deux dans le VLAN 60. PC-A est incapable de communiquer avec PC-B. Quel est le problème ?",
             "options": [
                 "Le VLAN natif doit être le VLAN 60.",
