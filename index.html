@@ -73,6 +73,17 @@
         <button id="scroll-to-top" class="scroll-to-top" title="Remonter en haut">
             ⬆️
         </button>
+        
+        <!-- Navigation des questions marquées fausses -->
+        <div id="error-nav-container" class="error-nav-container">
+            <button id="prev-error-btn" class="error-nav-btn" title="Question fausse précédente">
+                ◀
+            </button>
+            <button id="random-error-btn" class="error-nav-btn error-cross" onclick="goToRandomError()" title="Question fausse aléatoire">❌</button>
+            <button id="next-error-btn" class="error-nav-btn" title="Question fausse suivante">
+                ▶
+            </button>
+        </div>
     </div>
 
     <script src="script.js"></script>

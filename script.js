@@ -8,6 +8,8 @@ let errorTracking = {}; // Suivi des erreurs par question
 let answersRevealed = false; // État de révélation des réponses
 let visitedQuestions = new Set(); // Suivi des questions visitées
 let navigatorExpanded = true;
+let errorQuestions = [];
+let currentErrorIndex = -1;
 
 // Éléments DOM
 const questionContainer = document.getElementById('question-container');
@@ -18,6 +20,9 @@ const totalQuestionsSpan = document.getElementById('total-questions');
 const questionIdSpan = document.getElementById('question-id');
 const progressFill = document.getElementById('progress-fill');
 const scrollToTopBtn = document.getElementById('scroll-to-top');
+const errorNavContainer = document.getElementById('error-nav-container');
+const prevErrorBtn = document.getElementById('prev-error-btn');
+const nextErrorBtn = document.getElementById('next-error-btn');
 
 // Fonction pour mélanger un tableau (algorithme Fisher-Yates)
 function shuffleArray(array) {
@@ -270,6 +275,47 @@ function updateNavigatorDisplay() {
     });
 }
 
+function updateErrorQuestionsList() {
+    const previousErrorQuestions = [...errorQuestions];
+    errorQuestions = Object.keys(errorTracking).map(id => parseInt(id));
+    
+    // Trouver l'index dans l'ordre des questions affiché
+    errorQuestions = errorQuestions
+        .map(questionId => questionOrder.indexOf(questionId))
+        .filter(index => index !== -1)
+        .sort((a, b) => a - b);
+    
+    // Vérifier s'il faut afficher/masquer le bouton
+    const shouldShow = errorQuestions.length > 0;
+    const wasVisible = errorNavContainer.classList.contains('visible');
+    
+    if (shouldShow && !wasVisible) {
+        // Fade in
+        errorNavContainer.classList.add('visible');
+    } else if (!shouldShow && wasVisible) {
+        // Fade out
+        errorNavContainer.classList.remove('visible');
+        currentErrorIndex = -1;
+    }
+    
+    // Bug fix: Mettre à jour l'index actuel correctement
+    if (errorQuestions.length > 0) {
+        const currentQuestionInErrors = errorQuestions.indexOf(currentQuestionIndex);
+        if (currentQuestionInErrors !== -1) {
+            currentErrorIndex = currentQuestionInErrors;
+        } else {
+            // Si la question actuelle n'est pas dans les erreurs, garder l'index valide
+            if (currentErrorIndex >= errorQuestions.length) {
+                currentErrorIndex = errorQuestions.length - 1;
+            } else if (currentErrorIndex < 0) {
+                currentErrorIndex = 0;
+            }
+        }
+    }
+    
+    updateErrorNavigationButtons();
+}
+
 // Navigation vers une question spécifique
 function goToQuestion(questionIndex) {
     if (questionIndex < 0 || questionIndex >= qcmData.qcm.length) return;
@@ -282,6 +328,9 @@ function goToQuestion(questionIndex) {
     displayQuestion();
     updateProgress();
     updateNavigatorDisplay();
+    
+    // Bug fix: Mettre à jour la navigation des erreurs après changement de question
+    updateErrorQuestionsList();
     
     // Scroll vers le haut pour voir la nouvelle question
     scrollToTop();
@@ -442,6 +491,9 @@ function handleErrorTracking() {
     
     // Mettre à jour l'affichage du navigateur
     updateNavigatorDisplay();
+    
+    // Mettre à jour la navigation des erreurs
+    updateErrorQuestionsList();
 }
 
 // Gestion de la sélection des options
@@ -668,15 +720,31 @@ validateBtn.addEventListener('click', validateAnswer);
 // Event listener pour le bouton scroll to top
 scrollToTopBtn.addEventListener('click', scrollToTop);
 
+// Event listeners pour les boutons de navigation des erreurs
+prevErrorBtn.addEventListener('click', goToPreviousError);
+nextErrorBtn.addEventListener('click', goToNextError);
+
 // Event listener pour le scroll
 window.addEventListener('scroll', handleScrollToTopVisibility);
 
-// Gestion du clic sur les options
+// Remplacer l'event listener existant pour les clics par celui-ci :
 document.addEventListener('click', function(e) {
-    // Si on clique sur une option mais pas directement sur la checkbox
-    if (e.target.closest('.option') && e.target.type !== 'checkbox') {
+    // Si on clique sur une option
+    if (e.target.closest('.option')) {
         const option = e.target.closest('.option');
         const optionNumber = parseInt(option.getAttribute('data-option'));
+        
+        // Ajouter l'animation pop
+        option.classList.add('pop-animation');
+        option.classList.add('ripple-effect');
+        
+        // Retirer les classes d'animation après l'animation
+        setTimeout(() => {
+            option.classList.remove('pop-animation');
+            option.classList.remove('ripple-effect');
+        }, 300);
+        
+        // Basculer l'état de la checkbox
         toggleOption(optionNumber);
     }
 });
@@ -734,4 +802,48 @@ function restoreNavigatorState() {
         navigator.classList.add('collapsed');
         toggleIcon.textContent = '▲';
     }
+}
+
+// Fonction pour mettre à jour l'état des boutons de navigation des erreurs
+function updateErrorNavigationButtons() {
+    if (errorQuestions.length === 0) {
+        prevErrorBtn.disabled = true;
+        nextErrorBtn.disabled = true;
+        return;
+    }
+    
+    prevErrorBtn.disabled = currentErrorIndex <= 0;
+    nextErrorBtn.disabled = currentErrorIndex >= errorQuestions.length - 1;
+}
+
+// Navigation vers la question fausse précédente
+function goToPreviousError() {
+    if (errorQuestions.length === 0 || currentErrorIndex <= 0) return;
+    
+    currentErrorIndex--;
+    const questionIndex = errorQuestions[currentErrorIndex];
+    goToQuestion(questionIndex);
+}
+
+// Navigation vers la question fausse suivante
+function goToNextError() {
+    if (errorQuestions.length === 0 || currentErrorIndex >= errorQuestions.length - 1) return;
+    
+    currentErrorIndex++;
+    const questionIndex = errorQuestions[currentErrorIndex];
+    goToQuestion(questionIndex);
+}
+
+function goToRandomError() {
+    if (errorQuestions.length === 0) return;
+    
+    // Choisir un index aléatoire dans la liste des questions marquées fausses
+    const randomIndex = Math.floor(Math.random() * errorQuestions.length);
+    const randomErrorQuestionIndex = errorQuestions[randomIndex];
+    
+    // Mettre à jour l'index actuel des erreurs
+    currentErrorIndex = randomIndex;
+    
+    // Aller à cette question
+    goToQuestion(randomErrorQuestionIndex);
 }
