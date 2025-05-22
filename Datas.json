@@ -1265,10 +1265,10 @@
             "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2022-01-13_090443.jpg",
             "question": "98. Examinez l’illustration. Un commutateur de couche 3 se charge du routage pour trois VLAN et se connecte à un routeur pour la connectivité Internet. Comment le commutateur doit-il être configuré ? (Choisissez deux réponses.)",
             "options": [
-                "Activez globalement la surveillance DHCP (snooping )sur le commutateur.",
-                "Il active manuellement un lien de trunk.",
-                "Il active PortFast globalement sur un commutateur.",
-                "Désactivez les négociations DTP sur les ports trunking."
+                "(config)# interface vlan 1 (config-if)# ip address 192.168.1.2 255.255.255.0 (config-if)# no shutdown",
+                "(config)# ip routing (config)# interface gigabitethernet 1/1 (config-if)# no switchport (config-if)# ip address 192.168.1.2 255.255.255.252",
+                "(config)# interface fastethernet0/4 (config-if)# switchport mode trunk",
+                "(config)# interface gigabitethernet1/1 (config-if)# switchport mode trunk"
             ],
             "correct_answer": 1
         },
