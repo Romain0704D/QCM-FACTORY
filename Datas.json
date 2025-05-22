@@ -1583,7 +1583,7 @@
         },
         {
             "id": 121,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2022/06/CCNA-2-v7-exam-answers-56.png",
             "question": "121. Reportez-vous à l’illustration. Quelle instruction indiquée dans le résultat permet au routeur R1 de répondre aux demandes DHCPv6 sans état ?",
             "options": [
                 "prefix-delegation 2001:DB8:8::/48 00030001000E84244E70",
