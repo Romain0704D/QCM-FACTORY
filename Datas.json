@@ -1213,7 +1213,7 @@
         },
         {
             "id": 95,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163739.png",
             "question": "95. Examinez l’illustration. Un administrateur réseau vérifie la configuration du commutateur S1. Quel protocole a été implémenté pour regrouper plusieurs ports physiques en une liaison logique ?",
             "options": [
                 "DTP",
