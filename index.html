@@ -15,27 +15,37 @@
                 <button onclick="resetOrder()" class="shuffle-btn">↩️ Ordre original</button>
             </div>
             
+            <!-- Remplacer la div .question-navigator existante par cette structure -->
             <div id="question-navigator" class="question-navigator">
-                <div class="navigator-title">🗺️ Navigation rapide</div>
-                <div class="question-buttons" id="question-buttons">
-                    <!-- Les boutons seront générés dynamiquement -->
+                <div class="navigator-header" onclick="toggleNavigator()">
+                    <h3 class="navigator-title">🗺️ Navigation des questions</h3>
+                    <button class="navigator-toggle" type="button" onclick="event.stopPropagation(); toggleNavigator();" aria-label="Réduire/Étendre le navigateur">
+                        <span class="toggle-icon">▼</span>
+                    </button>
                 </div>
-                <div class="navigator-legend">
-                    <div class="legend-item">
-                        <div class="legend-color legend-current"></div>
-                        <span>Actuelle</span>
+                
+                <div class="navigator-content">
+                    <div id="question-buttons" class="question-buttons">
+                        <!-- Les boutons de navigation seront générés ici -->
                     </div>
-                    <div class="legend-item">
-                        <div class="legend-color legend-visited"></div>
-                        <span>Visitée</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color legend-error"></div>
-                        <span>Marquée fausse</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color legend-unvisited"></div>
-                        <span>Non visitée</span>
+                    
+                    <div class="navigator-legend">
+                        <div class="legend-item">
+                            <div class="legend-color legend-current"></div>
+                            <span>Actuelle</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-visited"></div>
+                            <span>Visitée</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-error"></div>
+                            <span>Marquée fausse</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-unvisited"></div>
+                            <span>Non visitée</span>
+                        </div>
                     </div>
                 </div>
             </div>
