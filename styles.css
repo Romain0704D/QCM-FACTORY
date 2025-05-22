@@ -887,3 +887,147 @@ body {
 .error-cross:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+/* Ajouter ces styles CSS à votre fichier de styles */
+
+.restore-dialog {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.restore-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.restore-dialog h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.restore-dialog p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.progress-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 25px 0;
+    backdrop-filter: blur(10px);
+}
+
+.progress-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 8px 0;
+}
+
+.progress-item:last-child {
+    margin-bottom: 0;
+}
+
+.progress-label {
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.progress-value {
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.restore-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.restore-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.restore-btn.primary {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    color: white;
+}
+
+.restore-btn.primary:hover {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+}
+
+.restore-btn.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.restore-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+.restore-note {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    font-style: italic;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+/* Responsive design pour mobile */
+@media (max-width: 768px) {
+    .restore-dialog {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    .restore-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .restore-btn {
+        min-width: 180px;
+    }
+    
+    .progress-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+}
