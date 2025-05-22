@@ -64,6 +64,37 @@
             margin-bottom: 20px;
         }
 
+        .question-id {
+            color: #4ade80;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .shuffle-controls {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(31, 41, 55, 0.5);
+            border-radius: 12px;
+        }
+
+        .shuffle-btn {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        .shuffle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+
         .question-card {
             background: rgba(31, 41, 55, 0.8);
             border-radius: 20px;
@@ -356,8 +387,13 @@
     <div class="container">
         <div class="header">
             <h1>🎯 QCM Interactif</h1>
+            <div class="shuffle-controls">
+                <button onclick="shuffleQuestions()" class="shuffle-btn">🔀 Mélanger les questions</button>
+                <button onclick="resetOrder()" class="shuffle-btn">↩️ Ordre original</button>
+            </div>
             <div class="question-counter">
                 Question <span id="current-question">1</span> sur <span id="total-questions">5</span>
+                <span class="question-id">ID: <span id="question-id">1</span></span>
             </div>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill"></div>
@@ -380,6 +416,8 @@
         let qcmData = null;
         let currentQuestionIndex = 0;
         let selectedAnswers = [];
+        let questionOrder = []; // Tableau pour gérer l'ordre des questions
+        let originalOrder = []; // Tableau pour conserver l'ordre original
 
         // Éléments DOM
         const questionContainer = document.getElementById('question-container');
@@ -387,7 +425,67 @@
         const messageContainer = document.getElementById('message-container');
         const currentQuestionSpan = document.getElementById('current-question');
         const totalQuestionsSpan = document.getElementById('total-questions');
+        const questionIdSpan = document.getElementById('question-id');
         const progressFill = document.getElementById('progress-fill');
+
+        // Fonction pour mélanger un tableau (algorithme Fisher-Yates)
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Fonction pour mélanger les questions
+        function shuffleQuestions() {
+            if (!qcmData || !qcmData.qcm) return;
+            
+            // Sauvegarder les réponses en cours si on est en milieu de QCM
+            const wasInProgress = currentQuestionIndex > 0;
+            
+            if (wasInProgress) {
+                const confirmShuffle = confirm('⚠️ Mélanger les questions va redémarrer le QCM. Continuer ?');
+                if (!confirmShuffle) return;
+            }
+            
+            // Créer un nouvel ordre aléatoire
+            questionOrder = shuffleArray(originalOrder);
+            
+            // Redémarrer le QCM
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            displayQuestion();
+            updateProgress();
+            
+            showMessage('🔀 Questions mélangées ! Le QCM a redémarré.', 'info');
+            setTimeout(clearMessage, 2000);
+        }
+
+        // Fonction pour remettre l'ordre original
+        function resetOrder() {
+            if (!qcmData || !qcmData.qcm) return;
+            
+            const wasInProgress = currentQuestionIndex > 0;
+            
+            if (wasInProgress) {
+                const confirmReset = confirm('⚠️ Remettre l\'ordre original va redémarrer le QCM. Continuer ?');
+                if (!confirmReset) return;
+            }
+            
+            // Remettre l'ordre original
+            questionOrder = [...originalOrder];
+            
+            // Redémarrer le QCM
+            currentQuestionIndex = 0;
+            selectedAnswers = [];
+            displayQuestion();
+            updateProgress();
+            
+            showMessage('↩️ Ordre original restauré ! Le QCM a redémarré.', 'info');
+            setTimeout(clearMessage, 2000);
+        }
 
         // Chargement du fichier JSON
         async function loadQCMData() {
@@ -471,49 +569,23 @@
 
         // Initialisation
         function init() {
+            // Créer l'ordre initial des questions (indices)
+            originalOrder = qcmData.qcm.map((_, index) => index);
+            questionOrder = [...originalOrder];
+            
             totalQuestionsSpan.textContent = qcmData.qcm.length;
             displayQuestion();
             updateProgress();
         }
 
-        // Fonction pour gérer les URLs d'images avec proxy
-        function getImageUrl(originalUrl) {
-            if (!originalUrl || originalUrl.trim() === '') {
-                return '';
-            }
-            
-            // Essayer d'abord l'URL originale, puis utiliser un proxy si nécessaire
-            return originalUrl;
+        // Fonction pour obtenir la question courante selon l'ordre défini
+        function getCurrentQuestion() {
+            const questionIndex = questionOrder[currentQuestionIndex];
+            return qcmData.qcm[questionIndex];
         }
 
-        // Fonction pour créer l'élément image avec fallback
-        function createImageElement(imageUrl, questionId) {
-            if (!imageUrl || imageUrl.trim() === '') {
-                return '';
-            }
-
-            return `
-                <div class="image-container">
-                    <div class="image-placeholder" id="img-placeholder-${questionId}">
-                        <div class="placeholder-content">
-                            <div class="placeholder-icon">🖼️</div>
-                            <div class="placeholder-text">
-                                <strong>Image de la question ${questionId}</strong><br>
-                                <span class="placeholder-url">${imageUrl}</span><br>
-                                <button class="open-image-btn" onclick="window.open('${imageUrl}', '_blank')">
-                                    📂 Ouvrir l'image dans un nouvel onglet
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="${imageUrl}" alt="Image de la question" class="question-image" 
-                         onload="this.style.display='block'; this.style.opacity='1'; document.getElementById('img-placeholder-${questionId}').style.display='none'" 
-                         onerror="this.style.display='none'; document.getElementById('img-placeholder-${questionId}').style.display='block'">
-                </div>
-            `;
-        }
         function displayQuestion() {
-            const question = qcmData.qcm[currentQuestionIndex];
+            const question = getCurrentQuestion();
             selectedAnswers = [];
             
             let html = '';
@@ -547,6 +619,7 @@
             
             questionContainer.innerHTML = html;
             currentQuestionSpan.textContent = currentQuestionIndex + 1;
+            questionIdSpan.textContent = question.id || 'N/A';
             clearMessage();
         }
 
@@ -576,7 +649,7 @@
                 return;
             }
 
-            const question = qcmData.qcm[currentQuestionIndex];
+            const question = getCurrentQuestion();
             const correctAnswer = question.correct_answer;
             
             let isCorrect = false;
@@ -639,6 +712,7 @@
                     <p>Vous avez terminé le QCM avec succès !</p>
                     <p>Vous avez répondu à toutes les ${qcmData.qcm.length} questions.</p>
                     <button class="restart-btn" onclick="restartQCM()">Recommencer le QCM</button>
+                    <button class="restart-btn" onclick="restartWithShuffle()" style="margin-left: 10px;">Recommencer avec mélange</button>
                 </div>
             `;
             validateBtn.style.display = 'none';
@@ -652,6 +726,14 @@
             validateBtn.style.display = 'block';
             displayQuestion();
             updateProgress();
+        }
+
+        // Redémarrage avec mélange
+        function restartWithShuffle() {
+            questionOrder = shuffleArray(originalOrder);
+            restartQCM();
+            showMessage('🔀 Questions mélangées pour ce nouveau QCM !', 'info');
+            setTimeout(clearMessage, 2000);
         }
 
         // Event listeners
