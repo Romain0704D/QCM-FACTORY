@@ -1022,7 +1022,7 @@
         },
         {
             "id": 83,
-            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-20_103809.jpg",
+            "image": "",
             "question": "83. Un technicien configure un routeur pour une petite entreprise avec plusieurs WLAN et n’a pas besoin de la complexité d’un protocole de routage dynamique. Qu’est-ce que doitêtre fait ou vérifié ?",
             "options": [
                 "Vérifiez qu’il n’y a pas de route par défaut dans les tables de routage du routeur Edge.",
