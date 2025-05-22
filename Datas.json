@@ -1152,7 +1152,7 @@
         },
         {
             "id": 91,
-            "image": "",
+            "image": "https://ccnareponses.com/wp-content/uploads/2021/12/2021-12-23_163433.png",
             "question": "91. Reportez-vous à l’illustration. Quelle opération effectue le routeur R1 sur un paquet associé à une adresse IPv6 de destination 2001:db8:cafe:5::1 ?",
             "options": [
                 "supprimer le paquet",
