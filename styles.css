@@ -1114,3 +1114,9 @@ body {
 .keyboard-hint.show {
     opacity: 1;
 }
+
+@media (max-width: 450px) {
+    .validate-btn {
+        margin-right: 120px;
+    }
+}
