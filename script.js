@@ -10,6 +10,8 @@ let visitedQuestions = new Set(); // Suivi des questions visitées
 let navigatorExpanded = true;
 let errorQuestions = [];
 let currentErrorIndex = -1;
+let prevQuestionBtn, nextQuestionBtn, keyboardHint;
+
 
 // Éléments DOM
 const questionContainer = document.getElementById('question-container');
@@ -140,7 +142,10 @@ function hideNavigationElements() {
         document.querySelector('.question-counter'),
         document.querySelector('.progress-bar'),
         document.getElementById('validate-btn'),
-        document.getElementById('scroll-to-top')
+        document.getElementById('scroll-to-top'),
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint')
     ];
     
     elementsToHide.forEach(element => {
@@ -158,7 +163,10 @@ function showNavigationElements() {
         document.querySelector('.question-counter'),
         document.querySelector('.progress-bar'),
         document.getElementById('validate-btn'),
-        document.getElementById('scroll-to-top')
+        document.getElementById('scroll-to-top'),
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint')
     ];
     
     elementsToShow.forEach(element => {
@@ -169,6 +177,8 @@ function showNavigationElements() {
     
     // Restaurer l'état du navigateur
     setTimeout(restoreNavigatorState, 0);
+
+    updateSideNavigationButtons();
 }
 
 // Chargement depuis un fichier uploadé
@@ -441,6 +451,7 @@ function displayQuestion() {
     updateNavigatorDisplay();
     
     clearMessage();
+    updateSideNavigationButtons();
 }
 
 // Fonction pour afficher les bonnes réponses
@@ -764,7 +775,20 @@ document.addEventListener('click', function(e) {
 window.addEventListener('load', function() {
     loadQCMData();
     handleScrollToTopVisibility(); // Vérifier l'état initial du scroll
+
+    initNavigationElements();
+    
+    // Event listener pour la navigation clavier
+    document.addEventListener('keydown', handleKeyboardNavigation);
+    
+    // Afficher l'hint clavier au début
+    setTimeout(() => {
+        if (keyboardHint) {
+            showKeyboardHint();
+        }
+    }, 1000);
 });
+
 
 // Fonction pour basculer l'état du navigateur
 function toggleNavigator() {
@@ -1011,3 +1035,135 @@ function startFreshQCM() {
     clearSavedProgress();
     init();
 }
+
+function initNavigationElements() {
+    prevQuestionBtn = document.getElementById('prev-question-btn');
+    nextQuestionBtn = document.getElementById('next-question-btn');
+    keyboardHint = document.getElementById('keyboard-hint');
+    
+    if (prevQuestionBtn) {
+        prevQuestionBtn.addEventListener('click', goToPreviousQuestion);
+    }
+    if (nextQuestionBtn) {
+        nextQuestionBtn.addEventListener('click', goToNextQuestion);
+    }
+}
+
+function goToPreviousQuestion() {
+    if (currentQuestionIndex > 0) {
+        // Animation du bouton
+        if (prevQuestionBtn) {
+            prevQuestionBtn.classList.add('pressed');
+            setTimeout(() => prevQuestionBtn.classList.remove('pressed'), 200);
+        }
+        
+        goToQuestion(currentQuestionIndex - 1);
+        showKeyboardHint();
+    }
+}
+
+function goToNextQuestion() {
+    if (currentQuestionIndex < qcmData.qcm.length - 1) {
+        // Animation du bouton
+        if (nextQuestionBtn) {
+            nextQuestionBtn.classList.add('pressed');
+            setTimeout(() => nextQuestionBtn.classList.remove('pressed'), 200);
+        }
+        
+        goToQuestion(currentQuestionIndex + 1);
+        showKeyboardHint();
+    }
+}
+
+function updateSideNavigationButtons() {
+    if (!prevQuestionBtn || !nextQuestionBtn || !qcmData) return;
+    
+    // Bouton précédent
+    prevQuestionBtn.disabled = currentQuestionIndex <= 0;
+    
+    // Bouton suivant
+    nextQuestionBtn.disabled = currentQuestionIndex >= qcmData.qcm.length - 1;
+}
+
+// Fonction pour afficher l'indicateur de navigation clavier
+function showKeyboardHint() {
+    if (keyboardHint) {
+        keyboardHint.classList.add('show');
+        setTimeout(() => {
+            keyboardHint.classList.remove('show');
+        }, 2000);
+    }
+}
+
+function handleKeyboardNavigation(event) {
+    // Vérifier que nous ne sommes pas dans un champ de saisie
+    if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        return;
+    }
+    
+    switch(event.key) {
+        case 'ArrowLeft':
+            event.preventDefault();
+            goToPreviousQuestion();
+            break;
+        case 'ArrowRight':
+            event.preventDefault();
+            goToNextQuestion();
+            break;
+        case 'Space':
+            // Empêcher le scroll de la page avec la barre d'espace
+            if (event.target === document.body) {
+                event.preventDefault();
+            }
+            break;
+    }
+}
+
+function resetQCM() {
+    if (!qcmData || !qcmData.qcm) return;
+    
+    const wasInProgress = currentQuestionIndex > 0 || Object.keys(errorTracking).length > 0 || visitedQuestions.size > 0;
+    
+    if (wasInProgress) {
+        // Créer une boîte de dialogue personnalisée avec options
+        const resetOptions = confirm('⚠️ Réinitialiser le QCM va effacer votre progression.\n\n' +
+            'Voulez-vous :\n' +
+            '✅ Ok - Réinitialiser complètement\n' +
+            '❌ Annuler - Garder ma progression\n\n' +
+            'Cliquez "Ok" pour réinitialiser ou "Annuler" pour continuer.');
+        
+        if (!resetOptions) return;
+    }
+    
+    // Effacer la progression sauvegardée
+    clearSavedProgress();
+    
+    // Réinitialiser complètement toutes les variables
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
+    errorTracking = {};
+    visitedQuestions = new Set();
+    answersRevealed = false;
+    errorQuestions = [];
+    currentErrorIndex = -1;
+    
+    // Recréer l'interface
+    createQuestionNavigator();
+    displayQuestion();
+    updateProgress();
+    updateErrorQuestionsList();
+    
+    // Masquer le conteneur de navigation des erreurs
+    if (errorNavContainer) {
+        errorNavContainer.classList.remove('visible');
+    }
+    
+    // Réafficher le bouton de validation si il était caché
+    if (validateBtn) {
+        validateBtn.style.display = 'block';
+    }
+    
+    showMessage('🔄 QCM réinitialisé ! Toute votre progression a été effacée.', 'success');
+    setTimeout(clearMessage, 3000);
+}
+
