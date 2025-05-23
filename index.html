@@ -13,6 +13,7 @@
             <div class="shuffle-controls">
                 <button onclick="shuffleQuestions()" class="shuffle-btn">🔀 Mélanger les questions</button>
                 <button onclick="resetOrder()" class="shuffle-btn">↩️ Ordre original</button>
+                <button onclick="resetQCM()" class="shuffle-btn">🔄 Réinitialiser le QCM</button>
             </div>
             
             <!-- Remplacer la div .question-navigator existante par cette structure -->
@@ -84,6 +85,21 @@
                 ▶
             </button>
         </div>
+    </div>
+    <div class="side-navigation left" id="prev-nav">
+        <button class="side-nav-btn" id="prev-question-btn" title="Question précédente (Flèche gauche)">
+            &#8249;
+        </button>
+    </div>
+
+    <div class="side-navigation right" id="next-nav">
+        <button class="side-nav-btn" id="next-question-btn" title="Question suivante (Flèche droite)">
+            &#8250;
+        </button>
+    </div>
+
+    <div class="keyboard-hint" id="keyboard-hint">
+        Utilisez ← → pour naviguer
     </div>
 
     <script src="script.js"></script>
