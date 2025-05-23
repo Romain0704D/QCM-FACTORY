@@ -11,6 +11,8 @@ let navigatorExpanded = true;
 let errorQuestions = [];
 let currentErrorIndex = -1;
 let prevQuestionBtn, nextQuestionBtn, keyboardHint;
+let isRevisionMode = false; // Nouvelle variable pour tracker le mode révision
+let originalProgressData = null;
 
 
 // Éléments DOM
@@ -331,7 +333,9 @@ function updateErrorQuestionsList() {
 
 // Modifier la fonction goToQuestion() existante en ajoutant la sauvegarde :
 function goToQuestion(questionIndex) {
-    if (questionIndex < 0 || questionIndex >= qcmData.qcm.length) return;
+    const maxIndex = isRevisionMode ? questionOrder.length - 1 : qcmData.qcm.length - 1;
+    
+    if (questionIndex < 0 || questionIndex > maxIndex) return;
     
     // Marquer la question actuelle comme visitée avant de partir
     visitedQuestions.add(currentQuestionIndex);
@@ -345,8 +349,10 @@ function goToQuestion(questionIndex) {
     // Bug fix: Mettre à jour la navigation des erreurs après changement de question
     updateErrorQuestionsList();
     
-    // Sauvegarder la progression
-    saveProgress();
+    // Sauvegarder la progression seulement si on n'est pas en mode révision
+    if (!isRevisionMode) {
+        saveProgress();
+    }
     
     // Scroll vers le haut pour voir la nouvelle question
     scrollToTop();
@@ -573,7 +579,9 @@ function validateAnswer() {
 function nextQuestion() {
     currentQuestionIndex++;
     
-    if (currentQuestionIndex >= qcmData.qcm.length) {
+    const maxQuestions = isRevisionMode ? questionOrder.length : qcmData.qcm.length;
+    
+    if (currentQuestionIndex >= maxQuestions) {
         showCompletion();
     } else {
         displayQuestion();
@@ -583,8 +591,21 @@ function nextQuestion() {
 
 // Mise à jour de la barre de progression
 function updateProgress() {
-    const progress = ((currentQuestionIndex + 1) / qcmData.qcm.length) * 100;
+    let totalQuestions, currentProgress;
+    
+    if (isRevisionMode) {
+        totalQuestions = questionOrder.length; // Nombre de questions en révision
+        currentProgress = currentQuestionIndex + 1;
+    } else {
+        totalQuestions = qcmData.qcm.length; // Nombre total de questions
+        currentProgress = currentQuestionIndex + 1;
+    }
+    
+    const progress = (currentProgress / totalQuestions) * 100;
     progressFill.style.width = progress + '%';
+    
+    // Mettre à jour l'affichage du nombre total de questions
+    totalQuestionsSpan.textContent = totalQuestions;
 }
 
 // Affichage des messages
@@ -620,67 +641,121 @@ function calculateErrorStats() {
 
 // Fin du QCM
 function showCompletion() {
-    const stats = calculateErrorStats();
+    let completionHTML = '';
     
-    questionContainer.innerHTML = `
-        <div class="completion-card">
-            <h2>🎉 Félicitations !</h2>
-            <p>Vous avez terminé le QCM avec succès !</p>
-            
-            <div class="stats-container">
-                <h3 style="color: #4ade80; margin-bottom: 15px;">📊 Statistiques de performance</h3>
+    if (isRevisionMode) {
+        // Fin du mode révision
+        const revisedQuestions = questionOrder.length;
+        const newErrors = Object.keys(errorTracking).length;
+        
+        completionHTML = `
+            <div class="completion-card">
+                <h2>🎯 Mode révision terminé !</h2>
+                <p>Vous avez révisé ${revisedQuestions} question(s) marquée(s) comme fausse(s).</p>
                 
-                <div class="stat-item">
-                    <span class="stat-label">Total des questions :</span>
-                    <span class="stat-value">${stats.totalQuestions}</span>
+                <div class="stats-container">
+                    <h3 style="color: #4ade80; margin-bottom: 15px;">📊 Résultats de la révision</h3>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Questions révisées :</span>
+                        <span class="stat-value">${revisedQuestions}</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Nouvelles questions marquées fausses :</span>
+                        <span class="stat-value error">${newErrors}</span>
+                    </div>
                 </div>
                 
-                <div class="stat-item">
-                    <span class="stat-label">Questions réussies :</span>
-                    <span class="stat-value">${stats.questionsCorrect}</span>
-                </div>
-                
-                <div class="stat-item">
-                    <span class="stat-label">Questions marquées comme fausses :</span>
-                    <span class="stat-value error">${stats.questionsWithErrors}</span>
-                </div>
-                
-                <div class="stat-item">
-                    <span class="stat-label">Taux de réussite :</span>
-                    <span class="stat-value">${stats.successRate}%</span>
-                </div>
-                
-                <div class="stat-item">
-                    <span class="stat-label">Taux d'erreur :</span>
-                    <span class="stat-value error">${stats.errorRate}%</span>
+                <div class="revision-exit-buttons">
+                    <button class="restart-btn" onclick="exitRevisionMode(true)">
+                        ↩️ Retourner au QCM complet (avec progression)
+                    </button>
+                    <button class="restart-btn" onclick="exitRevisionMode(false)" style="margin-left: 10px;">
+                        🆕 Recommencer un nouveau QCM
+                    </button>
+                    <button class="restart-btn" onclick="restartRevisionMode()" style="margin-left: 10px; background: linear-gradient(135deg, #ef4444, #f87171);">
+                        🔄 Refaire cette révision
+                    </button>
                 </div>
             </div>
-            
-            ${stats.questionsWithErrors > 0 ? `
-                <div style="margin: 20px 0; padding: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px;">
-                    <p style="color: #fca5a5;">💡 <strong>Conseil :</strong> Vous avez marqué ${stats.questionsWithErrors} question(s) comme fausse(s). 
-                    Pensez à réviser ces points pour améliorer vos connaissances !</p>
+        `;
+    } else {
+        // Fin du QCM normal
+        const stats = calculateErrorStats();
+        
+        completionHTML = `
+            <div class="completion-card">
+                <h2>🎉 Félicitations !</h2>
+                <p>Vous avez terminé le QCM avec succès !</p>
+                
+                <div class="stats-container">
+                    <h3 style="color: #4ade80; margin-bottom: 15px;">📊 Statistiques de performance</h3>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Total des questions :</span>
+                        <span class="stat-value">${stats.totalQuestions}</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Questions réussies :</span>
+                        <span class="stat-value">${stats.questionsCorrect}</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Questions marquées comme fausses :</span>
+                        <span class="stat-value error">${stats.questionsWithErrors}</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Taux de réussite :</span>
+                        <span class="stat-value">${stats.successRate}%</span>
+                    </div>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">Taux d'erreur :</span>
+                        <span class="stat-value error">${stats.errorRate}%</span>
+                    </div>
                 </div>
-            ` : `
-                <div style="margin: 20px 0; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px;">
-                    <p style="color: #86efac;">🌟 <strong>Excellent !</strong> Vous n'avez marqué aucune question comme fausse. 
-                    Vos connaissances semblent solides sur ce sujet !</p>
+                
+                ${stats.questionsWithErrors > 0 ? `
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px;">
+                        <p style="color: #fca5a5;">💡 <strong>Conseil :</strong> Vous avez marqué ${stats.questionsWithErrors} question(s) comme fausse(s). 
+                        Pensez à réviser ces points pour améliorer vos connaissances !</p>
+                    </div>
+                ` : `
+                    <div style="margin: 20px 0; padding: 15px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 10px;">
+                        <p style="color: #86efac;">🌟 <strong>Excellent !</strong> Vous n'avez marqué aucune question comme fausse. 
+                        Vos connaissances semblent solides sur ce sujet !</p>
+                    </div>
+                `}
+                
+                <div class="completion-buttons">
+                    <button class="restart-btn" onclick="returnToCurrentProgress()">
+                        ↩️ Retourner au QCM (avec progression actuelle)
+                    </button>
+                    <button class="restart-btn" onclick="restartQCM()" style="margin-left: 10px;">
+                        🔄 Recommencer le QCM
+                    </button>
+                    <button class="restart-btn" onclick="restartWithShuffle()" style="margin-left: 10px;">
+                        🔀 Recommencer avec mélange
+                    </button>
+                    
+                    ${stats.questionsWithErrors > 0 ? `
+                        <button class="restart-btn" onclick="restartErrorQuestions()" style="margin-left: 10px; background: linear-gradient(135deg, #ef4444, #f87171);">
+                            ❌ Réviser les questions fausses
+                        </button>
+                    ` : ''}
                 </div>
-            `}
-            
-            <button class="restart-btn" onclick="restartQCM()">🔄 Recommencer le QCM</button>
-            <button class="restart-btn" onclick="restartWithShuffle()" style="margin-left: 10px;">🔀 Recommencer avec mélange</button>
-            
-            ${stats.questionsWithErrors > 0 ? `
-                <button class="restart-btn" onclick="restartErrorQuestions()" style="margin-left: 10px; background: linear-gradient(135deg, #ef4444, #f87171);">
-                    ❌ Réviser les questions fausses
-                </button>
-            ` : ''}
-        </div>
-    `;
+            </div>
+        `;
+    }
+    
+    questionContainer.innerHTML = completionHTML;
     validateBtn.style.display = 'none';
     clearMessage();
 }
+
 
 // Redémarrage du QCM
 function restartQCM() {
@@ -714,8 +789,22 @@ function restartErrorQuestions() {
         return;
     }
     
-    // Effacer la progression car on démarre un mode spécial
+    // Sauvegarder la progression actuelle avant d'entrer en mode révision
+    originalProgressData = {
+        currentQuestionIndex: currentQuestionIndex,
+        selectedAnswers: [...selectedAnswers],
+        questionOrder: [...questionOrder],
+        originalOrder: [...originalOrder],
+        errorTracking: {...errorTracking},
+        visitedQuestions: new Set(visitedQuestions),
+        totalQuestions: qcmData.qcm.length
+    };
+    
+    // Effacer la progression sauvegardée car on démarre un mode spécial
     clearSavedProgress();
+    
+    // Activer le mode révision
+    isRevisionMode = true;
     
     // Créer un nouveau QCM avec seulement les questions fausses
     questionOrder = errorQuestionIndices;
@@ -1050,6 +1139,8 @@ function initNavigationElements() {
 }
 
 function goToPreviousQuestion() {
+    const maxIndex = isRevisionMode ? questionOrder.length - 1 : qcmData.qcm.length - 1;
+    
     if (currentQuestionIndex > 0) {
         // Animation du bouton
         if (prevQuestionBtn) {
@@ -1063,7 +1154,9 @@ function goToPreviousQuestion() {
 }
 
 function goToNextQuestion() {
-    if (currentQuestionIndex < qcmData.qcm.length - 1) {
+    const maxIndex = isRevisionMode ? questionOrder.length - 1 : qcmData.qcm.length - 1;
+    
+    if (currentQuestionIndex < maxIndex) {
         // Animation du bouton
         if (nextQuestionBtn) {
             nextQuestionBtn.classList.add('pressed');
@@ -1078,11 +1171,13 @@ function goToNextQuestion() {
 function updateSideNavigationButtons() {
     if (!prevQuestionBtn || !nextQuestionBtn || !qcmData) return;
     
+    const maxIndex = isRevisionMode ? questionOrder.length - 1 : qcmData.qcm.length - 1;
+    
     // Bouton précédent
     prevQuestionBtn.disabled = currentQuestionIndex <= 0;
     
     // Bouton suivant
-    nextQuestionBtn.disabled = currentQuestionIndex >= qcmData.qcm.length - 1;
+    nextQuestionBtn.disabled = currentQuestionIndex >= maxIndex;
 }
 
 // Fonction pour afficher l'indicateur de navigation clavier
@@ -1167,3 +1262,72 @@ function resetQCM() {
     setTimeout(clearMessage, 3000);
 }
 
+function exitRevisionMode(keepProgress) {
+    isRevisionMode = false;
+    
+    if (keepProgress && originalProgressData) {
+        // Restaurer la progression originale
+        currentQuestionIndex = originalProgressData.currentQuestionIndex;
+        selectedAnswers = [...originalProgressData.selectedAnswers];
+        questionOrder = [...originalProgressData.questionOrder];
+        originalOrder = [...originalProgressData.originalOrder];
+        errorTracking = {...originalProgressData.errorTracking};
+        visitedQuestions = new Set(originalProgressData.visitedQuestions);
+        
+        validateBtn.style.display = 'block';
+        createQuestionNavigator();
+        displayQuestion();
+        updateProgress();
+        
+        showMessage('↩️ Retour au QCM complet avec votre progression !', 'success');
+        setTimeout(clearMessage, 2000);
+    } else {
+        // Recommencer complètement
+        restartQCM();
+    }
+    
+    originalProgressData = null;
+}
+
+// Fonction pour refaire le mode révision
+function restartRevisionMode() {
+    if (!originalProgressData) {
+        showMessage('Erreur: données de révision perdues', 'error');
+        return;
+    }
+    
+    // Récupérer les questions qui étaient marquées comme fausses au début de la révision
+    const errorQuestionIndices = Object.keys(originalProgressData.errorTracking).map(id => parseInt(id));
+    
+    // Réinitialiser le mode révision
+    questionOrder = errorQuestionIndices;
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
+    visitedQuestions = new Set();
+    errorTracking = {};
+    
+    validateBtn.style.display = 'block';
+    createQuestionNavigator();
+    displayQuestion();
+    updateProgress();
+    
+    showMessage(`🔄 Révision redémarrée : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
+    setTimeout(clearMessage, 2000);
+}
+
+// Fonction pour retourner au QCM avec la progression actuelle (après completion normale)
+function returnToCurrentProgress() {
+    // Remettre le bouton de validation
+    validateBtn.style.display = 'block';
+    
+    // Si on était à la fin, revenir à la dernière question
+    if (currentQuestionIndex >= qcmData.qcm.length) {
+        currentQuestionIndex = qcmData.qcm.length - 1;
+    }
+    
+    displayQuestion();
+    updateProgress();
+    
+    showMessage('↩️ Retour au QCM ! Vous pouvez continuer à naviguer.', 'info');
+    setTimeout(clearMessage, 2000);
+}
