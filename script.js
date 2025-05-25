@@ -13,6 +13,7 @@ let currentErrorIndex = -1;
 let prevQuestionBtn, nextQuestionBtn, keyboardHint;
 let isRevisionMode = false; // Nouvelle variable pour tracker le mode révision
 let originalProgressData = null;
+let isInCompletionMode = false; // Nouvelle variable pour tracker le mode bilan
 
 
 // Éléments DOM
@@ -130,7 +131,7 @@ function showFileUploadOption() {
             <h3>Chargement des questions</h3>
             <p>Le fichier questions.json n'a pas été trouvé.</p>
             <p>Veuillez sélectionner votre fichier JSON contenant les questions :</p>
-            <input type="file" id="jsonFileInput" accept=".json" class="file-input">
+            <input type="file" id="jsonFileInput" accept=".json" class="file-input">    
             <button onclick="loadFromFile()" class="upload-btn">Charger les questions</button>
         </div>
     `;
@@ -147,7 +148,8 @@ function hideNavigationElements() {
         document.getElementById('scroll-to-top'),
         document.getElementById('prev-nav'),
         document.getElementById('next-nav'),
-        document.getElementById('keyboard-hint')
+        document.getElementById('keyboard-hint'),
+        document.getElementById('error-nav-container') // Ajouter la navigation des erreurs
     ];
     
     elementsToHide.forEach(element => {
@@ -168,7 +170,8 @@ function showNavigationElements() {
         document.getElementById('scroll-to-top'),
         document.getElementById('prev-nav'),
         document.getElementById('next-nav'),
-        document.getElementById('keyboard-hint')
+        document.getElementById('keyboard-hint'),
+        document.getElementById('error-nav-container')
     ];
     
     elementsToShow.forEach(element => {
@@ -179,7 +182,6 @@ function showNavigationElements() {
     
     // Restaurer l'état du navigateur
     setTimeout(restoreNavigatorState, 0);
-
     updateSideNavigationButtons();
 }
 
@@ -291,6 +293,12 @@ function updateNavigatorDisplay() {
 }
 
 function updateErrorQuestionsList() {
+    // Masquer complètement en mode révision
+    if (isRevisionMode) {
+        errorNavContainer.classList.remove('visible');
+        return;
+    }
+    
     const previousErrorQuestions = [...errorQuestions];
     errorQuestions = Object.keys(errorTracking).map(id => parseInt(id));
     
@@ -333,6 +341,16 @@ function updateErrorQuestionsList() {
 
 // Modifier la fonction goToQuestion() existante en ajoutant la sauvegarde :
 function goToQuestion(questionIndex) {
+    // Bloquer la navigation seulement en mode bilan (pas en mode révision)
+    if (isInCompletionMode) {
+        return;
+    }
+    
+    // Vérifier que nous avons des données valides
+    if (!qcmData || !qcmData.qcm || !questionOrder || questionOrder.length === 0) {
+        return;
+    }
+    
     const maxIndex = isRevisionMode ? questionOrder.length - 1 : qcmData.qcm.length - 1;
     
     if (questionIndex < 0 || questionIndex > maxIndex) return;
@@ -344,10 +362,12 @@ function goToQuestion(questionIndex) {
     currentQuestionIndex = questionIndex;
     displayQuestion();
     updateProgress();
-    updateNavigatorDisplay();
+    updateNavigatorDisplay();   
     
-    // Bug fix: Mettre à jour la navigation des erreurs après changement de question
-    updateErrorQuestionsList();
+    // Mettre à jour la navigation des erreurs seulement si on n'est pas en mode révision
+    if (!isRevisionMode) {
+        updateErrorQuestionsList();
+    }
     
     // Sauvegarder la progression seulement si on n'est pas en mode révision
     if (!isRevisionMode) {
@@ -434,23 +454,58 @@ function displayQuestion() {
             <div id="answer-display" class="answer-revealed" style="display: none;"></div>
         </div>
     `;
-
-    // Suivi des erreurs
-    html += `
-        <div class="error-tracking">
-            <input type="checkbox" id="error-checkbox" onchange="handleErrorTracking()">
-            <label for="error-checkbox">❌ J'ai eu faux à cette question</label>
-        </div>
-    `;
+function restartRevisionMode() {
+    if (!originalProgressData) {
+        showMessage('Erreur: données de révision perdues', 'error');
+        return;
+    }
+    
+    // Récupérer les questions qui étaient marquées comme fausses au début de la révision
+    const errorQuestionIndices = Object.keys(originalProgressData.errorTracking).map(id => parseInt(id));
+    
+    // Réinitialiser le mode révision
+    questionOrder = errorQuestionIndices;
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
+    visitedQuestions = new Set();
+    errorTracking = {};
+    
+    // Désactiver le mode bilan pour permettre la navigation
+    isInCompletionMode = false;
+    
+    // Réafficher TOUS les éléments de navigation (utiliser la fonction existante)
+    showNavigationElements();
+    
+    validateBtn.style.display = 'block';
+    createQuestionNavigator();
+    displayQuestion();
+    updateProgress();
+    updateSideNavigationButtons();
+    
+    showMessage(`🔄 Révision redémarrée : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
+    setTimeout(clearMessage, 2000);
+}
+    // Suivi des erreurs - masqué en mode révision ET en mode bilan
+    if (!isRevisionMode && !isInCompletionMode) {
+        html += `
+            <div class="error-tracking" onclick="toggleErrorTracking()">
+                <input type="checkbox" id="error-checkbox" onchange="handleErrorTracking()">
+                <label for="error-checkbox">❌ J'ai eu faux à cette question</label>
+            </div>
+        `;
+    }
     
     questionContainer.innerHTML = html;
     currentQuestionSpan.textContent = currentQuestionIndex + 1;
     questionIdSpan.textContent = question.id || 'N/A';
     
-    // Restaurer l'état de suivi d'erreur si existant
-    const questionId = getCurrentQuestionId();
-    if (errorTracking[questionId]) {
-        document.getElementById('error-checkbox').checked = true;
+    // Restaurer l'état de suivi d'erreur si existant (seulement si pas en mode révision ou bilan)
+    if (!isRevisionMode && !isInCompletionMode) {
+        const questionId = getCurrentQuestionId();
+        const errorCheckbox = document.getElementById('error-checkbox');
+        if (errorCheckbox && errorTracking[questionId]) {
+            errorCheckbox.checked = true;
+        }
     }
     
     // Mettre à jour le navigateur
@@ -503,6 +558,11 @@ function showCorrectAnswers() {
 
 // Modifier la fonction handleErrorTracking() existante en ajoutant la sauvegarde :
 function handleErrorTracking() {
+    // Bloquer en mode révision ou bilan
+    if (isRevisionMode || isInCompletionMode) {
+        return;
+    }
+    
     const questionId = getCurrentQuestionId();
     const isChecked = document.getElementById('error-checkbox').checked;
     
@@ -512,14 +572,21 @@ function handleErrorTracking() {
         delete errorTracking[questionId];
     }
     
+    // Synchroniser avec le navigateur de questions
+    synchronizeErrorMarking(questionId, isChecked);
+    
     // Mettre à jour l'affichage du navigateur
     updateNavigatorDisplay();
     
-    // Mettre à jour la navigation des erreurs
-    updateErrorQuestionsList();
+    // Mettre à jour la navigation des erreurs seulement si on n'est pas en mode révision
+    if (!isRevisionMode) {
+        updateErrorQuestionsList();
+    }
     
-    // Sauvegarder la progression
-    saveProgress();
+    // Sauvegarder la progression seulement si on n'est pas en mode révision
+    if (!isRevisionMode) {
+        saveProgress();
+    }
 }
 
 // Gestion de la sélection des options
@@ -641,6 +708,22 @@ function calculateErrorStats() {
 
 // Fin du QCM
 function showCompletion() {
+    isInCompletionMode = true; // Activer le mode bilan
+    
+    // Masquer les éléments de navigation latérale POUR TOUS LES MODES (standard ET révision)
+    const elementsToHide = [
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint'),
+        document.getElementById('error-nav-container')
+    ];
+
+    elementsToHide.forEach(element => {
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
+
     let completionHTML = '';
     
     if (isRevisionMode) {
@@ -681,7 +764,7 @@ function showCompletion() {
             </div>
         `;
     } else {
-        // Fin du QCM normal
+        // Fin du QCM normal - reste identique
         const stats = calculateErrorStats();
         
         completionHTML = `
@@ -756,10 +839,18 @@ function showCompletion() {
     clearMessage();
 }
 
-
 // Redémarrage du QCM
 function restartQCM() {
     clearSavedProgress();
+    
+    // AJOUT : Réinitialiser les modes
+    isRevisionMode = false;
+    isInCompletionMode = false;
+    originalProgressData = null;
+    
+    // Réafficher tous les éléments de navigation
+    showNavigationElements();
+    
     startFreshInit();
     validateBtn.style.display = 'block';
 }
@@ -767,6 +858,15 @@ function restartQCM() {
 // Redémarrage avec mélange
 function restartWithShuffle() {
     clearSavedProgress();
+    
+    // AJOUT : Réinitialiser les modes
+    isRevisionMode = false;
+    isInCompletionMode = false;
+    originalProgressData = null;
+    
+    // Réafficher tous les éléments de navigation
+    showNavigationElements();
+    
     questionOrder = shuffleArray(originalOrder);
     currentQuestionIndex = 0;
     selectedAnswers = [];
@@ -805,6 +905,7 @@ function restartErrorQuestions() {
     
     // Activer le mode révision
     isRevisionMode = true;
+    isInCompletionMode = false; // S'assurer qu'on n'est pas en mode bilan
     
     // Créer un nouveau QCM avec seulement les questions fausses
     questionOrder = errorQuestionIndices;
@@ -813,13 +914,31 @@ function restartErrorQuestions() {
     visitedQuestions = new Set();
     
     // Réinitialiser le suivi d'erreurs pour cette session de révision
-    const previousErrors = {...errorTracking};
     errorTracking = {};
+    
+    // Masquer seulement les éléments de navigation d'erreurs en mode révision
+    if (errorNavContainer) {
+        errorNavContainer.classList.remove('visible');
+    }
+    
+    // AJOUT : S'assurer que la navigation latérale reste visible en mode révision
+    const elementsToShow = [
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint')
+    ];
+    
+    elementsToShow.forEach(element => {
+        if (element) {
+            element.style.display = '';
+        }
+    });
     
     validateBtn.style.display = 'block';
     createQuestionNavigator();
     displayQuestion();
     updateProgress();
+    updateSideNavigationButtons(); // AJOUT : Mettre à jour l'état des boutons
     
     showMessage(`🎯 Mode révision : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
     setTimeout(clearMessage, 3000);
@@ -839,24 +958,29 @@ nextErrorBtn.addEventListener('click', goToNextError);
 window.addEventListener('scroll', handleScrollToTopVisibility);
 
 // Remplacer l'event listener existant pour les clics par celui-ci :
-document.addEventListener('click', function(e) {
-    // Si on clique sur une option
-    if (e.target.closest('.option')) {
-        const option = e.target.closest('.option');
-        const optionNumber = parseInt(option.getAttribute('data-option'));
+document.addEventListener('dblclick', function(e) {
+    // Double-clic sur un bouton de navigation des questions
+    if (e.target.classList.contains('question-nav-btn')) {
+        // Bloquer le marquage d'erreur en mode révision ET mode bilan
+        if (isRevisionMode || isInCompletionMode) {
+            // Afficher un message d'information spécifique selon le mode
+            if (isRevisionMode) {
+                showMessage('ℹ️ Le marquage d\'erreurs est désactivé en mode révision', 'info');
+            } else if (isInCompletionMode) {
+                showMessage('ℹ️ Le marquage d\'erreurs est désactivé en mode bilan', 'info');
+            }
+            setTimeout(clearMessage, 2000);
+            return;
+        }
         
-        // Ajouter l'animation pop
-        option.classList.add('pop-animation');
-        option.classList.add('ripple-effect');
+        const questionOrderIndex = parseInt(e.target.getAttribute('data-question-index'));
+        const questionId = questionOrder[questionOrderIndex];
         
-        // Retirer les classes d'animation après l'animation
-        setTimeout(() => {
-            option.classList.remove('pop-animation');
-            option.classList.remove('ripple-effect');
-        }, 300);
+        toggleErrorFromNavigator(questionId, questionOrderIndex);
         
-        // Basculer l'état de la checkbox
-        toggleOption(optionNumber);
+        // Empêcher le comportement par défaut
+        e.preventDefault();
+        e.stopPropagation();
     }
 });
 
@@ -1122,6 +1246,15 @@ function showRestoreDialog(progressData) {
 // Fonction pour démarrer un QCM fresh (sans progression)
 function startFreshQCM() {
     clearSavedProgress();
+    
+    // AJOUT : Réinitialiser les modes
+    isRevisionMode = false;
+    isInCompletionMode = false;
+    originalProgressData = null;
+    
+    // Réafficher tous les éléments de navigation
+    showNavigationElements();
+    
     init();
 }
 
@@ -1191,8 +1324,18 @@ function showKeyboardHint() {
 }
 
 function handleKeyboardNavigation(event) {
+    // Bloquer seulement en mode bilan (pas en mode révision)
+    if (isInCompletionMode) {
+        return;
+    }
+    
     // Vérifier que nous ne sommes pas dans un champ de saisie
     if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+        return;
+    }
+    
+    // Vérifier que nous avons bien des données QCM chargées
+    if (!qcmData || !qcmData.qcm) {
         return;
     }
     
@@ -1220,7 +1363,6 @@ function resetQCM() {
     const wasInProgress = currentQuestionIndex > 0 || Object.keys(errorTracking).length > 0 || visitedQuestions.size > 0;
     
     if (wasInProgress) {
-        // Créer une boîte de dialogue personnalisée avec options
         const resetOptions = confirm('⚠️ Réinitialiser le QCM va effacer votre progression.\n\n' +
             'Voulez-vous :\n' +
             '✅ Ok - Réinitialiser complètement\n' +
@@ -1232,6 +1374,14 @@ function resetQCM() {
     
     // Effacer la progression sauvegardée
     clearSavedProgress();
+    
+    // AJOUT : Réinitialiser les modes
+    isRevisionMode = false;
+    isInCompletionMode = false;
+    originalProgressData = null;
+    
+    // Réafficher tous les éléments de navigation
+    showNavigationElements();
     
     // Réinitialiser complètement toutes les variables
     currentQuestionIndex = 0;
@@ -1264,22 +1414,27 @@ function resetQCM() {
 
 function exitRevisionMode(keepProgress) {
     isRevisionMode = false;
+    isInCompletionMode = false; // Désactiver le mode bilan
     
     if (keepProgress && originalProgressData) {
         // Restaurer la progression originale
-        currentQuestionIndex = originalProgressData.currentQuestionIndex;
+        currentQuestionIndex = 0; // Retourner à la première question
         selectedAnswers = [...originalProgressData.selectedAnswers];
         questionOrder = [...originalProgressData.questionOrder];
         originalOrder = [...originalProgressData.originalOrder];
         errorTracking = {...originalProgressData.errorTracking};
         visitedQuestions = new Set(originalProgressData.visitedQuestions);
         
+        // Réafficher TOUS les éléments de navigation (utiliser la fonction existante)
+        showNavigationElements();
+        
         validateBtn.style.display = 'block';
         createQuestionNavigator();
         displayQuestion();
         updateProgress();
+        updateErrorQuestionsList(); 
         
-        showMessage('↩️ Retour au QCM complet avec votre progression !', 'success');
+        showMessage('↩️ Retour au QCM complet ! Vous êtes de retour à la première question.', 'success');
         setTimeout(clearMessage, 2000);
     } else {
         // Recommencer complètement
@@ -1306,10 +1461,17 @@ function restartRevisionMode() {
     visitedQuestions = new Set();
     errorTracking = {};
     
+    // Désactiver le mode bilan pour permettre la navigation
+    isInCompletionMode = false;
+    
+    // Réafficher TOUS les éléments de navigation (utiliser la fonction existante)
+    showNavigationElements();
+    
     validateBtn.style.display = 'block';
     createQuestionNavigator();
     displayQuestion();
     updateProgress();
+    updateSideNavigationButtons();
     
     showMessage(`🔄 Révision redémarrée : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
     setTimeout(clearMessage, 2000);
@@ -1317,17 +1479,150 @@ function restartRevisionMode() {
 
 // Fonction pour retourner au QCM avec la progression actuelle (après completion normale)
 function returnToCurrentProgress() {
+    isInCompletionMode = false; // Désactiver le mode bilan
+    
+    // Retourner à la première question
+    currentQuestionIndex = 0;
+    
+    // Réafficher tous les éléments de navigation standard
+    showNavigationElements();
+    
+    // Restaurer spécifiquement les éléments de navigation latérale
+    const elementsToShow = [
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint')
+    ];
+    
+    elementsToShow.forEach(element => {
+        if (element) {
+            element.style.display = '';
+        }
+    });
+    
     // Remettre le bouton de validation
     validateBtn.style.display = 'block';
     
-    // Si on était à la fin, revenir à la dernière question
-    if (currentQuestionIndex >= qcmData.qcm.length) {
-        currentQuestionIndex = qcmData.qcm.length - 1;
-    }
-    
     displayQuestion();
     updateProgress();
+    updateErrorQuestionsList(); // Restaurer la navigation des erreurs
     
-    showMessage('↩️ Retour au QCM ! Vous pouvez continuer à naviguer.', 'info');
+    showMessage('↩️ Retour au QCM ! Vous êtes de retour à la première question.', 'info');
     setTimeout(clearMessage, 2000);
+}
+
+function toggleErrorTracking() {
+    if (isRevisionMode) {
+        // Afficher un message explicatif en mode révision
+        showMessage('ℹ️ Le marquage d\'erreurs est désactivé en mode révision', 'info');
+        setTimeout(clearMessage, 2000);
+        return;
+    }
+    
+    if (isInCompletionMode) {
+        // Afficher un message explicatif en mode bilan
+        showMessage('ℹ️ Le marquage d\'erreurs est désactivé en mode bilan', 'info');
+        setTimeout(clearMessage, 2000);
+        return;
+    }
+    
+    const checkbox = document.getElementById('error-checkbox');
+    if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        handleErrorTracking();
+    }
+}
+
+function returnToFileSelection() {
+    const confirmReturn = confirm('⚠️ Retourner à la sélection de fichier va effacer votre progression actuelle.\n\nContinuer ?');
+    
+    if (!confirmReturn) return;
+    
+    // Réinitialiser toutes les variables
+    qcmData = null;
+    currentQuestionIndex = 0;
+    selectedAnswers = [];
+    questionOrder = [];
+    originalOrder = [];
+    errorTracking = {};
+    visitedQuestions = new Set();
+    isRevisionMode = false;
+    isInCompletionMode = false;
+    originalProgressData = null;
+    
+    // Effacer la progression sauvegardée
+    clearSavedProgress();
+    
+    // Afficher l'interface de sélection de fichier
+    showFileUploadOption();
+    
+    showMessage('🔄 Retour à la sélection de fichier', 'info');
+    setTimeout(clearMessage, 2000);
+}
+
+function toggleErrorFromNavigator(questionId, questionOrderIndex) {
+    // Bloquer le marquage d'erreur en mode révision ET en mode bilan
+    if (isRevisionMode || isInCompletionMode) {
+        return;
+    }
+    
+    // Basculer l'état d'erreur
+    const wasMarked = errorTracking[questionId];
+    
+    if (wasMarked) {
+        delete errorTracking[questionId];
+    } else {
+        errorTracking[questionId] = true;
+    }
+    
+    // Si c'est la question actuelle, synchroniser avec la checkbox
+    if (questionOrderIndex === currentQuestionIndex) {
+        const errorCheckbox = document.getElementById('error-checkbox');
+        if (errorCheckbox) {
+            errorCheckbox.checked = !wasMarked;
+        }
+    }
+    
+    // Mettre à jour l'affichage
+    updateNavigatorDisplay();
+    updateErrorQuestionsList();
+    
+    // Sauvegarder
+    saveProgress();
+    
+    // Afficher le message
+    const action = wasMarked ? 'retirée des erreurs' : 'marquée comme fausse';
+    const icon = wasMarked ? '✅' : '❌';
+    showMessage(`${icon} Question ${questionOrderIndex + 1} ${action}`, wasMarked ? 'success' : 'error');
+    setTimeout(clearMessage, 1500);
+}
+
+function synchronizeErrorMarking(questionId, isMarked) {
+    // Trouver le bouton correspondant dans le navigateur
+    const questionOrderIndex = questionOrder.indexOf(questionId);
+    if (questionOrderIndex !== -1) {
+        const navButton = document.querySelector(`[data-question-index="${questionOrderIndex}"]`);
+        if (navButton) {
+            if (isMarked) {
+                navButton.classList.add('error-marked');
+            } else {
+                navButton.classList.remove('error-marked');
+            }
+        }
+    }
+}
+
+function hideNavigationForCompletion() {
+    const elementsToHide = [
+        document.getElementById('prev-nav'),
+        document.getElementById('next-nav'),
+        document.getElementById('keyboard-hint'),
+        document.getElementById('error-nav-container')
+    ];
+    
+    elementsToHide.forEach(element => {
+        if (element) {
+            element.style.display = 'none';
+        }
+    });
 }
