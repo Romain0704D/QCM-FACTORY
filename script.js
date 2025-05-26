@@ -526,26 +526,33 @@ function showCorrectAnswers() {
     
     // Marquer les options correctes visuellement
     if (Array.isArray(correctAnswer)) {
-        correctAnswer.forEach(answerNum => {
-            const optionContainer = document.getElementById(`option-container-${answerNum}`);
-            if (optionContainer) {
-                optionContainer.classList.add('correct-answer');
+        // Réponses multiples - chercher par contenu
+        correctAnswer.forEach(correctContent => {
+            const optionIndex = question.options.findIndex(option => option === correctContent);
+            if (optionIndex !== -1) {
+                const optionContainer = document.getElementById(`option-container-${optionIndex + 1}`);
+                if (optionContainer) {
+                    optionContainer.classList.add('correct-answer');
+                }
             }
         });
     } else {
-        const optionContainer = document.getElementById(`option-container-${correctAnswer}`);
-        if (optionContainer) {
-            optionContainer.classList.add('correct-answer');
+        // Réponse unique - chercher par contenu
+        const optionIndex = question.options.findIndex(option => option === correctAnswer);
+        if (optionIndex !== -1) {
+            const optionContainer = document.getElementById(`option-container-${optionIndex + 1}`);
+            if (optionContainer) {
+                optionContainer.classList.add('correct-answer');
+            }
         }
     }
     
     // Afficher le texte des bonnes réponses
     let correctAnswersText = '';
     if (Array.isArray(correctAnswer)) {
-        const correctOptions = correctAnswer.map(num => `${num}. ${question.options[num - 1]}`);
-        correctAnswersText = `✅ Bonnes réponses : <br>${correctOptions.join('<br>')}`;
+        correctAnswersText = `✅ Bonnes réponses : <br>${correctAnswer.join('<br>')}`;
     } else {
-        correctAnswersText = `✅ Bonne réponse : ${correctAnswer}. ${question.options[correctAnswer - 1]}`;
+        correctAnswersText = `✅ Bonne réponse : ${correctAnswer}`;
     }
     
     answerDisplay.innerHTML = correctAnswersText;
@@ -592,13 +599,15 @@ function handleErrorTracking() {
 // Gestion de la sélection des options
 function handleOptionChange(optionNumber) {
     const checkbox = document.getElementById(`option-${optionNumber}`);
+    const question = getCurrentQuestion();
+    const optionContent = question.options[optionNumber - 1]; // Récupérer le contenu de l'option
     
     if (checkbox.checked) {
-        if (!selectedAnswers.includes(optionNumber)) {
-            selectedAnswers.push(optionNumber);
+        if (!selectedAnswers.includes(optionContent)) {
+            selectedAnswers.push(optionContent);
         }
     } else {
-        selectedAnswers = selectedAnswers.filter(answer => answer !== optionNumber);
+        selectedAnswers = selectedAnswers.filter(answer => answer !== optionContent);
     }
 }
 
@@ -621,11 +630,12 @@ function validateAnswer() {
     let isCorrect = false;
     
     if (Array.isArray(correctAnswer)) {
-        // Réponse multiple
+        // Réponse multiple - comparer le contenu des tableaux
         isCorrect = correctAnswer.length === selectedAnswers.length && 
-                   correctAnswer.every(answer => selectedAnswers.includes(answer));
+                   correctAnswer.every(answer => selectedAnswers.includes(answer)) &&
+                   selectedAnswers.every(answer => correctAnswer.includes(answer));
     } else {
-        // Réponse unique
+        // Réponse unique - comparer directement le contenu
         isCorrect = selectedAnswers.length === 1 && selectedAnswers[0] === correctAnswer;
     }
     
