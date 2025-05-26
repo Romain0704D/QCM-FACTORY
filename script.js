@@ -1,3 +1,5 @@
+window.__debugMessageLog = [];
+
 // Variables globales
 let qcmData = null;
 let currentQuestionIndex = 0;
@@ -14,6 +16,12 @@ let prevQuestionBtn, nextQuestionBtn, keyboardHint;
 let isRevisionMode = false; // Nouvelle variable pour tracker le mode révision
 let originalProgressData = null;
 let isInCompletionMode = false; // Nouvelle variable pour tracker le mode bilan
+let shuffledOptionsMap = {};
+let messageTimeout = null;
+let suppressNextErrorTrackingMessage = false;
+let ignoreNextCheckboxChange = false;
+let persistUserMessage = false; // Ajouté pour gérer les
+let lastMessageId = 0;
 
 
 // Éléments DOM
@@ -39,6 +47,25 @@ function shuffleArray(array) {
     return shuffled;
 }
 
+// --- NOUVELLE FONCTION POUR SHUFFLE OPTIONS D'UNE QUESTION ---
+function getShuffledOptionIndices(questionIndex) {
+    // Si déjà mélangé pour cette question, retourner l'ordre mémorisé
+    if (shuffledOptionsMap[questionIndex]) {
+        return shuffledOptionsMap[questionIndex];
+    }
+    // Sinon, générer un nouvel ordre aléatoire pour cette question
+    const question = qcmData.qcm[questionIndex];
+    const indices = question.options.map((_, idx) => idx);
+    const shuffled = shuffleArray(indices);
+    shuffledOptionsMap[questionIndex] = shuffled;
+    return shuffled;
+}
+
+// Lors du reset QCM, du changement d'ordre des questions, etc., il faut réinitialiser la map !
+function resetShuffledOptions() {
+    shuffledOptionsMap = {};
+}
+
 // Fonction pour mélanger les questions
 function shuffleQuestions() {
     if (!qcmData || !qcmData.qcm) return;
@@ -59,6 +86,7 @@ function shuffleQuestions() {
     selectedAnswers = [];
     errorTracking = {};
     visitedQuestions = new Set();
+    resetShuffledOptions(); // <--- AJOUT
     createQuestionNavigator();
     displayQuestion();
     updateProgress();
@@ -409,6 +437,7 @@ function getCurrentQuestionId() {
     return questionIndex;
 }
 
+// --- MODIFICATION PRINCIPALE : RANDOMISER L'ORDRE D'AFFICHAGE DES OPTIONS ---
 function displayQuestion() {
     const question = getCurrentQuestion();
     selectedAnswers = [];
@@ -433,13 +462,19 @@ function displayQuestion() {
     // Question
     html += `<div class="question-text">${question.question}</div>`;
     
-    // Options
+    // OPTIONS RANDOMISÉES
     html += '<div class="options-container">';
-    question.options.forEach((option, index) => {
+    const questionIndex = questionOrder[currentQuestionIndex];
+    const shuffledIndices = getShuffledOptionIndices(questionIndex);
+    // Les options seront affichées dans l'ordre de shuffledIndices
+    shuffledIndices.forEach((originalIdx, displayIdx) => {
+        const option = question.options[originalIdx];
+        // Les id des éléments HTML doivent rester uniques et cohérents pour chaque affichage
+        // On utilise displayIdx+1 pour l'ordre d'affichage visible, mais on stocke la correspondance dans la map
         html += `
-            <div class="option" data-option="${index + 1}" id="option-container-${index + 1}">
-                <input type="checkbox" id="option-${index + 1}" value="${index + 1}" onchange="handleOptionChange(${index + 1})">
-                <label for="option-${index + 1}" class="option-text">${option}</label>
+            <div class="option" data-option="${originalIdx + 1}" id="option-container-${originalIdx + 1}">
+                <input type="checkbox" id="option-${originalIdx + 1}" value="${originalIdx + 1}" onchange="handleOptionChange(${originalIdx + 1})">
+                <label for="option-${originalIdx + 1}" class="option-text">${option}</label>
             </div>
         `;
     });
@@ -564,36 +599,33 @@ function showCorrectAnswers() {
 }
 
 // Modifier la fonction handleErrorTracking() existante en ajoutant la sauvegarde :
-function handleErrorTracking() {
-    // Bloquer en mode révision ou bilan
+function handleErrorTracking(event) {
+    if (ignoreNextCheckboxChange) {
+        ignoreNextCheckboxChange = false;
+        return; // on ignore ce changement déclenché par le JS
+    }
     if (isRevisionMode || isInCompletionMode) {
         return;
     }
-    
     const questionId = getCurrentQuestionId();
     const isChecked = document.getElementById('error-checkbox').checked;
-    
     if (isChecked) {
         errorTracking[questionId] = true;
     } else {
         delete errorTracking[questionId];
     }
-    
-    // Synchroniser avec le navigateur de questions
     synchronizeErrorMarking(questionId, isChecked);
-    
-    // Mettre à jour l'affichage du navigateur
     updateNavigatorDisplay();
-    
-    // Mettre à jour la navigation des erreurs seulement si on n'est pas en mode révision
-    if (!isRevisionMode) {
-        updateErrorQuestionsList();
+    if (!isRevisionMode) updateErrorQuestionsList();
+    if (!isRevisionMode) saveProgress();
+
+    if (suppressNextErrorTrackingMessage) {
+        suppressNextErrorTrackingMessage = false;
+        return;
     }
-    
-    // Sauvegarder la progression seulement si on n'est pas en mode révision
-    if (!isRevisionMode) {
-        saveProgress();
-    }
+    const action = isChecked ? 'marquée comme fausse' : 'retirée des erreurs';
+    const icon = isChecked ? '❌' : '✅';
+    showMessage(`${icon} Question ${currentQuestionIndex + 1} ${action}`, isChecked ? 'error' : 'success', 4000);
 }
 
 // Gestion de la sélection des options
@@ -686,16 +718,38 @@ function updateProgress() {
 }
 
 // Affichage des messages
-function showMessage(text, type) {
+
+function showMessage(text, type, duration = 4000) {
+    lastMessageId++;
+    const myId = lastMessageId;
     let messageClass = 'error-message';
     if (type === 'success') messageClass = 'success-message';
     if (type === 'info') messageClass = 'info-message';
-    
+
     messageContainer.innerHTML = `<div class="message ${messageClass}">${text}</div>`;
+    messageContainer.classList.remove('hide');
+    if (messageTimeout) clearTimeout(messageTimeout);
+        messageTimeout = setTimeout(function() {
+        if (myId === lastMessageId) {
+            clearMessage(true); // Efface vraiment le message utilisateur après le délai
+        }
+    }, duration);;
+
+    // On ne veut pas qu'un clear "système" efface ce message utilisateur :
+    persistUserMessage = true;
 }
 
-function clearMessage() {
-    messageContainer.innerHTML = '';
+function clearMessage(force = false) {
+    if (!force && persistUserMessage) {
+        // On ne supprime pas le message utilisateur sauf si c'est un clear "forcé"
+        return;
+    }
+    messageContainer.classList.add('hide');
+    setTimeout(() => {
+        messageContainer.innerHTML = '';
+        messageContainer.classList.remove('hide');
+    }, 300);
+    persistUserMessage = false;
 }
 
 // Calcul des statistiques d'erreurs
@@ -860,7 +914,7 @@ function restartQCM() {
     
     // Réafficher tous les éléments de navigation
     showNavigationElements();
-    
+    resetShuffledOptions();
     startFreshInit();
     validateBtn.style.display = 'block';
 }
@@ -882,6 +936,7 @@ function restartWithShuffle() {
     selectedAnswers = [];
     errorTracking = {};
     visitedQuestions = new Set();
+    resetShuffledOptions();
     validateBtn.style.display = 'block';
     createQuestionNavigator();
     displayQuestion();
@@ -926,6 +981,8 @@ function restartErrorQuestions() {
     // Réinitialiser le suivi d'erreurs pour cette session de révision
     errorTracking = {};
     
+    resetShuffledOptions();
+
     // Masquer seulement les éléments de navigation d'erreurs en mode révision
     if (errorNavContainer) {
         errorNavContainer.classList.remove('visible');
@@ -1132,6 +1189,7 @@ function startFreshInit() {
     selectedAnswers = [];
     errorTracking = {};
     visitedQuestions = new Set();
+    resetShuffledOptions();
     
     totalQuestionsSpan.textContent = qcmData.qcm.length;
     createQuestionNavigator();
@@ -1402,6 +1460,8 @@ function resetQCM() {
     errorQuestions = [];
     currentErrorIndex = -1;
     
+    resetShuffledOptions()
+
     // Recréer l'interface
     createQuestionNavigator();
     displayQuestion();
@@ -1589,6 +1649,7 @@ function toggleErrorFromNavigator(questionId, questionOrderIndex) {
     if (questionOrderIndex === currentQuestionIndex) {
         const errorCheckbox = document.getElementById('error-checkbox');
         if (errorCheckbox) {
+            ignoreNextCheckboxChange = true; // signale qu'on ignore le prochain event
             errorCheckbox.checked = !wasMarked;
         }
     }
@@ -1603,8 +1664,7 @@ function toggleErrorFromNavigator(questionId, questionOrderIndex) {
     // Afficher le message
     const action = wasMarked ? 'retirée des erreurs' : 'marquée comme fausse';
     const icon = wasMarked ? '✅' : '❌';
-    showMessage(`${icon} Question ${questionOrderIndex + 1} ${action}`, wasMarked ? 'success' : 'error');
-    setTimeout(clearMessage, 1500);
+    showMessage(`${icon} Question ${questionOrderIndex + 1} ${action}`, wasMarked ? 'success' : 'error', 4000);
 }
 
 function synchronizeErrorMarking(questionId, isMarked) {
@@ -1635,4 +1695,18 @@ function hideNavigationForCompletion() {
             element.style.display = 'none';
         }
     });
+}
+
+// --- NOUVELLE FONCTION POUR SHUFFLE OPTIONS D'UNE QUESTION ---
+function getShuffledOptionIndices(questionIndex) {
+    // Si déjà mélangé pour cette question, retourner l'ordre mémorisé
+    if (shuffledOptionsMap[questionIndex]) {
+        return shuffledOptionsMap[questionIndex];
+    }
+    // Sinon, générer un nouvel ordre aléatoire pour cette question
+    const question = qcmData.qcm[questionIndex];
+    const indices = question.options.map((_, idx) => idx);
+    const shuffled = shuffleArray(indices);
+    shuffledOptionsMap[questionIndex] = shuffled;
+    return shuffled;
 }

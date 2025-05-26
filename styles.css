@@ -1119,3 +1119,33 @@ body {
         margin-right: 200px;
     }
 }
+
+/* Affichage des notifications en haut à droite */
+#message-container {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 9999;
+    width: auto;
+    max-width: 350px;
+    min-width: 220px;
+    background: none;
+    box-shadow: none;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+
+#message-container.hide {
+    opacity: 0;
+}
+
+#message-container .message {
+    pointer-events: auto;
+    margin-bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+    font-size: 1rem;
+    min-width: 220px;
+    max-width: 350px;
+}
