@@ -1,0 +1,1290 @@
+{
+  "qcm": [
+    {
+      "id": "Q1",
+      "type": 1,
+      "question": "La traduction en français : damned",
+      "options": "",
+      "correct_answer": "Damné, maudit"
+    },
+    {
+      "id": "Q2",
+      "type": 1,
+      "question": "La traduction en français : a ghost",
+      "options": "",
+      "correct_answer": "Un fantôme"
+    },
+    {
+      "id": "Q3",
+      "type": 1,
+      "question": "La traduction en français : usual",
+      "options": "",
+      "correct_answer": "Habituel"
+    },
+    {
+      "id": "Q4",
+      "type": 1,
+      "question": "La traduction en français : unusual",
+      "options": "",
+      "correct_answer": "Inhabituel"
+    },
+    {
+      "id": "Q5",
+      "type": 1,
+      "question": "La traduction en français : to head for",
+      "options": "",
+      "correct_answer": "Se diriger vers"
+    },
+    {
+      "id": "Q6",
+      "type": 1,
+      "question": "La traduction en français : a robin",
+      "options": "",
+      "correct_answer": "Un rouge gorge"
+    },
+    {
+      "id": "Q7",
+      "type": 1,
+      "question": "La traduction en français : a ghost",
+      "options": "",
+      "correct_answer": "Un fantôme"
+    },
+    {
+      "id": "Q8",
+      "type": 1,
+      "question": "La traduction en français : lousy",
+      "options": "",
+      "correct_answer": "Nul, minable"
+    },
+    {
+      "id": "Q9",
+      "type": 1,
+      "question": "La traduction en français : a booth",
+      "options": "",
+      "correct_answer": "Une cabane"
+    },
+    {
+      "id": "Q10",
+      "type": 1,
+      "question": "La traduction en français : a cufflink",
+      "options": "",
+      "correct_answer": "Un bouton de manchette"
+    },
+    {
+      "id": "Q11",
+      "type": 1,
+      "question": "La traduction en français : rust",
+      "options": "",
+      "correct_answer": "La rouille"
+    },
+    {
+      "id": "Q12",
+      "type": 1,
+      "question": "La traduction en français : to burst - burst - burst",
+      "options": "",
+      "correct_answer": "Eclater"
+    },
+    {
+      "id": "Q13",
+      "type": 1,
+      "question": "La traduction en français : to stray",
+      "options": "",
+      "correct_answer": "Vagabonder"
+    },
+    {
+      "id": "Q14",
+      "type": 1,
+      "question": "La traduction en français : a shell",
+      "options": "",
+      "correct_answer": "Damné, maudit"
+    },
+    {
+      "id": "Q15",
+      "type": 1,
+      "question": "La traduction en français : unharmed",
+      "options": "",
+      "correct_answer": "Idemne"
+    },
+    {
+      "id": "Q16",
+      "type": 1,
+      "question": "La traduction en français : crummy",
+      "options": "",
+      "correct_answer": "Minable"
+    },
+    {
+      "id": "Q17",
+      "type": 1,
+      "question": "La traduction en français : to mingle",
+      "options": "",
+      "correct_answer": "Se mêlanger"
+    },
+    {
+      "id": "Q18",
+      "type": 1,
+      "question": "La traduction en français : vagueness",
+      "options": "",
+      "correct_answer": "Le vague"
+    },
+    {
+      "id": "Q19",
+      "type": 1,
+      "question": "La traduction en français : dearly",
+      "options": "",
+      "correct_answer": "Enormément"
+    },
+    {
+      "id": "Q20",
+      "type": 1,
+      "question": "La traduction en français : burry",
+      "options": "",
+      "correct_answer": "Enterrer"
+    },
+    {
+      "id": "Q21",
+      "type": 1,
+      "question": "La traduction en français : a field",
+      "options": "",
+      "correct_answer": "Un domaine"
+    },
+    {
+      "id": "Q22",
+      "type": 1,
+      "question": "La traduction en français : band-pass filter",
+      "options": "",
+      "correct_answer": "Filtre passe-bande"
+    },
+    {
+      "id": "Q23",
+      "type": 1,
+      "question": "La traduction en français : speech-processing",
+      "options": "",
+      "correct_answer": "Traîtement de la parole"
+    },
+    {
+      "id": "Q24",
+      "type": 1,
+      "question": "La traduction en français : several",
+      "options": "",
+      "correct_answer": "Plusieur"
+    },
+    {
+      "id": "Q25",
+      "type": 1,
+      "question": "La traduction en français : a channel",
+      "options": "",
+      "correct_answer": "Un cannal"
+    },
+    {
+      "id": "Q26",
+      "type": 1,
+      "question": "La traduction en français : telephone central office",
+      "options": "",
+      "correct_answer": "Un central téléphonique"
+    },
+    {
+      "id": "Q27",
+      "type": 1,
+      "question": "La traduction en français : low-pass filter",
+      "options": "",
+      "correct_answer": "Filtre passe-bas"
+    },
+    {
+      "id": "Q28",
+      "type": 1,
+      "question": "La traduction en français : to rule",
+      "options": "",
+      "correct_answer": "Gouverner"
+    },
+    {
+      "id": "Q29",
+      "type": 1,
+      "question": "La traduction en français : flaming",
+      "options": "",
+      "correct_answer": "Flamboyant"
+    },
+    {
+      "id": "Q30",
+      "type": 1,
+      "question": "La traduction en français : sensless",
+      "options": "",
+      "correct_answer": "Stupide"
+    },
+    {
+      "id": "Q31",
+      "type": 1,
+      "question": "La traduction en français : a fireball",
+      "options": "",
+      "correct_answer": "Une bombe"
+    },
+    {
+      "id": "Q32",
+      "type": 1,
+      "question": "La traduction en français : a fireball",
+      "options": "",
+      "correct_answer": "Une bombe"
+    },
+    {
+      "id": "Q33",
+      "type": 1,
+      "question": "La traduction en français : it's up to you",
+      "options": "",
+      "correct_answer": "C'est à toi"
+    },
+    {
+      "id": "Q34",
+      "type": 1,
+      "question": "La traduction en français : this / these",
+      "options": "",
+      "correct_answer": "Ce / cet / cette"
+    },
+    {
+      "id": "Q35",
+      "type": 1,
+      "question": "La traduction en français : that / those",
+      "options": "",
+      "correct_answer": "Ces"
+    },
+    {
+      "id": "Q36",
+      "type": 1,
+      "question": "La traduction en français : a stage",
+      "options": "",
+      "correct_answer": "Une étape"
+    },
+    {
+      "id": "Q37",
+      "type": 1,
+      "question": "La traduction en français : as well as",
+      "options": "",
+      "correct_answer": "Tout autant que"
+    },
+    {
+      "id": "Q38",
+      "type": 1,
+      "question": "La traduction en français : fizzy / gassy",
+      "options": "",
+      "correct_answer": "Gazeux"
+    },
+    {
+      "id": "Q39",
+      "type": 1,
+      "question": "La traduction en français : to stand for",
+      "options": "",
+      "correct_answer": "Représenter"
+    },
+    {
+      "id": "Q40",
+      "type": 1,
+      "question": "La traduction en français : a worldwide",
+      "options": "",
+      "correct_answer": "partout dans le monde"
+    },
+    {
+      "id": "Q41",
+      "type": 1,
+      "question": "La traduction en français : a loss",
+      "options": "",
+      "correct_answer": "Une perte"
+    },
+    {
+      "id": "Q42",
+      "type": 1,
+      "question": "La traduction en français : within",
+      "options": "",
+      "correct_answer": "En l'espace de / en moins de"
+    },
+    {
+      "id": "Q43",
+      "type": 1,
+      "question": "La traduction en français : arguably",
+      "options": "",
+      "correct_answer": "On peut dire que"
+    },
+    {
+      "id": "Q44",
+      "type": 1,
+      "question": "La traduction en français : the early / the late",
+      "options": "",
+      "correct_answer": "Le début / la fin"
+    },
+    {
+      "id": "Q45",
+      "type": 1,
+      "question": "La traduction en français : a threat / to threaten",
+      "options": "",
+      "correct_answer": "Une menace / menacer"
+    },
+    {
+      "id": "Q46",
+      "type": 1,
+      "question": "La traduction en français : to go bust",
+      "options": "",
+      "correct_answer": "Faire faillite"
+    },
+    {
+      "id": "Q47",
+      "type": 1,
+      "question": "La traduction en français : a plant = a factory",
+      "options": "",
+      "correct_answer": "Une usine"
+    },
+    {
+      "id": "Q48",
+      "type": 1,
+      "question": "La traduction en français : to improve",
+      "options": "",
+      "correct_answer": "S'améliorer"
+    },
+    {
+      "id": "Q49",
+      "type": 1,
+      "question": "La traduction en français : a flavour",
+      "options": "",
+      "correct_answer": "Une arôme"
+    },
+    {
+      "id": "Q50",
+      "type": 1,
+      "question": "La traduction en français : to supply",
+      "options": "",
+      "correct_answer": "Fournir"
+    },
+    {
+      "id": "Q51",
+      "type": 1,
+      "question": "La traduction en français : a ship / a merchant ship",
+      "options": "",
+      "correct_answer": "Un navire / un cargo"
+    },
+    {
+      "id": "Q52",
+      "type": 1,
+      "question": "La traduction en français : bottom / bottomless",
+      "options": "",
+      "correct_answer": "Le fond / sans fond"
+    },
+    {
+      "id": "Q53",
+      "type": 1,
+      "question": "La traduction en français : a pit / a bottomless pit",
+      "options": "",
+      "correct_answer": "Une fosse / l'enfer"
+    },
+    {
+      "id": "Q54",
+      "type": 1,
+      "question": "La traduction en français : the almighty",
+      "options": "",
+      "correct_answer": "Le tout puissant"
+    },
+    {
+      "id": "Q55",
+      "type": 1,
+      "question": "La traduction en français : to stand aside",
+      "options": "",
+      "correct_answer": "Se tenir à l'écart de"
+    },
+    {
+      "id": "Q56",
+      "type": 1,
+      "question": "La traduction en français : to fullfil",
+      "options": "",
+      "correct_answer": "Compléter"
+    },
+    {
+      "id": "Q57",
+      "type": 1,
+      "question": "La traduction en français :thick / thin",
+      "options": "",
+      "correct_answer": "Epais / fin"
+    },
+    {
+      "id": "Q58",
+      "type": 1,
+      "question": "La traduction en français : bulky",
+      "options": "",
+      "correct_answer": "Ecombrant"
+    },
+    {
+      "id": "Q59",
+      "type": 1,
+      "question": "La traduction en français : fierce",
+      "options": "",
+      "correct_answer": "Féroce"
+    },
+    {
+      "id": "Q60",
+      "type": 1,
+      "question": "La traduction en français : underbrush",
+      "options": "",
+      "correct_answer": "Sous-bois"
+    },
+    {
+      "id": "Q61",
+      "type": 1,
+      "question": "La traduction en français : to stalk on's prey",
+      "options": "",
+      "correct_answer": "Traquer sa proie"
+    },
+    {
+      "id": "Q62",
+      "type": 1,
+      "question": "La traduction en français : a flurry",
+      "options": "",
+      "correct_answer": "Une rafale"
+    },
+    {
+      "id": "Q63",
+      "type": 1,
+      "question": "La traduction en français : to rip / RIP",
+      "options": "",
+      "correct_answer": "Déchirer / qu'il repose en paix"
+    },
+    {
+      "id": "Q64",
+      "type": 1,
+      "question": "La traduction en français : to train",
+      "options": "",
+      "correct_answer": "Faire une formation"
+    },
+    {
+      "id": "Q65",
+      "type": 1,
+      "question": "La traduction en français : actually",
+      "options": "",
+      "correct_answer": "Enfaite"
+    },
+    {
+      "id": "Q66",
+      "type": 1,
+      "question": "La traduction en français : busy",
+      "options": "",
+      "correct_answer": "Occupé"
+    },
+    {
+      "id": "Q67",
+      "type": 1,
+      "question": "La traduction en français : a flat",
+      "options": "",
+      "correct_answer": "Un appartement"
+    },
+    {
+      "id": "Q68",
+      "type": 1,
+      "question": "La traduction en français : some friends of mine / yours",
+      "options": "",
+      "correct_answer": "Des amis à moi / toi"
+    },
+    {
+      "id": "Q69",
+      "type": 1,
+      "question": "La traduction en français : ill",
+      "options": "",
+      "correct_answer": "Malade"
+    },
+    {
+      "id": "Q70",
+      "type": 1,
+      "question": "La traduction en français : how often",
+      "options": "",
+      "correct_answer": "A quel fréquence"
+    },
+    {
+      "id": "Q71",
+      "type": 1,
+      "question": "La traduction en français : close / far",
+      "options": "",
+      "correct_answer": "Proche / loin"
+    },
+    {
+      "id": "Q72",
+      "type": 1,
+      "question": "La traduction en français : to seek",
+      "options": "",
+      "correct_answer": "Chercher"
+    },
+    {
+      "id": "Q73",
+      "type": 1,
+      "question": "La traduction en français : to matter / nothing else matters",
+      "options": "",
+      "correct_answer": "Importer / rien d'autre n'a d'importance"
+    },
+    {
+      "id": "Q74",
+      "type": 1,
+      "question": "La traduction en français : power supply",
+      "options": "",
+      "correct_answer": "Alimentation"
+    },
+    {
+      "id": "Q75",
+      "type": 1,
+      "question": "La traduction en français : band reject filter",
+      "options": "",
+      "correct_answer": "Filtre de rejet de bande"
+    },
+    {
+      "id": "Q76",
+      "type": 1,
+      "question": "La traduction en français : transcient",
+      "options": "",
+      "correct_answer": "Transitoire"
+    },
+    {
+      "id": "Q77",
+      "type": 1,
+      "question": "La traduction en français : in addition",
+      "options": "",
+      "correct_answer": "De plus"
+    },
+    {
+      "id": "Q78",
+      "type": 1,
+      "question": "La traduction en français : component",
+      "options": "",
+      "correct_answer": "Composant / composante"
+    },
+    {
+      "id": "Q79",
+      "type": 1,
+      "question": "La traduction en français : thus",
+      "options": "",
+      "correct_answer": "Ainsi"
+    },
+    {
+      "id": "Q80",
+      "type": 1,
+      "question": "La traduction en français : a delay",
+      "options": "",
+      "correct_answer": "Un retard"
+    },
+    {
+      "id": "Q81",
+      "type": 1,
+      "question": "La traduction en français : all-pass filter",
+      "options": "",
+      "correct_answer": "Filtre passe-tout"
+    },
+    {
+      "id": "Q82",
+      "type": 1,
+      "question": "La traduction en français : a track",
+      "options": "",
+      "correct_answer": "Une piste"
+    },
+    {
+      "id": "Q83",
+      "type": 1,
+      "question": "La traduction en français : to get assaulted",
+      "options": "",
+      "correct_answer": "Se faire agresser"
+    },
+    {
+      "id": "Q84",
+      "type": 1,
+      "question": "La traduction en français : a sleepless night",
+      "options": "",
+      "correct_answer": "Une nuit blanche"
+    },
+    {
+      "id": "Q85",
+      "type": 1,
+      "question": "La traduction en français : it's not worth",
+      "options": "",
+      "correct_answer": "Cela n'en vaux pas la peine"
+    },
+    {
+      "id": "Q86",
+      "type": 1,
+      "question": "La traduction en français : a crowd",
+      "options": "",
+      "correct_answer": "Une foule"
+    },
+    {
+      "id": "Q87",
+      "type": 1,
+      "question": "La traduction en français : marital violence",
+      "options": "",
+      "correct_answer": "Violence conjugale"
+    },
+    {
+      "id": "Q88",
+      "type": 1,
+      "question": "La traduction en français : to starve to death",
+      "options": "",
+      "correct_answer": "Mourir de faim"
+    },
+    {
+      "id": "Q89",
+      "type": 1,
+      "question": "La traduction en français : to be aimed to",
+      "options": "",
+      "correct_answer": "A toi, pour but de"
+    },
+    {
+      "id": "Q90",
+      "type": 1,
+      "question": "La traduction en français : amidst",
+      "options": "",
+      "correct_answer": "au milieu de"
+    },
+    {
+      "id": "Q91",
+      "type": 1,
+      "question": "La traduction en français : to seek the truth",
+      "options": "",
+      "correct_answer": "Chercher la vérité"
+    },
+    {
+      "id": "Q92",
+      "type": 1,
+      "question": "La traduction en français : commitement",
+      "options": "",
+      "correct_answer": "Engagement"
+    },
+    {
+      "id": "Q93",
+      "type": 1,
+      "question": "La traduction en français : softly",
+      "options": "",
+      "correct_answer": "Doucement"
+    },
+    {
+      "id": "Q94",
+      "type": 1,
+      "question": "La traduction en français : till = untill",
+      "options": "",
+      "correct_answer": "Jusqu'à"
+    },
+    {
+      "id": "Q95",
+      "type": 1,
+      "question": "La traduction en français : once",
+      "options": "",
+      "correct_answer": "Une fois / autrefois"
+    },
+    {
+      "id": "Q96",
+      "type": 0,
+      "question": "Laquelle ou lesquelles des phrases suivantes traduisent correctement 'No books were found' ?",
+      "options": [
+        "Aucun livre n’a été trouvé.",
+        "Il n’y avait pas de livres.",
+        "Pas un seul livre n’a été trouvé.",
+        "Aucun des livres n’a été retrouvé."
+      ],
+      "correct_answer": [
+        "Aucun livre n’a été trouvé.",
+        "Il n’y avait pas de livres.",
+        "Pas un seul livre n’a été trouvé."
+      ]
+    },
+    {
+      "id": "Q97",
+      "type": 0,
+      "question": "Quel(s) mot(s) ou expression(s) traduisent le mot anglais 'no' lorsqu’il exprime une absence de quantité ?",
+      "options": [
+        "Aucun",
+        "Pas de",
+        "Jamais",
+        "Rien"
+      ],
+      "correct_answer": [
+        "Aucun",
+        "Pas de"
+      ]
+    },
+    {
+      "id": "Q98",
+      "type": 0,
+      "question": "Quelle phrase est incorrecte grammaticalement en français pour traduire 'No money was left' ?",
+      "options": [
+        "Aucun argent n'était resté.",
+        "Il ne restait pas d'argent.",
+        "Il ne restait aucun argent.",
+        "Il n’y avait plus d’argent."
+      ],
+      "correct_answer": "Aucun argent n'était resté."
+    },
+    {
+      "id": "Q99",
+      "type": 0,
+      "question": "Dans quelle ou lesquelles des phrases suivantes 'no' est correctement traduit par une tournure négative de quantité ?",
+      "options": [
+        "No children came to the party → Aucun enfant n’est venu à la fête.",
+        "No food was available → Il n’y avait aucune nourriture disponible.",
+        "No chairs are left → Il ne reste pas de chaises.",
+        "No one likes this movie → Personne n’aime ce film."
+      ],
+      "correct_answer": [
+        "No children came to the party → Aucun enfant n’est venu à la fête.",
+        "No food was available → Il n’y avait aucune nourriture disponible.",
+        "No chairs are left → Il ne reste pas de chaises."
+      ]
+    },
+    {
+      "id": "Q100",
+      "type": 0,
+      "question": "Quel(s) élément(s) grammatical(aux) est(sont) utilisé(s) en français pour exprimer 'no' devant un nom ?",
+      "options": [
+        "De",
+        "Aucun / Aucune",
+        "Pas de",
+        "Ne...plus"
+      ],
+      "correct_answer": [
+        "Aucun / Aucune",
+        "Pas de"
+      ]
+    },
+    {
+      "id": "Q101",
+      "type": 0,
+      "question": "Dans quels contextes peut-on trouver l’emploi de 'No' en anglais, qui sera ensuite traduit en français par une structure exprimant une quantité nulle ?",
+      "options": [
+        "Lorsqu’il est utilisé comme sujet d’une phrase.",
+        "Lorsqu’il est placé en début de phrase sans verbe, pour insister sur l'absence.",
+        "Dans certaines locutions figées ou expressions courantes."
+      ],
+      "correct_answer": [
+        "Lorsqu’il est utilisé comme sujet d’une phrase.",
+        "Lorsqu’il est placé en début de phrase sans verbe, pour insister sur l'absence.",
+        "Dans certaines locutions figées ou expressions courantes."
+      ]
+    },
+    {
+      "id": "102",
+      "type": 0,
+      "question": "Dans quelles situations emploie-t-on 'some' et 'any' en anglais ?",
+      "options": [
+        "'Some' s’utilise dans les phrases affirmatives.",
+        "'Any' s’utilise dans les phrases affirmatives.",
+        "'Any' s’utilise dans les phrases négatives et interrogatives.",
+        "'Some' s’utilise dans les phrases négatives."
+      ],
+      "correct_answer": [
+        "'Some' s’utilise dans les phrases affirmatives.",
+        "'Any' s’utilise dans les phrases négatives et interrogatives."
+      ]
+    },
+    {
+      "id": "Q103",
+      "type": 0,
+      "question": "Complétez : 'I don’t have ___ sugar.'",
+      "options": [
+        "some",
+        "any",
+        "many",
+        "a"
+      ],
+      "correct_answer": "any"
+    },
+    {
+      "id": "Q104",
+      "type": 0,
+      "question": "Complétez : 'Would you like ___ coffee ?'",
+      "options": [
+        "any",
+        "some",
+        "much",
+        "many"
+      ],
+      "correct_answer": "some"
+    },
+    {
+      "id": "Q105",
+      "type": 0,
+      "question": "Laquelle de ces phrases est correcte en anglais ?",
+      "options": [
+        "Do you have some questions ?",
+        "Do you have any questions ?",
+        "I don’t want some help.",
+        "I have any friends in Paris."
+      ],
+      "correct_answer": [
+        "Do you have any questions ?"
+      ]
+    },
+    {
+      "id": "Q106",
+      "type": 0,
+      "question": "Que désigne généralement l’emploi de 'some' ou 'any' en anglais ?",
+      "options": [
+        "Une quantité toujours exacte",
+        "Une certaine quantité imprécise mais relativement réduite",
+        "Une absence totale de quantité",
+        "Une quantité toujours négative"
+      ],
+      "correct_answer": [
+        "Une certaine quantité imprécise mais relativement réduite"
+      ]
+    },
+    {
+      "id": "Q107",
+      "type": 0,
+      "question": "Dans quel contexte 'some' s’oppose-t-il à 'all' en anglais ?",
+      "options": [
+        "'Some' exprime une négation complète.",
+        "'Some' désigne uniquement une partie d’un ensemble.",
+        "'Some' signifie la totalité de quelque chose.",
+        "'Some' est utilisé dans les questions négatives."
+      ],
+      "correct_answer": "'Some' désigne uniquement une partie d’un ensemble."
+    },
+    {
+      "id": "Q108",
+      "type": 0,
+      "question": "Comment 'some' peut-il exprimer une quantité subjectivement appréciée ?",
+      "options": [
+        "En désignant une très grande quantité.",
+        "En remplaçant un chiffre exact dans une évaluation personnelle.",
+        "En étant suivi d’un nom au pluriel uniquement.",
+        "'Some' ne peut jamais être utilisé de manière subjective."
+      ],
+      "correct_answer": "En remplaçant un chiffre exact dans une évaluation personnelle."
+    },
+    {
+      "id": "Q109",
+      "type": 0,
+      "question": "Dans quelle situation 'some' est-il utilisé pour parler d’un élément inconnu ou volontairement imprécis ?",
+      "options": [
+        "Quand on connaît parfaitement la chose ou la personne mentionnée.",
+        "Quand on parle d’un élément précis avec un article défini.",
+        "Quand on ne veut pas ou ne peut pas spécifier l’identité exacte.",
+        "Quand on parle de tout un groupe de manière générale."
+      ],
+      "correct_answer": "Quand on ne veut pas ou ne peut pas spécifier l’identité exacte."
+    },
+    {
+      "id": "Q110",
+      "type": 0,
+      "question": "Comment 'some' peut-il apporter une nuance affective dans une phrase ?",
+      "options": [
+        "En exprimant une émotion comme la colère ou la joie.",
+        "En soulignant l’étonnement ou l’admiration vis-à-vis d’un élément mentionné.",
+        "En servant uniquement à exprimer une quantité neutre.",
+        "En remplaçant un adjectif qualificatif."
+      ],
+      "correct_answer": "En soulignant l’étonnement ou l’admiration vis-à-vis d’un élément mentionné."
+    },
+    {
+      "id": "Q111",
+      "type": 0,
+      "question": "Dans quel cas 'some' peut-il être compris comme signifiant 'environ' ?",
+      "options": [
+        "Devant un nombre approximatif pour exprimer une estimation.",
+        "Uniquement dans une phrase négative.",
+        "Lorsque 'some' est utilisé après un nom dénombrable.",
+        "Quand 'some' est placé en fin de phrase."
+      ],
+      "correct_answer": "Devant un nombre approximatif pour exprimer une estimation."
+    },
+    {
+      "id": "Q112",
+      "type": 0,
+      "question": "Comment peut-on traduire 'any' en français selon le contexte ?",
+      "options": [
+        "Aucun / aucune",
+        "Tous / toutes",
+        "Certains / certaines",
+        "N’importe quel / laquelle"
+      ],
+      "correct_answer": [
+        "Tous / toutes",
+        "N’importe quel / laquelle"
+      ]
+    },
+    {
+      "id": "Q113",
+      "type": 0,
+      "question": "Dans quel cas 'any' peut-il être utilisé dans une phrase affirmative ?",
+      "options": [
+        "Pour exprimer une quantité exacte uniquement",
+        "Pour limiter le choix à une seule possibilité",
+        "Pour élargir les possibilités ou insister sur l’indifférence du choix",
+        "Uniquement dans les questions et les négations"
+      ],
+      "correct_answer": "Pour élargir les possibilités ou insister sur l’indifférence du choix"
+    },    
+    {
+      "id": "Q114",
+      "type": 0,
+      "question": "Complétez : 'You can choose ___ book you like.'",
+      "options": [
+        "some",
+        "any",
+        "no",
+        "much"
+      ],
+      "correct_answer": "any"
+    },
+    {
+      "id": "Q115",
+      "type": 0,
+      "question": "Quelle phrase illustre un usage de 'any' pouvant avoir deux interprétations selon le contexte ?",
+      "options": [
+        "You can take any seat.",
+        "I don’t have any questions.",
+        "There isn’t any milk.",
+        "Do you want any help?"
+      ],
+      "correct_answer": "You can take any seat."
+    },
+    {
+      "id": "Q116",
+      "type": 0,
+      "question": "Pourquoi certaines phrases contenant 'any' peuvent-elles prêter à confusion ?",
+      "options": [
+        "Parce que 'any' peut avoir un sens positif ou négatif selon le contexte.",
+        "Parce que 'any' est toujours utilisé avec les noms indénombrables.",
+        "Parce que 'any' est uniquement employé dans les phrases négatives.",
+        "Parce que 'any' ne peut jamais signifier 'tous'."
+      ],
+      "correct_answer": "Parce que 'any' peut avoir un sens positif ou négatif selon le contexte."
+    },
+    {
+      "id": "Q117",
+      "type": 0,
+      "question": "Quel pronom indéfini complète correctement cette phrase affirmative ? '___body likes a surprise party.'",
+      "options": [
+        "Somebody",
+        "Anybody",
+        "Nobody",
+        "Everybody"
+      ],
+      "correct_answer": "Everybody"
+    },
+    {
+      "id": "Q118",
+      "type": 0,
+      "question": "Complétez la phrase interrogative vraie avec le pronom adéquat : 'Did ___ call me last night?'",
+      "options": [
+        "somebody",
+        "anybody",
+        "nobody",
+        "everybody"
+      ],
+      "correct_answer": "Anybody"
+    },
+    {
+      "id": "Q119",
+      "type": 0,
+      "question": "Dans quelle phrase 'no one' est-il correctement utilisé pour exprimer une négation ?",
+      "options": [
+        "No one has arrived yet.",
+        "No one will come tomorrow?",
+        "No one is going to the party?",
+        "No one likes pizza."
+      ],
+      "correct_answer": [
+        "No one has arrived yet.",
+        "No one likes pizza."
+      ]
+    },
+    {
+      "id": "Q120",
+      "type": 0,
+      "question": "Quelle phrase contient une fausse question avec 'somebody' ?",
+      "options": [
+        "Is somebody at the door?",
+        "Does somebody want tea?",
+        "Does somebody like football?",
+        "Do somebody have a pen?"
+      ],
+      "correct_answer": "Do somebody have a pen?"
+    },
+    {
+      "id": "Q121",
+      "type": 0,
+      "question": "Complétez cette phrase indiquant une quantité vague et affirmative avec 'something' : 'I have ___ to tell you.'",
+      "options": [
+        "something",
+        "anything",
+        "nothing",
+        "everything"
+      ],
+      "correct_answer": "something"
+    },
+    {
+      "id": "Q122",
+      "type": 0,
+      "question": "Dans une phrase négative, quel pronom indéfini convient ? 'I didn’t see ___ in the room.'",
+      "options": [
+        "something",
+        "anything",
+        "nothing",
+        "everything"
+      ],
+      "correct_answer": "anything"
+    },
+    {
+      "id": "Q123",
+      "type": 0,
+      "question": "Complétez la phrase vraie question : 'Is there ___ to eat in the fridge ?'",
+      "options": [
+        "something",
+        "anything",
+        "nothing",
+        "everything"
+      ],
+      "correct_answer": "anything"
+    },
+    {
+      "id": "Q124",
+      "type": 0,
+      "question": "Choisissez le pronom adéquat dans une phrase affirmative : '___where beautiful can be found in this country.'",
+      "options": [
+        "Somewhere",
+        "Anywhere",
+        "Nowhere",
+        "Everywhere"
+      ],
+      "correct_answer": "Somewhere"
+    },
+    {
+      "id": "Q125",
+      "type": 0,
+      "question": "Quelle phrase négative utilise correctement 'nowhere' ?",
+      "options": [
+        "I can find my keys nowhere.",
+        "I can find my keys anywhere.",
+        "I can find my keys somewhere.",
+        "I can find my keys everywhere."
+      ],
+      "correct_answer": "I can find my keys nowhere."
+    },
+    {
+      "id": "Q126",
+      "type": 0,
+      "question": "Quel pronom indéfini signifie 'tout le monde' dans une phrase affirmative ?",
+      "options": [
+        "Nobody",
+        "Anybody",
+        "Everybody",
+        "Somebody"
+      ],
+      "correct_answer": "Everybody"
+    },
+    {
+      "id": "Q127",
+      "type": 0,
+      "question": "Quelle est la différence entre 'a little' et 'a few' ?",
+      "options": [
+        "'A little' est utilisé avec des noms dénombrables.",
+        "'A few' est utilisé avec des noms indénombrables.",
+        "'A little' est utilisé avec des noms indénombrables.",
+        "'A few' est utilisé avec des noms dénombrables."
+      ],
+      "correct_answer": [
+        "'A little' est utilisé avec des noms indénombrables.",
+        "'A few' est utilisé avec des noms dénombrables."
+      ]
+    },
+    {
+      "id": "Q128",
+      "type": 0,
+      "question": "Complétez : 'There are ___ apples in the basket.'",
+      "options": [
+        "a little",
+        "a few",
+        "much",
+        "some"
+      ],
+      "correct_answer": "a few"
+    },
+    {
+      "id": "Q129",
+      "type": 0,
+      "question": "Complétez : 'We still have ___ time before the train leaves.'",
+      "options": [
+        "a few",
+        "many",
+        "a little",
+        "few"
+      ],
+      "correct_answer": "a little"
+    },
+    {
+      "id": "Q130",
+      "type": 0,
+      "question": "À quoi sert le mot 'several' ?",
+      "options": [
+        "À exprimer une grande quantité de choses indénombrables.",
+        "À exprimer une quantité floue mais plus que 'a few', avec des noms dénombrables.",
+        "À remplacer 'a little' dans une phrase négative.",
+        "À accentuer une quantité très réduite."
+      ],
+      "correct_answer": "À exprimer une quantité floue mais plus que 'a few', avec des noms dénombrables."
+    },
+    {
+      "id": "Q131",
+      "type": 0,
+      "question": "Quel est l’usage correct du pronom 'few' ou 'little' utilisé seul ?",
+      "options": [
+        "'Few' ou 'little' peuvent être utilisés seuls quand le nom est sous-entendu.",
+        "'Few' est toujours suivi d’un nom.",
+        "'Little' ne peut jamais être employé seul.",
+        "'Few' est uniquement utilisé pour les objets indénombrables."
+      ],
+      "correct_answer": "'Few' ou 'little' peuvent être utilisés seuls quand le nom est sous-entendu."
+    },
+    {
+      "id": "Q132",
+      "type": 0,
+      "question": "Quelle phrase accentue l’idée de petite quantité grâce à l’adverbe 'only' ?",
+      "options": [
+        "She has few friends.",
+        "They drank only a little wine.",
+        "There are some people waiting.",
+        "We had a lot of time."
+      ],
+      "correct_answer": "They drank only a little wine."
+    },
+    {
+      "id": "Q133",
+      "type": 0,
+      "question": "Que signifie l'expression 'quite a few' ?",
+      "options": [
+        "Très peu de",
+        "Exactement deux ou trois",
+        "Beaucoup de",
+        "Presque aucun"
+      ],
+      "correct_answer": "Beaucoup de"
+    },
+    {
+      "id": "Q134",
+      "type": 0,
+      "question": "Complétez : '___ of the guests have already arrived.'",
+      "options": [
+        "A little",
+        "Only a little",
+        "Quite a few",
+        "Somewhat"
+      ],
+      "correct_answer": "Quite a few"
+    },
+    {
+      "id": "Q135",
+      "type": 0,
+      "question": "Quelle est la différence principale entre 'much' et 'many' ?",
+      "options": [
+        "'Much' est utilisé avec des noms dénombrables.",
+        "'Many' est utilisé avec des noms indénombrables.",
+        "'Much' est utilisé avec des noms indénombrables.",
+        "'Many' est utilisé avec des noms indénombrables."
+      ],
+      "correct_answer": "'Much' est utilisé avec des noms indénombrables."
+    },
+    {
+      "id": "Q136",
+      "type": 0,
+      "question": "Complétez la phrase : 'How ___ money do you need?'",
+      "options": [
+        "much",
+        "many",
+        "few",
+        "a little"
+      ],
+      "correct_answer": "much"
+    },
+    {
+      "id": "Q137",
+      "type": 0,
+      "question": "Complétez la phrase : 'There are too ___ chairs in this room.'",
+      "options": [
+        "much",
+        "many",
+        "few",
+        "some"
+      ],
+      "correct_answer": "many"
+    },
+    {
+      "id": "Q138",
+      "type": 0,
+      "question": "Complétez la phrase suivante : 'I don’t have ___ time to do this.'",
+      "options": [
+        "much",
+        "many",
+        "some",
+        "few"
+      ],
+      "correct_answer": "much"
+    },
+    {
+      "id": "Q139",
+      "type": 0,
+      "question": "Quel pronom indéfini complète correctement cette phrase interrogative ? 'How ___ books did you buy?'",
+      "options": [
+        "much",
+        "many",
+        "few",
+        "some"
+      ],
+      "correct_answer": "many"
+    },
+    {
+      "id": "Q140",
+      "type": 0,
+      "question": "Complétez la phrase suivante dans une question négative : 'I don’t have ___ friends in this city.'",
+      "options": [
+        "much",
+        "many",
+        "few",
+        "some"
+      ],
+      "correct_answer": "many"
+    },
+    {
+      "id": "Q141",
+      "type": 0,
+      "question": "Quelle phrase est correcte dans un contexte où l’on parle de quantité indénombrable ?",
+      "options": [
+        "I don’t have much books.",
+        "I have many water.",
+        "I don’t have much sugar.",
+        "I have much dogs."
+      ],
+      "correct_answer": "I don’t have much sugar."
+    },
+    {
+      "id": "Q142",
+      "type": 0,
+      "question": "Complétez cette phrase affirmative avec 'many' ou 'much' : 'I don’t know ___ people who like that.'",
+      "options": [
+        "many",
+        "much",
+        "few",
+        "some"
+      ],
+      "correct_answer": "many"
+    },
+    {
+      "id": "Q143",
+      "type": 0,
+      "question": "Complétez cette question avec 'much' ou 'many' : 'How ___ coffee do you drink each day?'",
+      "options": [
+        "many",
+        "much",
+        "few",
+        "some"
+      ],
+      "correct_answer": "much"
+    },
+    {
+      "id": "Q144",
+      "type": 0,
+      "question": "Complétez la phrase suivante dans un contexte négatif : 'I don’t have ___ to say about it.'",
+      "options": [
+        "many",
+        "much",
+        "few",
+        "some"
+      ],
+      "correct_answer": "much"
+    }    
+  ]
+}
