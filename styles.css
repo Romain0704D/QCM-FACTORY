@@ -1149,3 +1149,56 @@ body {
     min-width: 220px;
     max-width: 350px;
 }
+
+.qcm-open-text {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 15px 18px;
+    font-size: 1.12em;
+    border: 1.5px solid #4090e6;
+    border-radius: 8px;
+    margin: 18px 0 22px 0;
+    background: #eef6ff;
+    color: #222;
+    transition: border 0.2s, background 0.2s;
+    display: block;
+}
+
+.qcm-open-text:focus {
+    border: 1.5px solid #7366ff;
+    background: #e6f0ff;
+    outline: none;
+}
+
+/* Couleurs de feedback pour question ouverte */
+.qcm-open-text.qcm-error {
+    border-color: #ef4444;
+    background: #ffeaea;
+    animation: shake 0.35s cubic-bezier(.36,.07,.19,.97) both;
+    color: #b91c1c;
+}
+
+.qcm-open-text.qcm-success {
+    border-color: #22c55e;
+    background: #eaffee;
+    color: #166534;
+    animation: pop-green 0.65s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-2px); }
+    20%, 80% { transform: translateX(4px); }
+    30%, 50%, 70% { transform: translateX(-8px); }
+    40%, 60% { transform: translateX(8px); }
+    100% { transform: translateX(0); }
+}
+
+
+@keyframes pop-green {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.01); }
+    70% { transform: scale(1.01); }
+    100% { transform: scale(1); }
+} 

@@ -442,12 +442,12 @@ function displayQuestion() {
     const question = getCurrentQuestion();
     selectedAnswers = [];
     answersRevealed = false;
-    
+
     // Marquer la question comme visitée
     visitedQuestions.add(currentQuestionIndex);
-    
+
     let html = '';
-    
+
     // Image si présente
     if (question.image && question.image.trim() !== '') {
         html += `
@@ -458,26 +458,38 @@ function displayQuestion() {
             </div>
         `;
     }
-    
+
     // Question
     html += `<div class="question-text">${question.question}</div>`;
-    
-    // OPTIONS RANDOMISÉES
+
+    // --- Adapte ici selon le type ---
     html += '<div class="options-container">';
-    const questionIndex = questionOrder[currentQuestionIndex];
-    const shuffledIndices = getShuffledOptionIndices(questionIndex);
-    // Les options seront affichées dans l'ordre de shuffledIndices
-    shuffledIndices.forEach((originalIdx, displayIdx) => {
-        const option = question.options[originalIdx];
-        // Les id des éléments HTML doivent rester uniques et cohérents pour chaque affichage
-        // On utilise displayIdx+1 pour l'ordre d'affichage visible, mais on stocke la correspondance dans la map
+    if (question.type === "1") {
+        // Question ouverte
         html += `
-            <div class="option" data-option="${originalIdx + 1}" id="option-container-${originalIdx + 1}">
-                <input type="checkbox" id="option-${originalIdx + 1}" value="${originalIdx + 1}" onchange="handleOptionChange(${originalIdx + 1})">
-                <label for="option-${originalIdx + 1}" class="option-text">${option}</label>
-            </div>
+            <input 
+                type="text" 
+                id="open-answer-input" 
+                class="qcm-open-text" 
+                placeholder="Votre réponse ici..." 
+                autocomplete="off"
+                oninput="handleOptionChangeOpen(this.value)"
+            >
         `;
-    });
+    } else {
+        // OPTIONS RANDOMISÉES
+        const questionIndex = questionOrder[currentQuestionIndex];
+        const shuffledIndices = getShuffledOptionIndices(questionIndex);
+        shuffledIndices.forEach((originalIdx, displayIdx) => {
+            const option = question.options[originalIdx];
+            html += `
+                <div class="option" data-option="${originalIdx + 1}" id="option-container-${originalIdx + 1}">
+                    <input type="checkbox" id="option-${originalIdx + 1}" value="${originalIdx + 1}" onchange="handleOptionChange(${originalIdx + 1})">
+                    <label for="option-${originalIdx + 1}" class="option-text">${option}</label>
+                </div>
+            `;
+        });
+    }
     html += '</div>';
 
     // Contrôles d'apprentissage
@@ -489,37 +501,7 @@ function displayQuestion() {
             <div id="answer-display" class="answer-revealed" style="display: none;"></div>
         </div>
     `;
-function restartRevisionMode() {
-    if (!originalProgressData) {
-        showMessage('Erreur: données de révision perdues', 'error');
-        return;
-    }
-    
-    // Récupérer les questions qui étaient marquées comme fausses au début de la révision
-    const errorQuestionIndices = Object.keys(originalProgressData.errorTracking).map(id => parseInt(id));
-    
-    // Réinitialiser le mode révision
-    questionOrder = errorQuestionIndices;
-    currentQuestionIndex = 0;
-    selectedAnswers = [];
-    visitedQuestions = new Set();
-    errorTracking = {};
-    
-    // Désactiver le mode bilan pour permettre la navigation
-    isInCompletionMode = false;
-    
-    // Réafficher TOUS les éléments de navigation (utiliser la fonction existante)
-    showNavigationElements();
-    
-    validateBtn.style.display = 'block';
-    createQuestionNavigator();
-    displayQuestion();
-    updateProgress();
-    updateSideNavigationButtons();
-    
-    showMessage(`🔄 Révision redémarrée : ${errorQuestionIndices.length} question(s) à réviser !`, 'info');
-    setTimeout(clearMessage, 2000);
-}
+
     // Suivi des erreurs - masqué en mode révision ET en mode bilan
     if (!isRevisionMode && !isInCompletionMode) {
         html += `
@@ -529,11 +511,11 @@ function restartRevisionMode() {
             </div>
         `;
     }
-    
+
     questionContainer.innerHTML = html;
     currentQuestionSpan.textContent = currentQuestionIndex + 1;
     questionIdSpan.textContent = question.id || 'N/A';
-    
+
     // Restaurer l'état de suivi d'erreur si existant (seulement si pas en mode révision ou bilan)
     if (!isRevisionMode && !isInCompletionMode) {
         const questionId = getCurrentQuestionId();
@@ -542,10 +524,10 @@ function restartRevisionMode() {
             errorCheckbox.checked = true;
         }
     }
-    
+
     // Mettre à jour le navigateur
     updateNavigatorDisplay();
-    
+
     clearMessage();
     updateSideNavigationButtons();
 }
@@ -553,15 +535,16 @@ function restartRevisionMode() {
 // Fonction pour afficher les bonnes réponses
 function showCorrectAnswers() {
     if (answersRevealed) return;
-    
+
     const question = getCurrentQuestion();
     const correctAnswer = question.correct_answer;
     const answerDisplay = document.getElementById('answer-display');
     const showAnswerBtn = document.getElementById('show-answer-btn');
-    
-    // Marquer les options correctes visuellement
-    if (Array.isArray(correctAnswer)) {
-        // Réponses multiples - chercher par contenu
+
+    if (question.type === "1") {
+        // Affiche la réponse textuelle attendue
+        answerDisplay.innerHTML = `✅ Bonne réponse attendue : <br><strong>${correctAnswer}</strong>`;
+    } else if (Array.isArray(correctAnswer)) {
         correctAnswer.forEach(correctContent => {
             const optionIndex = question.options.findIndex(option => option === correctContent);
             if (optionIndex !== -1) {
@@ -571,8 +554,8 @@ function showCorrectAnswers() {
                 }
             }
         });
+        answerDisplay.innerHTML = `✅ Bonnes réponses : <br>${correctAnswer.join('<br>')}`;
     } else {
-        // Réponse unique - chercher par contenu
         const optionIndex = question.options.findIndex(option => option === correctAnswer);
         if (optionIndex !== -1) {
             const optionContainer = document.getElementById(`option-container-${optionIndex + 1}`);
@@ -580,21 +563,13 @@ function showCorrectAnswers() {
                 optionContainer.classList.add('correct-answer');
             }
         }
+        answerDisplay.innerHTML = `✅ Bonne réponse : ${correctAnswer}`;
     }
-    
-    // Afficher le texte des bonnes réponses
-    let correctAnswersText = '';
-    if (Array.isArray(correctAnswer)) {
-        correctAnswersText = `✅ Bonnes réponses : <br>${correctAnswer.join('<br>')}`;
-    } else {
-        correctAnswersText = `✅ Bonne réponse : ${correctAnswer}`;
-    }
-    
-    answerDisplay.innerHTML = correctAnswersText;
+
     answerDisplay.style.display = 'block';
     showAnswerBtn.disabled = true;
     showAnswerBtn.textContent = '✅ Réponses affichées';
-    
+
     answersRevealed = true;
 }
 
@@ -651,36 +626,65 @@ function toggleOption(optionNumber) {
 
 // Modifier la fonction validateAnswer() existante en ajoutant la sauvegarde :
 function validateAnswer() {
-    if (selectedAnswers.length === 0) {
-        showMessage('Veuillez sélectionner au moins une réponse.', 'error');
-        return;
-    }
-
     const question = getCurrentQuestion();
     const correctAnswer = question.correct_answer;
-    
     let isCorrect = false;
-    
-    if (Array.isArray(correctAnswer)) {
-        // Réponse multiple - comparer le contenu des tableaux
+
+    // Récupère le champ texte si question ouverte
+    let openInput = null;
+    if (question.type === "1") {
+        openInput = document.getElementById('open-answer-input');
+    }
+
+    if (question.type === "1") {
+        if (!selectedAnswers[0] || selectedAnswers[0].trim() === "") {
+            showMessage('Veuillez saisir une réponse.', 'error');
+            if (openInput) {
+                openInput.classList.remove('qcm-error', 'qcm-success');
+            }
+            return;
+        }
+        const userInput = selectedAnswers[0].trim().toLowerCase();
+        const correct = (typeof correctAnswer === 'string' ? correctAnswer : correctAnswer[0] || "").trim().toLowerCase();
+        isCorrect = userInput === correct;
+
+        // Animation feedback
+        if (openInput) {
+            openInput.classList.remove('qcm-error', 'qcm-success'); // reset
+            // Force a reflow to restart animation
+            void openInput.offsetWidth;
+            if (isCorrect) {
+                openInput.classList.add('qcm-success');
+            } else {
+                openInput.classList.add('qcm-error');
+            }
+        }
+    } else if (Array.isArray(correctAnswer)) {
+        // (inchangé)
         isCorrect = correctAnswer.length === selectedAnswers.length && 
                    correctAnswer.every(answer => selectedAnswers.includes(answer)) &&
                    selectedAnswers.every(answer => correctAnswer.includes(answer));
     } else {
-        // Réponse unique - comparer directement le contenu
         isCorrect = selectedAnswers.length === 1 && selectedAnswers[0] === correctAnswer;
     }
-    
+
     if (isCorrect) {
         showMessage('✅ Bonne réponse ! Passage à la question suivante...', 'success');
         setTimeout(() => {
+            // reset feedback visuel avant de passer à la suivante
+            if (openInput) openInput.classList.remove('qcm-error', 'qcm-success');
             nextQuestion();
         }, 1500);
+    } else if (question.type === "1") {
+        showMessage('❌ Réponse incorrecte. Veuillez recommencer.', 'error');
+        // Animation déjà appliquée ci-dessus
+        setTimeout(() => {
+            if (openInput) openInput.classList.remove('qcm-error', 'qcm-success');
+        }, 600); // retire la couleur après l'animation
     } else {
         showMessage('❌ Réponse incorrecte. Veuillez recommencer.', 'error');
     }
-    
-    // Sauvegarder la progression après validation
+
     saveProgress();
 }
 
@@ -1709,4 +1713,8 @@ function getShuffledOptionIndices(questionIndex) {
     const shuffled = shuffleArray(indices);
     shuffledOptionsMap[questionIndex] = shuffled;
     return shuffled;
+}
+
+function handleOptionChangeOpen(value) {
+    selectedAnswers = [value];
 }
