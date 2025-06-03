@@ -464,7 +464,7 @@ function displayQuestion() {
 
     // --- Adapte ici selon le type ---
     html += '<div class="options-container">';
-    if (question.type === "1") {
+    if (question.type === 1) {
         // Question ouverte
         html += `
             <input 
@@ -513,6 +513,17 @@ function displayQuestion() {
     }
 
     questionContainer.innerHTML = html;
+    if (question.type === 1) {
+        const openInput = document.getElementById('open-answer-input');
+        if (openInput) {
+            openInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    validateAnswer();
+                }
+            });
+        }
+    }
     currentQuestionSpan.textContent = currentQuestionIndex + 1;
     questionIdSpan.textContent = question.id || 'N/A';
 
@@ -541,7 +552,7 @@ function showCorrectAnswers() {
     const answerDisplay = document.getElementById('answer-display');
     const showAnswerBtn = document.getElementById('show-answer-btn');
 
-    if (question.type === "1") {
+    if (question.type === 1) {
         // Affiche la réponse textuelle attendue
         answerDisplay.innerHTML = `✅ Bonne réponse attendue : <br><strong>${correctAnswer}</strong>`;
     } else if (Array.isArray(correctAnswer)) {
@@ -632,11 +643,11 @@ function validateAnswer() {
 
     // Récupère le champ texte si question ouverte
     let openInput = null;
-    if (question.type === "1") {
+    if (question.type === 1) {
         openInput = document.getElementById('open-answer-input');
     }
 
-    if (question.type === "1") {
+    if (question.type === 1) {
         if (!selectedAnswers[0] || selectedAnswers[0].trim() === "") {
             showMessage('Veuillez saisir une réponse.', 'error');
             if (openInput) {
@@ -675,7 +686,7 @@ function validateAnswer() {
             if (openInput) openInput.classList.remove('qcm-error', 'qcm-success');
             nextQuestion();
         }, 1500);
-    } else if (question.type === "1") {
+    } else if (question.type === 1) {
         showMessage('❌ Réponse incorrecte. Veuillez recommencer.', 'error');
         // Animation déjà appliquée ci-dessus
         setTimeout(() => {

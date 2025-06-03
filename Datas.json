@@ -2,7 +2,7 @@
   "qcm": [
     {
       "id": "Q1",
-      "type":"0",
+      "type":0,
       "question": "Quelle est la capitale de la France ?",
       "options": [
         "Londres",
@@ -14,7 +14,7 @@
     },
     {
       "id": "Q2",
-      "type":"0",
+      "type":0,
       "question": "Quelles sont les couleurs primaires ?",
       "options": [
         "Rouge",
@@ -26,7 +26,7 @@
     },
     {
       "id": "Q3",
-      "type":"0",
+      "type":0,
       "question": "Combien de continents y a-t-il sur Terre ?",
       "options": [
         "5",
@@ -38,7 +38,7 @@
     },
     {
       "id": "Q4",
-      "type":"0",
+      "type":0,
       "question": "Qui a écrit 'Les Misérables' ?",
       "options": [
         "Victor Hugo",
@@ -50,7 +50,7 @@
     },
     {
       "id": "Q5",
-      "type":"0",
+      "type":0,
       "question": "Quelle est la plus grande planète du système solaire ?",
       "options": [
         "Terre",
@@ -62,7 +62,7 @@
     },
     {
       "id": "Q6",
-      "type":"0",
+      "type":0,
       "question": "Quel est l'élément chimique dont le symbole est O ?",
       "options": [
         "Or",
@@ -74,7 +74,7 @@
     },
     {
       "id": "Q7",
-      "type":"0",
+      "type":0,
       "question": "En quelle année l'homme a-t-il marché sur la Lune pour la première fois ?",
       "options": [
         "1965",
@@ -86,7 +86,7 @@
     },
     {
       "id": "Q8",
-      "type":"0",
+      "type":0,
       "question": "Quels sont les mammifères ?",
       "options": [
         "Chien",
@@ -98,7 +98,7 @@
     },
     {
       "id": "Q9",
-      "type":"0",
+      "type":0,
       "question": "Quels pays font partie de l'Union européenne ?",
       "options": [
         "France",
@@ -110,7 +110,7 @@
     },
     {
       "id": "Q10",
-      "type":"0",
+      "type":0,
       "question": "Quelles sont des planètes telluriques ?",
       "options": [
         "Mercure",
@@ -122,7 +122,7 @@
     },
     {
       "id": "Q11",
-      "type":"0",
+      "type":0,
       "question": "Lesquelles sont des langues romanes ?",
       "options": [
         "Français",
@@ -134,14 +134,14 @@
     },
     {
       "id": "Q12",
-      "type":"1",
+      "type":1,
       "question": "Quel est le nom en anglais d'un commutateur ?",
       "options": "",
       "correct_answer": "A switch"
     },
     {
       "id": "Q13",
-      "type":"1",
+      "type":1,
       "question": "Quel est le nom en anglais d'un cheval ?",
       "options": "",
       "correct_answer": "A horse"
