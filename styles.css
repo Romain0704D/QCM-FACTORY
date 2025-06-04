@@ -468,6 +468,10 @@ body {
     font-size: 1.1rem;
     color: #d1d5db;
     cursor: pointer;
+    display: block;                /* MODIF : pour permettre un bloc code multi-ligne */
+    width: 100%;                   /* MODIF : prendre la largeur de l'option */
+    line-height: 1.4;              /* MODIF : meilleur rendu si code */
+    word-break: break-word;        /* MODIF : éviter les overflows */
 }
 
 .error-tracking {
@@ -1203,10 +1207,24 @@ body {
     100% { transform: scale(1); }
 }
 
-.question-text pre, .option-text pre {
+.question-text code,
+.option-text code {
     font-family: 'Fira Mono', 'Consolas', monospace;
-    background: #23272e;        /* fond foncé adapté au dark mode */
-    color: #eaeaea;             /* texte clair */
+    background: #23272e;
+    color: #eaeaea !important;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 1em;
+    white-space: pre-wrap;
+    word-break: break-all;
+    display: inline;
+}
+
+.question-text pre,
+.option-text pre {
+    font-family: 'Fira Mono', 'Consolas', monospace;   /* police code */
+    background: #23272e;                               /* fond adapté dark */
+    color: #eaeaea !important;                         /* texte clair */
     border-radius: 6px;
     padding: 10px 14px;
     margin: 14px 0;
@@ -1214,17 +1232,11 @@ body {
     overflow-x: auto;
     font-size: 1.07em;
     box-sizing: border-box;
-    white-space: pre-wrap;      /* Permet le retour à la ligne dans le code */
+    white-space: pre-wrap;   /* retour à la ligne auto */
     word-break: break-all;
+    display: block;
 }
 
-.question-text code, .option-text code {
-    background: #23272e;
-    color: #eaeaea;
-    border-radius: 4px;
-    padding: 2px 5px;
-    font-family: 'Fira Mono', 'Consolas', monospace;
-    font-size: 1em;
-    white-space: pre-wrap;
-    word-break: break-all;
+.options-container .option {
+    margin-bottom: 14px;
 }
