@@ -553,8 +553,8 @@ function showCorrectAnswers() {
     const showAnswerBtn = document.getElementById('show-answer-btn');
 
     if (question.type === 1) {
-        // Affiche la réponse textuelle attendue
-        answerDisplay.innerHTML = `✅ Bonne réponse attendue : <br><strong>${correctAnswer}</strong>`;
+        // Affiche la réponse textuelle attendue avec formatage code
+        answerDisplay.innerHTML = `✅ Bonne réponse attendue : <br><strong>${renderFormattedQuestion(correctAnswer)}</strong>`;
     } else if (Array.isArray(correctAnswer)) {
         correctAnswer.forEach(correctContent => {
             const optionIndex = question.options.findIndex(option => option === correctContent);
@@ -565,7 +565,7 @@ function showCorrectAnswers() {
                 }
             }
         });
-        answerDisplay.innerHTML = `✅ Bonnes réponses : <br>${correctAnswer.join('<br>')}`;
+        answerDisplay.innerHTML = `✅ Bonnes réponses : <br>${correctAnswer.map(ans => renderFormattedQuestion(ans)).join('<br>')}`;
     } else {
         const optionIndex = question.options.findIndex(option => option === correctAnswer);
         if (optionIndex !== -1) {
@@ -574,7 +574,7 @@ function showCorrectAnswers() {
                 optionContainer.classList.add('correct-answer');
             }
         }
-        answerDisplay.innerHTML = `✅ Bonne réponse : ${correctAnswer}`;
+        answerDisplay.innerHTML = `✅ Bonne réponse : ${renderFormattedQuestion(correctAnswer)}`;
     }
 
     answerDisplay.style.display = 'block';
@@ -655,8 +655,9 @@ function validateAnswer() {
             }
             return;
         }
-        const userInput = selectedAnswers[0].trim().toLowerCase();
-        const correct = (typeof correctAnswer === 'string' ? correctAnswer : correctAnswer[0] || "").trim().toLowerCase();
+        // --- Correction ici : PAS de .toLowerCase(), juste stripCodeTags sur les 2 chaînes ---
+        const userInput = stripCodeTags(selectedAnswers[0].trim());
+        const correct = stripCodeTags((typeof correctAnswer === 'string' ? correctAnswer : correctAnswer[0] || "").trim());
         isCorrect = userInput === correct;
 
         // Animation feedback
@@ -1760,4 +1761,9 @@ function escapeHtml(str) {
               .replace(/>/g, "&gt;")
               .replace(/"/g, "&quot;")
               .replace(/'/g, "&#039;");
+}
+
+function stripCodeTags(str) {
+    if (!str) return "";
+    return str.replace(/\[code\]|\[\/code\]/gi, '').trim();
 }
