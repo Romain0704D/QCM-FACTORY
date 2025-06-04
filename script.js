@@ -485,7 +485,7 @@ function displayQuestion() {
             html += `
                 <div class="option" data-option="${originalIdx + 1}" id="option-container-${originalIdx + 1}">
                     <input type="checkbox" id="option-${originalIdx + 1}" value="${originalIdx + 1}" onchange="handleOptionChange(${originalIdx + 1})">
-                    <label for="option-${originalIdx + 1}" class="option-text">${option}</label>
+                    <label for="option-${originalIdx + 1}" class="option-text">${renderFormattedQuestion(option)}</label>
                 </div>
             `;
         });
