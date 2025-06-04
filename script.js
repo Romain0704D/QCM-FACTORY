@@ -460,7 +460,7 @@ function displayQuestion() {
     }
 
     // Question
-    html += `<div class="question-text">${question.question}</div>`;
+    html += `<div class="question-text">${renderFormattedQuestion(question.question)}</div>`;
 
     // --- Adapte ici selon le type ---
     html += '<div class="options-container">';
@@ -1728,4 +1728,36 @@ function getShuffledOptionIndices(questionIndex) {
 
 function handleOptionChangeOpen(value) {
     selectedAnswers = [value];
+}
+
+// Ajoute cette fonction en haut (après les variables globales par exemple)
+function renderFormattedQuestion(text) {
+    if (!text) return "";
+
+    // Gère [code]...[/code]
+    text = text.replace(/\[code\]([\s\S]*?)\[\/code\]/g, function(match, code) {
+        // On échappe le HTML pour protéger l'affichage
+        return `<pre><code>${escapeHtml(code.trim())}</code></pre>`;
+    });
+
+    // Gère les blocs markdown ```...``` (optionnel)
+    text = text.replace(/```([a-zA-Z]*)\n([\s\S]*?)```/g, function(match, lang, code) {
+        return `<pre><code class="language-${lang}">${escapeHtml(code.trim())}</code></pre>`;
+    });
+
+    // Gère les inline code `...`
+    text = text.replace(/`([^`]+?)`/g, function(match, code) {
+        return `<code>${escapeHtml(code)}</code>`;
+    });
+
+    return text;
+}
+
+// Petite fonction utilitaire pour échapper les caractères HTML
+function escapeHtml(str) {
+    return str.replace(/&/g, "&amp;")
+              .replace(/</g, "&lt;")
+              .replace(/>/g, "&gt;")
+              .replace(/"/g, "&quot;")
+              .replace(/'/g, "&#039;");
 }
