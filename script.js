@@ -553,8 +553,9 @@ function showCorrectAnswers() {
     const showAnswerBtn = document.getElementById('show-answer-btn');
 
     if (question.type === 1) {
-        // Affiche la réponse textuelle attendue avec formatage code
-        answerDisplay.innerHTML = `✅ Bonne réponse attendue : <br><strong>${renderFormattedQuestion(correctAnswer)}</strong>`;
+    // correctAnswer est toujours un tableau
+        const list = Array.isArray(correctAnswer) ? correctAnswer : [correctAnswer];
+        answerDisplay.innerHTML = `✅ Bonne(s) réponse(s) attendue(s) : <br><strong>${list.map(ans => renderFormattedQuestion(ans)).join(' &nbsp;|&nbsp; ')}</strong>`;
     } else if (Array.isArray(correctAnswer)) {
         correctAnswer.forEach(correctContent => {
             const optionIndex = question.options.findIndex(option => option === correctContent);
