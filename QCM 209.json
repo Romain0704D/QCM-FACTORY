@@ -1,0 +1,1236 @@
+{
+  "qcm": [
+    {
+      "id": "Q1",
+      "type": 1,
+      "question": "Complétez ce code PHP pour afficher 'Bonjour le monde' : [code]<?php echo '______'; ?>[/code]",
+      "options": "",
+      "correct_answer": "[code]Bonjour le monde[/code]"
+    },
+    {
+      "id": "Q2",
+      "type": 0,
+      "question": "Quelles sont les balises correctes pour insérer du code PHP dans une page HTML ?",
+      "options": [
+        "[code]<?php ... ?>[/code]",
+        "[code]<? ... ?>[/code]",
+        "[code]<?= ... ?>[/code]",
+        "[code]<script type='php'> ... </script>[/code]"
+      ],
+      "correct_answer": [
+        "[code]<?php ... ?>[/code]",
+        "[code]<?= ... ?>[/code]"
+      ]
+    },
+    {
+      "id": "Q3",
+      "type": 0,
+      "question": "Que signifie l'acronyme PHP ?",
+      "options": [
+        "Personal Home Page",
+        "PHP Hypertext Preprocessor",
+        "Private Home Page",
+        "Public Hypertext Protocol"
+      ],
+      "correct_answer": "PHP Hypertext Preprocessor"
+    },
+    {
+      "id": "Q4",
+      "type": 1,
+      "question": "Complétez cette déclaration de variable PHP : [code]$___ = 'ma_valeur';[/code]",
+      "options": "",
+      "correct_answer": "[code]$variable[/code]"
+    },
+    {
+      "id": "Q5",
+      "type": 0,
+      "question": "Quels sont les types de données scalaires en PHP ?",
+      "options": [
+        "Entiers",
+        "Réels",
+        "Chaînes de caractères",
+        "Tableaux",
+        "Objets"
+      ],
+      "correct_answer": [
+        "Entiers",
+        "Réels",
+        "Chaînes de caractères"
+      ]
+    },
+    {
+      "id": "Q6",
+      "type": 1,
+      "question": "Complétez cette condition PHP : [code]if ($age ___ 18) { echo 'Majeur'; }[/code]",
+      "options": "",
+      "correct_answer": "[code]>=[/code]"
+    },
+    {
+      "id": "Q7",
+      "type": 0,
+      "question": "Quelle est la syntaxe correcte pour une condition elseif en PHP ?",
+      "options": [
+        "[code]else if ($condition)[/code]",
+        "[code]elseif ($condition)[/code]",
+        "[code]elif ($condition)[/code]",
+        "[code]elsif ($condition)[/code]"
+      ],
+      "correct_answer": "[code]elseif ($condition)[/code]"
+    },
+    {
+      "id": "Q8",
+      "type": 1,
+      "question": "Complétez cette boucle while : [code]while ($i ___ 10) { echo $i; $i++; }[/code]",
+      "options": "",
+      "correct_answer": "[code]<[/code]"
+    },
+    {
+      "id": "Q9",
+      "type": 0,
+      "question": "Quels sont les types de boucles disponibles en PHP ?",
+      "options": [
+        "[code]while[/code]",
+        "[code]for[/code]",
+        "[code]foreach[/code]",
+        "[code]do-while[/code]",
+        "[code]repeat-until[/code]"
+      ],
+      "correct_answer": [
+        "[code]while[/code]",
+        "[code]for[/code]",
+        "[code]foreach[/code]",
+        "[code]do-while[/code]"
+      ]
+    },
+    {
+      "id": "Q10",
+      "type": 1,
+      "question": "Complétez cette déclaration de tableau PHP : [code]$tab = ______();[/code]",
+      "options": "",
+      "correct_answer": "[code]array[/code]"
+    },
+    {
+      "id": "Q11",
+      "type": 0,
+      "question": "Comment accède-t-on à un élément d'un tableau associatif en PHP ?",
+      "options": [
+        "[code]$tableau['clé'][/code]",
+        "[code]$tableau.clé[/code]",
+        "[code]$tableau->clé[/code]",
+        "[code]$tableau[clé][/code]"
+      ],
+      "correct_answer": "[code]$tableau['clé'][/code]"
+    },
+    {
+      "id": "Q12",
+      "type": 1,
+      "question": "Complétez cette boucle foreach pour un tableau associatif : [code]foreach ($tab as $____ => $____) { }[/code]",
+      "options": "",
+      "correct_answer": "[code]clef, val[/code]"
+    },
+    {
+      "id": "Q13",
+      "type": 0,
+      "question": "Quelle est la syntaxe correcte pour déclarer une fonction en PHP ?",
+      "options": [
+        "[code]function nom_fonction() { }[/code]",
+        "[code]def nom_fonction() { }[/code]",
+        "[code]function nom_fonction { }[/code]",
+        "[code]func nom_fonction() { }[/code]"
+      ],
+      "correct_answer": "[code]function nom_fonction() { }[/code]"
+    },
+    {
+      "id": "Q14",
+      "type": 1,
+      "question": "Complétez cette fonction PHP : [code]function addition($a, $b) { ______ $a + $b; }[/code]",
+      "options": "",
+      "correct_answer": "[code]return[/code]"
+    },
+    {
+      "id": "Q15",
+      "type": 0,
+      "question": "Quelles sont les directives d'inclusion en PHP ?",
+      "options": [
+        "[code]include[/code]",
+        "[code]require[/code]",
+        "[code]require_once[/code]",
+        "[code]include_once[/code]",
+        "[code]import[/code]"
+      ],
+      "correct_answer": [
+        "[code]include[/code]",
+        "[code]require[/code]",
+        "[code]require_once[/code]",
+        "[code]include_once[/code]"
+      ]
+    },
+    {
+      "id": "Q16",
+      "type": 0,
+      "question": "Quelle est la différence entre 'require' et 'include' ?",
+      "options": [
+        "require génère une erreur fatale si le fichier n'existe pas",
+        "include génère une erreur fatale si le fichier n'existe pas",
+        "require continue l'exécution même si le fichier n'existe pas",
+        "include continue l'exécution même si le fichier n'existe pas"
+      ],
+      "correct_answer": [
+        "require génère une erreur fatale si le fichier n'existe pas",
+        "include continue l'exécution même si le fichier n'existe pas"
+      ]
+    },
+    {
+      "id": "Q17",
+      "type": 1,
+      "question": "Complétez cette connexion PDO : [code]$pdo = new PDO('mysql:host=localhost;dbname=test', '____', '____');[/code]",
+      "options": "",
+      "correct_answer": "[code]username, password[/code]"
+    },
+    {
+      "id": "Q18",
+      "type": 0,
+      "question": "Que signifie l'acronyme PDO ?",
+      "options": [
+        "PHP Database Object",
+        "PHP Data Object",
+        "Personal Data Object",
+        "Public Database Object"
+      ],
+      "correct_answer": "PHP Data Object"
+    },
+    {
+      "id": "Q19",
+      "type": 1,
+      "question": "Complétez ce code pour récupérer des données POST : [code]$nom = $_____['nom'];[/code]",
+      "options": "",
+      "correct_answer": "[code]POST[/code]"
+    },
+    {
+      "id": "Q20",
+      "type": 0,
+      "question": "Quelles sont les superglobales utilisées pour récupérer les données de formulaire ?",
+      "options": [
+        "[code]$_POST[/code]",
+        "[code]$_GET[/code]",
+        "[code]$_REQUEST[/code]",
+        "[code]$_FORM[/code]",
+        "[code]$_DATA[/code]"
+      ],
+      "correct_answer": [
+        "[code]$_POST[/code]",
+        "[code]$_GET[/code]",
+        "[code]$_REQUEST[/code]"
+      ]
+    },
+    {
+      "id": "Q21",
+      "type": 1,
+      "question": "Complétez cette requête SQL de sélection : [code]______ * FROM utilisateurs;[/code]",
+      "options": "",
+      "correct_answer": "[code]SELECT[/code]"
+    },
+    {
+      "id": "Q22",
+      "type": 0,
+      "question": "Quelles sont les opérations CRUD en SQL ?",
+      "options": [
+        "[code]CREATE[/code]",
+        "[code]SELECT[/code]",
+        "[code]INSERT[/code]",
+        "[code]UPDATE[/code]",
+        "[code]DELETE[/code]"
+      ],
+      "correct_answer": [
+        "[code]SELECT[/code]",
+        "[code]INSERT[/code]",
+        "[code]UPDATE[/code]",
+        "[code]DELETE[/code]"
+      ]
+    },
+    {
+      "id": "Q23",
+      "type": 1,
+      "question": "Complétez cette requête d'insertion : [code]INSERT _____ table (col1, col2) VALUES ('val1', 'val2');[/code]",
+      "options": "",
+      "correct_answer": "[code]INTO[/code]"
+    },
+    {
+      "id": "Q24",
+      "type": 0,
+      "question": "Quelle est la syntaxe correcte pour une requête UPDATE ?",
+      "options": [
+        "[code]UPDATE table SET colonne = 'valeur' WHERE condition[/code]",
+        "[code]UPDATE table WHERE condition SET colonne = 'valeur'[/code]",
+        "[code]SET table UPDATE colonne = 'valeur' WHERE condition[/code]",
+        "[code]MODIFY table SET colonne = 'valeur' WHERE condition[/code]"
+      ],
+      "correct_answer": "[code]UPDATE table SET colonne = 'valeur' WHERE condition[/code]"
+    },
+    {
+      "id": "Q25",
+      "type": 1,
+      "question": "Complétez cette requête de suppression : [code]DELETE _____ table WHERE id = 1;[/code]",
+      "options": "",
+      "correct_answer": "[code]FROM[/code]"
+    },
+    {
+      "id": "Q26",
+      "type": 0,
+      "question": "Qu'est-ce qu'une session en PHP ?",
+      "options": [
+        "Un moyen de stocker des données côté serveur pour chaque utilisateur",
+        "Un moyen de stocker des données côté client",
+        "Une connexion permanente à la base de données",
+        "Un fichier temporaire sur le serveur"
+      ],
+      "correct_answer": "Un moyen de stocker des données côté serveur pour chaque utilisateur"
+    },
+    {
+      "id": "Q27",
+      "type": 1,
+      "question": "Complétez cette déclaration de classe PHP : [code]_____ MaClasse { }[/code]",
+      "options": "",
+      "correct_answer": "[code]class[/code]"
+    },
+    {
+      "id": "Q28",
+      "type": 0,
+      "question": "Quelles sont les principales failles de sécurité en PHP ?",
+      "options": [
+        "Injection SQL",
+        "XSS (Cross-Site Scripting)",
+        "CSRF (Cross-Site Request Forgery)",
+        "Buffer Overflow",
+        "Inclusion de fichiers dangereux"
+      ],
+      "correct_answer": [
+        "Injection SQL",
+        "XSS (Cross-Site Scripting)",
+        "CSRF (Cross-Site Request Forgery)",
+        "Inclusion de fichiers dangereux"
+      ]
+    },
+    {
+      "id": "Q29",
+      "type": 1,
+      "question": "Complétez cette requête préparée : [code]$stmt = $pdo->prepare('SELECT * FROM users WHERE id = _____');[/code]",
+      "options": "",
+      "correct_answer": "[code]:id[/code]"
+    },
+    {
+      "id": "Q30",
+      "type": 0,
+      "question": "Que signifie l'acronyme SQL ?",
+      "options": [
+        "Structured Query Language",
+        "Standard Query Language",
+        "Simple Query Language",
+        "System Query Language"
+      ],
+      "correct_answer": "Structured Query Language"
+    },
+    {
+      "id": "Q31",
+      "type": 1,
+      "question": "Complétez cette jointure SQL : [code]SELECT * FROM table1 _____ JOIN table2 ON table1.id = table2.id;[/code]",
+      "options": "",
+      "correct_answer": "[code]INNER[/code]"
+    },
+    {
+      "id": "Q32",
+      "type": 0,
+      "question": "Quels sont les types de jointures SQL ?",
+      "options": [
+        "[code]INNER JOIN[/code]",
+        "[code]LEFT JOIN[/code]",
+        "[code]RIGHT JOIN[/code]",
+        "[code]FULL JOIN[/code]",
+        "[code]CROSS JOIN[/code]"
+      ],
+      "correct_answer": [
+        "[code]INNER JOIN[/code]",
+        "[code]LEFT JOIN[/code]",
+        "[code]RIGHT JOIN[/code]",
+        "[code]FULL JOIN[/code]",
+        "[code]CROSS JOIN[/code]"
+      ]
+    },
+    {
+      "id": "Q33",
+      "type": 1,
+      "question": "Complétez cette définition de base de données : [code]CREATE ________ ma_base;[/code]",
+      "options": "",
+      "correct_answer": "[code]DATABASE[/code]"
+    },
+    {
+      "id": "Q34",
+      "type": 0,
+      "question": "Quels sont les principes ACID d'une base de données ?",
+      "options": [
+        "Atomicité",
+        "Cohérence",
+        "Isolement",
+        "Durabilité",
+        "Accessibilité"
+      ],
+      "correct_answer": [
+        "Atomicité",
+        "Cohérence",
+        "Isolement",
+        "Durabilité"
+      ]
+    },
+    {
+      "id": "Q35",
+      "type": 1,
+      "question": "Complétez cette création de table : [code]CREATE TABLE users (id INT PRIMARY _____, nom VARCHAR(50));[/code]",
+      "options": "",
+      "correct_answer": "[code]KEY[/code]"
+    },
+    {
+      "id": "Q36",
+      "type": 0,
+      "question": "Qu'est-ce qu'une clé primaire ?",
+      "options": [
+        "Une donnée qui identifie de manière unique un enregistrement",
+        "Une donnée qui peut être nulle",
+        "Une donnée qui peut être dupliquée",
+        "Une donnée qui fait référence à une autre table"
+      ],
+      "correct_answer": "Une donnée qui identifie de manière unique un enregistrement"
+    },
+    {
+      "id": "Q37",
+      "type": 1,
+      "question": "Complétez cette contrainte de clé étrangère : [code]FOREIGN _____ (id_user) REFERENCES users(id);[/code]",
+      "options": "",
+      "correct_answer": "[code]KEY[/code]"
+    },
+    {
+      "id": "Q38",
+      "type": 0,
+      "question": "Qu'est-ce que la méthode Merise ?",
+      "options": [
+        "Une méthode de modélisation de bases de données",
+        "Un langage de programmation",
+        "Un système de gestion de base de données",
+        "Un outil de développement web"
+      ],
+      "correct_answer": "Une méthode de modélisation de bases de données"
+    },
+    {
+      "id": "Q39",
+      "type": 1,
+      "question": "Complétez cette fonction d'agrégation : [code]SELECT _____(prix) FROM produits;[/code]",
+      "options": "",
+      "correct_answer": "[code]AVG[/code]"
+    },
+    {
+      "id": "Q40",
+      "type": 0,
+      "question": "Quelles sont les fonctions d'agrégation en SQL ?",
+      "options": [
+        "[code]COUNT()[/code]",
+        "[code]SUM()[/code]",
+        "[code]AVG()[/code]",
+        "[code]MIN()[/code]",
+        "[code]MAX()[/code]",
+        "[code]TOTAL()[/code]"
+      ],
+      "correct_answer": [
+        "[code]COUNT()[/code]",
+        "[code]SUM()[/code]",
+        "[code]AVG()[/code]",
+        "[code]MIN()[/code]",
+        "[code]MAX()[/code]"
+      ]
+    },
+    {
+      "id": "Q41",
+      "type": 1,
+      "question": "Complétez cette condition de tri : [code]SELECT * FROM users ORDER _____ nom ASC;[/code]",
+      "options": "",
+      "correct_answer": "[code]BY[/code]"
+    },
+    {
+      "id": "Q42",
+      "type": 0,
+      "question": "Quelle est la différence entre ASC et DESC dans ORDER BY ?",
+      "options": [
+        "[code]ASC trie par ordre croissant[/code]",
+        "[code]DESC trie par ordre croissant[/code]",
+        "[code]ASC trie par ordre décroissant[/code]",
+        "[code]DESC trie par ordre décroissant[/code]"
+      ],
+      "correct_answer": [
+        "[code]ASC trie par ordre croissant[/code]",
+        "[code]DESC trie par ordre décroissant[/code]"
+      ]
+    },
+    {
+      "id": "Q43",
+      "type": 1,
+      "question": "Complétez cette requête avec limitation : [code]SELECT * FROM users _____ 10;[/code]",
+      "options": "",
+      "correct_answer": "[code]LIMIT[/code]"
+    },
+    {
+      "id": "Q44",
+      "type": 0,
+      "question": "Quelle est la syntaxe correcte pour un commentaire PHP sur une ligne ?",
+      "options": [
+        "[code]// commentaire[/code]",
+        "[code]# commentaire[/code]",
+        "[code]/* commentaire */[/code]",
+        "[code]-- commentaire[/code]"
+      ],
+      "correct_answer": [
+        "[code]// commentaire[/code]",
+        "[code]# commentaire[/code]"
+      ]
+    },
+    {
+      "id": "Q45",
+      "type": 1,
+      "question": "Complétez cette déclaration d'attribut de classe : [code]class User { _____ $nom; }[/code]",
+      "options": "",
+      "correct_answer": "[code]public[/code]"
+    },
+    {
+      "id": "Q46",
+      "type": 0,
+      "question": "Quels sont les niveaux de visibilité d'une propriété de classe en PHP ?",
+      "options": [
+        "[code]public[/code]",
+        "[code]private[/code]",
+        "[code]protected[/code]",
+        "[code]static[/code]",
+        "[code]final[/code]"
+      ],
+      "correct_answer": [
+        "[code]public[/code]",
+        "[code]private[/code]",
+        "[code]protected[/code]"
+      ]
+    },
+    {
+      "id": "Q47",
+      "type": 1,
+      "question": "Complétez cette instanciation d'objet : [code]$user = _____ User();[/code]",
+      "options": "",
+      "correct_answer": "[code]new[/code]"
+    },
+    {
+      "id": "Q48",
+      "type": 0,
+      "question": "Comment prévenir les injections SQL ?",
+      "options": [
+        "Utiliser des requêtes préparées",
+        "Échapper les caractères spéciaux",
+        "Valider les entrées utilisateur",
+        "Utiliser des requêtes dynamiques",
+        "Filtrer les données"
+      ],
+      "correct_answer": [
+        "Utiliser des requêtes préparées",
+        "Échapper les caractères spéciaux",
+        "Valider les entrées utilisateur",
+        "Filtrer les données"
+      ]
+    },
+    {
+      "id": "Q49",
+      "type": 1,
+      "question": "Complétez cette requête avec groupement : [code]SELECT categorie, COUNT(*) FROM produits _____ BY categorie;[/code]",
+      "options": "",
+      "correct_answer": "[code]GROUP[/code]"
+    },
+    {
+      "id": "Q50",
+      "type": 0,
+      "question": "Quelle est la fonction de HAVING dans une requête SQL ?",
+      "options": [
+        "Filtrer les résultats après regroupement",
+        "Filtrer les résultats avant regroupement",
+        "Trier les résultats",
+        "Limiter le nombre de résultats"
+      ],
+      "correct_answer": "Filtrer les résultats après regroupement"
+    },
+    {
+      "id": "Q51",
+      "type": 0,
+      "question": "Quels sont les types de données PHP manquants parmi les suivants ?",
+      "options": [
+        "[code]Boolean[/code]",
+        "[code]Null[/code]",
+        "[code]Resource[/code]",
+        "[code]Callable[/code]",
+        "[code]Iterable[/code]"
+      ],
+      "correct_answer": [
+        "[code]Boolean[/code]",
+        "[code]Null[/code]",
+        "[code]Resource[/code]",
+        "[code]Callable[/code]",
+        "[code]Iterable[/code]"
+      ]
+    },
+    {
+      "id": "Q52",
+      "type": 1,
+      "question": "Complétez cette déclaration de constante PHP : [code]_____ PI = 3.14159;[/code]",
+      "options": "",
+      "correct_answer": "[code]define[/code]"
+    },
+    {
+      "id": "Q53",
+      "type": 0,
+      "question": "Quelles sont les superglobales PHP ?",
+      "options": [
+        "[code]$_GET[/code]",
+        "[code]$_POST[/code]",
+        "[code]$_SESSION[/code]",
+        "[code]$_COOKIE[/code]",
+        "[code]$_SERVER[/code]",
+        "[code]$_ENV[/code]",
+        "[code]$_FILES[/code]",
+        "[code]$GLOBALS[/code]"
+      ],
+      "correct_answer": [
+        "[code]$_GET[/code]",
+        "[code]$_POST[/code]",
+        "[code]$_SESSION[/code]",
+        "[code]$_COOKIE[/code]",
+        "[code]$_SERVER[/code]",
+        "[code]$_ENV[/code]",
+        "[code]$_FILES[/code]",
+        "[code]$GLOBALS[/code]"
+      ]
+    },
+    {
+      "id": "Q54",
+      "type": 1,
+      "question": "Complétez cette fonction de hachage de mot de passe : [code]$hash = _____($password);[/code]",
+      "options": "",
+      "correct_answer": "[code]password_hash[/code]"
+    },
+    {
+      "id": "Q55",
+      "type": 0,
+      "question": "Quels sont les index MySQL les plus courants ?",
+      "options": [
+        "[code]PRIMARY[/code]",
+        "[code]UNIQUE[/code]",
+        "[code]INDEX[/code]",
+        "[code]FULLTEXT[/code]",
+        "[code]SPATIAL[/code]"
+      ],
+      "correct_answer": [
+        "[code]PRIMARY[/code]",
+        "[code]UNIQUE[/code]",
+        "[code]INDEX[/code]",
+        "[code]FULLTEXT[/code]"
+      ]
+    },
+    {
+      "id": "Q56",
+      "type": 1,
+      "question": "En quelle année JavaScript a-t-il été créé ?",
+      "options": "",
+      "correct_answer": "1995"
+    },
+    {
+      "id": "Q57",
+      "type": 0,
+      "question": "Qui a créé JavaScript ?",
+      "options": [
+        "Brendan Eich",
+        "Tim Berners-Lee",
+        "Douglas Crockford",
+        "John Resig"
+      ],
+      "correct_answer": "Brendan Eich"
+    },
+    {
+      "id": "Q58",
+      "type": 0,
+      "question": "Que signifie l'acronyme ECMAScript ?",
+      "options": [
+        "European Computer Manufacturers Association Script",
+        "Enhanced Client-side Modular Application Script",
+        "Electronic Commerce Management Application Script",
+        "Extended Common Management Application Script"
+      ],
+      "correct_answer": "European Computer Manufacturers Association Script"
+    },
+    {
+      "id": "Q59",
+      "type": 1,
+      "question": "Complétez cette déclaration de variable JavaScript moderne : [code]_____ userName = 'John';[/code]",
+      "options": "",
+      "correct_answer": "[code]let[/code]"
+    },
+    {
+      "id": "Q60",
+      "type": 0,
+      "question": "Quelles sont les caractéristiques principales de JavaScript ?",
+      "options": [
+        "Langage interprété",
+        "Typage faible",
+        "Langage orienté objet",
+        "Langage fonctionnel",
+        "Manipulation du DOM",
+        "Langage compilé"
+      ],
+      "correct_answer": [
+        "Langage interprété",
+        "Typage faible",
+        "Langage orienté objet",
+        "Langage fonctionnel",
+        "Manipulation du DOM"
+      ]
+    },
+    {
+      "id": "Q61",
+      "type": 1,
+      "question": "Complétez cette déclaration de constante JavaScript : [code]_____ PI = 3.14159;[/code]",
+      "options": "",
+      "correct_answer": "[code]const[/code]"
+    },
+    {
+      "id": "Q62",
+      "type": 0,
+      "question": "Quels sont les types de données de base en JavaScript ?",
+      "options": [
+        "[code]Number[/code]",
+        "[code]String[/code]",
+        "[code]Boolean[/code]",
+        "[code]Array[/code]",
+        "[code]Object[/code]",
+        "[code]Undefined[/code]",
+        "[code]Null[/code]"
+      ],
+      "correct_answer": [
+        "[code]Number[/code]",
+        "[code]String[/code]",
+        "[code]Boolean[/code]",
+        "[code]Array[/code]",
+        "[code]Object[/code]",
+        "[code]Undefined[/code]",
+        "[code]Null[/code]"
+      ]
+    },
+    {
+      "id": "Q63",
+      "type": 0,
+      "question": "Quelles sont les utilisations courantes de JavaScript ?",
+      "options": [
+        "Interactivité des pages web",
+        "Validation de formulaires",
+        "Animations",
+        "Développement de jeux",
+        "Applications web avec frameworks",
+        "Compilation de code"
+      ],
+      "correct_answer": [
+        "Interactivité des pages web",
+        "Validation de formulaires",
+        "Animations",
+        "Développement de jeux",
+        "Applications web avec frameworks"
+      ]
+    },
+    {
+      "id": "Q64",
+      "type": 0,
+      "question": "Quels sont les frameworks JavaScript mentionnés dans le cours ?",
+      "options": [
+        "React",
+        "Angular",
+        "Vue.js",
+        "Ember.js",
+        "Backbone.js",
+        "Meteor.js",
+        "jQuery"
+      ],
+      "correct_answer": [
+        "React",
+        "Angular",
+        "Vue.js",
+        "Ember.js",
+        "Backbone.js",
+        "Meteor.js"
+      ]
+    },
+    {
+      "id": "Q65",
+      "type": 0,
+      "question": "Quelles sont les bibliothèques JavaScript mentionnées ?",
+      "options": [
+        "jQuery",
+        "Lodash",
+        "Moment.js",
+        "Axios",
+        "React",
+        "Bootstrap"
+      ],
+      "correct_answer": [
+        "jQuery",
+        "Lodash",
+        "Moment.js",
+        "Axios"
+      ]
+    },
+    {
+      "id": "Q66",
+      "type": 1,
+      "question": "Complétez ce commentaire JavaScript sur une ligne : [code]__ Ceci est un commentaire[/code]",
+      "options": "",
+      "correct_answer": "[code]//[/code]"
+    },
+    {
+      "id": "Q67",
+      "type": 0,
+      "question": "Quelles sont les trois manières d'insérer du JavaScript dans une page web ?",
+      "options": [
+        "[code]Balise <script> dans le <head>[/code]",
+        "[code]Balise <script> à la fin du <body>[/code]",
+        "[code]Événement DOMContentLoaded[/code]",
+        "[code]Fichier externe .js[/code]",
+        "[code]Inline dans les attributs HTML[/code]"
+      ],
+      "correct_answer": [
+        "[code]Balise <script> dans le <head>[/code]",
+        "[code]Balise <script> à la fin du <body>[/code]",
+        "[code]Événement DOMContentLoaded[/code]"
+      ]
+    },
+    {
+      "id": "Q68",
+      "type": 1,
+      "question": "Quelle fonction JavaScript permet d'afficher un message dans la console ?",
+      "options": "",
+      "correct_answer": "[code]console.log[/code]"
+    },
+    {
+      "id": "Q69",
+      "type": 0,
+      "question": "Quel est l'avantage de placer le script à la fin du <body> ?",
+      "options": [
+        "Améliore les performances de chargement",
+        "Permet au DOM d'être chargé avant l'exécution",
+        "Évite les erreurs de référence",
+        "Ralentit le chargement de la page"
+      ],
+      "correct_answer": [
+        "Améliore les performances de chargement",
+        "Permet au DOM d'être chargé avant l'exécution",
+        "Évite les erreurs de référence"
+      ]
+    },
+    {
+      "id": "Q70",
+      "type": 0,
+      "question": "Quelle est la différence entre textContent et innerHTML ?",
+      "options": [
+        "[code]textContent affiche seulement le texte[/code]",
+        "[code]innerHTML peut interpréter le HTML[/code]",
+        "[code]textContent est plus sécurisé[/code]",
+        "[code]innerHTML est plus rapide[/code]"
+      ],
+      "correct_answer": [
+        "[code]textContent affiche seulement le texte[/code]",
+        "[code]innerHTML peut interpréter le HTML[/code]",
+        "[code]textContent est plus sécurisé[/code]"
+      ]
+    },
+    {
+      "id": "Q71",
+      "type": 1,
+      "question": "Quelle version d'ECMAScript a apporté des mises à jour majeures en 2015 ?",
+      "options": "",
+      "correct_answer": "[code]ES6[/code]"
+    },
+    {
+      "id": "Q72",
+      "type": 0,
+      "question": "Depuis ES6, à quelle fréquence ECMAScript est-il mis à jour ?",
+      "options": [
+        "Chaque année",
+        "Tous les 2 ans",
+        "Tous les 5 ans",
+        "De manière irrégulière"
+      ],
+      "correct_answer": "Chaque année"
+    },
+    {
+      "id": "Q73",
+      "type": 1,
+      "question": "Complétez cette formule de conversion Celsius vers Fahrenheit : [code]F = C * ___ + 32[/code]",
+      "options": "",
+      "correct_answer": "[code]9/5[/code]"
+    },
+    {
+      "id": "Q74",
+      "type": 0,
+      "question": "Quels éditeurs de code sont recommandés pour JavaScript ?",
+      "options": [
+        "Visual Studio Code",
+        "Sublime Text",
+        "Atom",
+        "Notepad",
+        "WebStorm"
+      ],
+      "correct_answer": [
+        "Visual Studio Code",
+        "Sublime Text",
+        "Atom",
+        "WebStorm"
+      ]
+    },
+    {
+      "id": "Q75",
+      "type": 1,
+      "question": "Quelle méthode JavaScript permet d'arrondir un nombre à 2 décimales ?",
+      "options": "",
+      "correct_answer": "[code]toFixed[/code]"
+    },
+    {
+      "id": "Q76",
+      "type": 1,
+      "question": "Complétez cette boucle for PHP : [code]for ($i = 0; $i __ 10; $i++) { echo $i; }[/code]",
+      "options": "",
+      "correct_answer": "[code]<[/code]"
+    },
+    {
+      "id": "Q77",
+      "type": 0,
+      "question": "Quels sont les opérateurs de comparaison en PHP ?",
+      "options": [
+        "[code]==[/code]",
+        "[code]===[/code]",
+        "[code]!=[/code]",
+        "[code]!==[/code]",
+        "[code]<>[/code]",
+        "[code]<=[/code]",
+        "[code]>=[/code]",
+        "[code]<[/code]",
+        "[code]>[/code]",
+        "[code]<=>[/code]",
+        "[code]??[/code]",
+        "[code]?:[/code]"
+      ],
+      "correct_answer": [
+        "[code]==[/code]",
+        "[code]===[/code]",
+        "[code]!=[/code]",
+        "[code]!==[/code]",
+        "[code]<>[/code]",
+        "[code]<=[/code]",
+        "[code]>=[/code]",
+        "[code]<[/code]",
+        "[code]>[/code]",
+        "[code]<=>[/code]"
+      ]
+    },
+    {
+      "id": "Q78",
+      "type": 1,
+      "question": "Complétez cette création de tableau classique avec la syntaxe moderne : [code]$fruits = [______, 'banane', 'orange'];[/code]",
+      "options": "",
+      "correct_answer": "[code]'pomme'[/code]"
+    },
+    {
+      "id": "Q79",
+      "type": 0,
+      "question": "Quelle est la différence principale entre un tableau classique et un tableau associatif en PHP ?",
+      "options": [
+        "Les tableaux classiques utilisent des indices numériques à partir de 0",
+        "Les tableaux associatifs utilisent des clés textuelles",
+        "Les tableaux classiques sont plus rapides",
+        "Les tableaux associatifs peuvent contenir plus d'éléments"
+      ],
+      "correct_answer": [
+        "Les tableaux classiques utilisent des indices numériques à partir de 0",
+        "Les tableaux associatifs utilisent des clés textuelles"
+      ]
+    },
+    {
+      "id": "Q80",
+      "type": 1,
+      "question": "Complétez cette déclaration de tableau associatif : [code]$personne = ['nom' => 'Dupont', 'age' __ 25];[/code]",
+      "options": "",
+      "correct_answer": "[code]=>[/code]"
+    },
+    {
+      "id": "Q81",
+      "type": 0,
+      "question": "Comment accède-t-on au deuxième élément d'un tableau classique $tab ?",
+      "options": [
+        "[code]$tab[1][/code]",
+        "[code]$tab[2][/code]",
+        "[code]$tab['1'][/code]",
+        "[code]$tab.1[/code]"
+      ],
+      "correct_answer": "[code]$tab[1][/code]"
+    },
+    {
+      "id": "Q82",
+      "type": 1,
+      "question": "Complétez cette fonction pour ajouter un élément à la fin d'un tableau : [code]______$($tableau, 'nouvel_element');[/code]",
+      "options": "",
+      "correct_answer": "[code]array_push[/code]"
+    },
+    {
+      "id": "Q83",
+      "type": 0,
+      "question": "Quelles sont les syntaxes valides pour créer un tableau classique en PHP ?",
+      "options": [
+        "[code]array('a', 'b', 'c')[/code]",
+        "[code]['a', 'b', 'c'][/code]",
+        "[code]new Array('a', 'b', 'c')[/code]",
+        "[code]$tab = 'a', 'b', 'c'[/code]"
+      ],
+      "correct_answer": [
+        "[code]array('a', 'b', 'c')[/code]",
+        "[code]['a', 'b', 'c'][/code]"
+      ]
+    },
+    {
+      "id": "Q84",
+      "type": 1,
+      "question": "Quelle fonction PHP permet de compter le nombre d'éléments dans un tableau ?",
+      "options": "",
+      "correct_answer": "[code]count[/code]"
+    },
+    {
+      "id": "Q85",
+      "type": 0,
+      "question": "Dans un tableau associatif, que représente la partie avant '=>' ?",
+      "options": [
+        "La clé",
+        "La valeur",
+        "L'index",
+        "Le type"
+      ],
+      "correct_answer": "La clé"
+    },
+    {
+      "id": "Q86",
+      "type": 1,
+      "question": "Complétez cette boucle foreach pour afficher les valeurs d'un tableau classique : [code]foreach ($tab as $______) { echo $______; }[/code]",
+      "options": "",
+      "correct_answer": "[code]valeur, valeur[/code]"
+    },
+    {
+      "id": "Q87",
+      "type": 0,
+      "question": "Quelles fonctions PHP permettent de manipuler les tableaux ?",
+      "options": [
+        "[code]array_merge()[/code]",
+        "[code]array_keys()[/code]",
+        "[code]array_values()[/code]",
+        "[code]array_flip()[/code]",
+        "[code]array_search()[/code]",
+        "[code]string_merge()[/code]"
+      ],
+      "correct_answer": [
+        "[code]array_merge()[/code]",
+        "[code]array_keys()[/code]",
+        "[code]array_values()[/code]",
+        "[code]array_flip()[/code]",
+        "[code]array_search()[/code]"
+      ]
+    },
+    {
+      "id": "Q88",
+      "type": 1,
+      "question": "Complétez cette vérification d'existence d'une clé : [code]if (______($cle, $tableau)) { echo 'Clé trouvée'; }[/code]",
+      "options": "",
+      "correct_answer": "[code]array_key_exists[/code]"
+    },
+    {
+      "id": "Q89",
+      "type": 0,
+      "question": "Que se passe-t-il si on accède à un index qui n'existe pas dans un tableau ?",
+      "options": [
+        "PHP génère une notice (warning)",
+        "PHP retourne null",
+        "PHP génère une erreur fatale",
+        "PHP retourne une chaîne vide"
+      ],
+      "correct_answer": "PHP génère une notice (warning)"
+    },
+    {
+      "id": "Q90",
+      "type": 1,
+      "question": "Complétez cette création de tableau associatif multidimensionnel : [code]$users = ['user1' => ['nom' => 'Martin', 'age' __ 30]];[/code]",
+      "options": "",
+      "correct_answer": "[code]=>[/code]"
+    },
+    {
+      "id": "Q91",
+      "type": 0,
+      "question": "Comment peut-on parcourir un tableau associatif en récupérant clés ET valeurs ?",
+      "options": [
+        "[code]foreach ($tab as $cle => $valeur)[/code]",
+        "[code]for ($i=0; $i<count($tab); $i++)[/code]",
+        "[code]while (list($cle, $valeur) = each($tab))[/code]",
+        "[code]foreach ($tab as $valeur => $cle)[/code]"
+      ],
+      "correct_answer": "[code]foreach ($tab as $cle => $valeur)[/code]"
+    },
+    {
+      "id": "Q92",
+      "type": 1,
+      "question": "Quelle fonction permet d'obtenir toutes les clés d'un tableau associatif ?",
+      "options": "",
+      "correct_answer": "[code]array_keys[/code]"
+    },
+    {
+      "id": "Q93",
+      "type": 0,
+      "question": "Quels types de données peuvent servir de clés dans un tableau associatif PHP ?",
+      "options": [
+        "Chaînes de caractères",
+        "Entiers",
+        "Tableaux",
+        "Objets",
+        "Booléens"
+      ],
+      "correct_answer": [
+        "Chaînes de caractères",
+        "Entiers"
+      ]
+    },
+    {
+      "id": "Q94",
+      "type": 1,
+      "question": "Complétez cette suppression d'élément de tableau : [code]____($tableau['cle_a_supprimer']);[/code]",
+      "options": "",
+      "correct_answer": "[code]unset[/code]"
+    },
+    {
+      "id": "Q95",
+      "type": 0,
+      "question": "Quelle est la différence entre array_merge() et l'opérateur + pour les tableaux ?",
+      "options": [
+        "[code]array_merge() réindexe les clés numériques[/code]",
+        "[code]L'opérateur + préserve les clés originales[/code]",
+        "[code]array_merge() est plus rapide[/code]",
+        "[code]L'opérateur + fusionne seulement les tableaux associatifs[/code]"
+      ],
+      "correct_answer": [
+        "[code]array_merge() réindexe les clés numériques[/code]",
+        "[code]L'opérateur + préserve les clés originales[/code]"
+      ]
+    },
+    {
+      "id": "Q96",
+      "type": 1,
+      "question": "Complétez cette fonction pour vérifier si un tableau est vide : [code]if (____($tableau)) { echo 'Tableau vide'; }[/code]",
+      "options": "",
+      "correct_answer": "[code]empty[/code]"
+    },
+    {
+      "id": "Q97",
+      "type": 0,
+      "question": "Comment peut-on transformer un tableau associatif en tableau classique ?",
+      "options": [
+        "[code]array_values()[/code]",
+        "[code]array_keys()[/code]",
+        "[code]array_flip()[/code]",
+        "[code]array_change_key_case()[/code]"
+      ],
+      "correct_answer": "[code]array_values()[/code]"
+    },
+    {
+      "id": "Q98",
+      "type": 1,
+      "question": "Complétez cette fonction pour trier un tableau associatif par valeurs : [code]____($tableau);[/code]",
+      "options": "",
+      "correct_answer": "[code]asort[/code]"
+    },
+    {
+      "id": "Q99",
+      "type": 0,
+      "question": "Quelles sont les fonctions de tri disponibles pour les tableaux en PHP ?",
+      "options": [
+        "[code]sort() - trie par valeurs (réindexe)[/code]",
+        "[code]asort() - trie par valeurs (préserve les clés)[/code]",
+        "[code]ksort() - trie par clés[/code]",
+        "[code]rsort() - trie par valeurs décroissant[/code]",
+        "[code]usort() - tri personnalisé[/code]"
+      ],
+      "correct_answer": [
+        "[code]sort() - trie par valeurs (réindexe)[/code]",
+        "[code]asort() - trie par valeurs (préserve les clés)[/code]",
+        "[code]ksort() - trie par clés[/code]",
+        "[code]rsort() - trie par valeurs décroissant[/code]",
+        "[code]usort() - tri personnalisé[/code]"
+      ]
+    },
+    {
+      "id": "Q100",
+      "type": 1,
+      "question": "Complétez cette fonction pour imploder un tableau en chaîne : [code]$chaine = ______(', ', $tableau);[/code]",
+      "options": "",
+      "correct_answer": "[code]implode[/code]"
+    },
+    {
+      "id": "Q101",
+      "type": 0,
+      "question": "Que fait la fonction array_slice() ?",
+      "options": [
+        "Extrait une portion de tableau",
+        "Divise un tableau en plusieurs parties",
+        "Supprime des éléments du tableau",
+        "Fusionne deux tableaux"
+      ],
+      "correct_answer": "Extrait une portion de tableau"
+    },
+    {
+      "id": "Q102",
+      "type": 1,
+      "question": "Complétez cette fonction pour rechercher une valeur dans un tableau : [code]$cle = ______($valeur, $tableau);[/code]",
+      "options": "",
+      "correct_answer": "[code]array_search[/code]"
+    },
+    {
+      "id": "Q103",
+      "type": 0,
+      "question": "Comment peut-on ajouter un élément au début d'un tableau classique ?",
+      "options": [
+        "[code]array_unshift()[/code]",
+        "[code]array_push()[/code]",
+        "[code]array_prepend()[/code]",
+        "[code]$tableau[0] = 'valeur'[/code]"
+      ],
+      "correct_answer": "[code]array_unshift()[/code]"
+    },
+    {
+      "id": "Q104",
+      "type": 1,
+      "question": "Complétez cette déclaration de tableau multidimensionnel : [code]$matrix = [______, [4, 5, 6], [7, 8, 9]];[/code]",
+      "options": "",
+      "correct_answer": "[code][1, 2, 3][/code]"
+    },
+    {
+      "id": "Q105",
+      "type": 0,
+      "question": "Quelle est la différence entre isset() et array_key_exists() pour les tableaux ?",
+      "options": [
+        "[code]isset() retourne false si la valeur est null[/code]",
+        "[code]array_key_exists() vérifie seulement l'existence de la clé[/code]",
+        "[code]isset() est plus rapide[/code]",
+        "[code]array_key_exists() fonctionne avec les objets[/code]"
+      ],
+      "correct_answer": [
+        "[code]isset() retourne false si la valeur est null[/code]",
+        "[code]array_key_exists() vérifie seulement l'existence de la clé[/code]"
+      ]
+    }
+  ]
+}
