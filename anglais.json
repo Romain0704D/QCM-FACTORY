@@ -1285,6 +1285,546 @@
         "some"
       ],
       "correct_answer": "much"
-    }    
+    },
+    {
+      "id": "Q122",
+      "type": 0,
+      "question": "Complétez la phrase : J'ai _____ temps libre ce soir.",
+      "options": [
+        "a little",
+        "a few",
+        "little",
+        "few"
+      ],
+      "correct_answer": "a little"
+    },
+    {
+      "id": "Q123",
+      "type": 0,
+      "question": "Choisissez la bonne option : Il reste _____ pommes dans le panier.",
+      "options": [
+        "a little",
+        "a few",
+        "little",
+        "few"
+      ],
+      "correct_answer": "a few"
+    },
+    {
+      "id": "Q124",
+      "type": 0,
+      "question": "Quelle phrase est correcte ?",
+      "options": [
+        "I need a little informations about the project.",
+        "I need a little information about the project.",
+        "I need a few information about the project.",
+        "I need few information about the project."
+      ],
+      "correct_answer": "I need a little information about the project."
+    },
+    {
+      "id": "Q125",
+      "type": 0,
+      "question": "Complétez : Elle a _____ amis proches.",
+      "options": [
+        "a little",
+        "a few",
+        "little",
+        "few"
+      ],
+      "correct_answer": "a few"
+    },
+    {
+      "id": "Q126",
+      "type": 0,
+      "question": "Choisissez la phrase correcte :",
+      "options": [
+        "There's a few milk in the fridge.",
+        "There's a little milk in the fridge.",
+        "There's few milk in the fridge.",
+        "There's little milk in the fridge."
+      ],
+      "correct_answer": "There's a little milk in the fridge."
+    },
+    {
+      "id": "Q127",
+      "type": 0,
+      "question": "Quelle est la principale différence entre a little et a few ?",
+      "options": [
+        "A little est plus poli que a few",
+        "A little s'utilise avec les noms indénombrables, a few avec les noms dénombrables",
+        "A little est au singulier, a few au pluriel",
+        "Il n'y a pas de différence"
+      ],
+      "correct_answer": "A little s'utilise avec les noms indénombrables, a few avec les noms dénombrables"
+    },
+    {
+      "id": "Q128",
+      "type": 0,
+      "question": "Quelle différence y a-t-il entre little et a little ?",
+      "options": [
+        "Aucune différence",
+        "Little a une connotation négative, a little est plus positive",
+        "Little est plus formel",
+        "A little est plus fort que little"
+      ],
+      "correct_answer": "Little a une connotation négative, a little est plus positive"
+    },
+    {
+      "id": "Q129",
+      "type": 0,
+      "question": "Complétez avec la forme appropriée : There are _____ people who understand this concept.",
+      "options": [
+        "a little",
+        "a few",
+        "little",
+        "few"
+      ],
+      "correct_answer": "few"
+    },
+    {
+      "id": "Q130",
+      "type": 0,
+      "question": "Laquelle de ces phrases exprime une quantité plus positive ?",
+      "options": [
+        "I have little money.",
+        "I have a little money.",
+        "Les deux sont équivalentes",
+        "Cela dépend du contexte"
+      ],
+      "correct_answer": "I have a little money."
+    },
+    {
+      "id": "Q131",
+      "type": 0,
+      "question": "Avec quel type de nom utilise-t-on a few ?",
+      "options": [
+        "Les noms indénombrables",
+        "Les noms dénombrables au singulier",
+        "Les noms dénombrables au pluriel",
+        "Tous les types de noms"
+      ],
+      "correct_answer": "Les noms dénombrables au pluriel"
+    },
+    {
+      "id": "Q132",
+      "type": 0,
+      "question": "Quelle phrase est grammaticalement incorrecte ?",
+      "options": [
+        "Could you give me a little advice?",
+        "Could you give me a few advices?",
+        "Could you give me some advice?",
+        "Could you give me little advice?"
+      ],
+      "correct_answer": "Could you give me a few advices?"
+    },
+    {
+      "id": "Q133",
+      "type": 0,
+      "question": "Dans quel contexte utiliserait-on few sans article ?",
+      "options": [
+        "Pour être plus poli",
+        "Pour exprimer une quantité très limitée (connotation négative)",
+        "Avec les noms indénombrables",
+        "Jamais, c'est toujours a few"
+      ],
+      "correct_answer": "Pour exprimer une quantité très limitée (connotation négative)"
+    },
+    {
+      "id": "Q134",
+      "type": 0,
+      "question": "Complétez : I need _____ sugar for my coffee.",
+      "options": [
+        "a few",
+        "few",
+        "a little",
+        "little"
+      ],
+      "correct_answer": "a little"
+    },
+    {
+      "id": "Q135",
+      "type": 0,
+      "question": "Quelle phrase exprime le mieux une situation positive ?",
+      "options": [
+        "We have few options left.",
+        "We have a few options left.",
+        "We have little time.",
+        "We have few chances."
+      ],
+      "correct_answer": "We have a few options left."
+    },
+    {
+      "id": "Q136",
+      "type": 0,
+      "question": "Identifiez l'erreur dans cette phrase : She has a little friends in the city.",
+      "options": [
+        "She has devrait être She have",
+        "a little devrait être a few (friends est dénombrable)",
+        "in the city devrait être at the city",
+        "Il n'y a pas d'erreur"
+      ],
+      "correct_answer": "a little devrait être a few (friends est dénombrable)"
+    },
+    {
+      "id": "Q137",
+      "type": 0,
+      "question": "Complétez : _____ student in the class passed the exam.",
+      "options": [
+        "Every",
+        "Each",
+        "All",
+        "Either"
+      ],
+      "correct_answer": "Every"
+    },
+    {
+      "id": "Q138",
+      "type": 0,
+      "question": "Quelle différence principale existe-t-il entre 'every' et 'each' ?",
+      "options": [
+        "'Every' insiste sur le groupe, 'each' sur les individus",
+        "'Every' s'utilise pour deux éléments, 'each' pour plus de deux",
+        "Aucune différence",
+        "'Each' est plus informel"
+      ],
+      "correct_answer": "'Every' insiste sur le groupe, 'each' sur les individus"
+    },
+    {
+      "id": "Q139",
+      "type": 0,
+      "question": "Choisissez la phrase correcte :",
+      "options": [
+        "Each students has a book.",
+        "Every students has a book.",
+        "Each student has a book.",
+        "Every student have a book."
+      ],
+      "correct_answer": "Each student has a book."
+    },
+    {
+      "id": "Q140",
+      "type": 0,
+      "question": "Quelle phrase signifie que tous les éléments sont concernés sans exception ?",
+      "options": [
+        "Each boy won a prize.",
+        "Every boy won a prize.",
+        "Both boys won a prize.",
+        "Either boy won a prize."
+      ],
+      "correct_answer": "Every boy won a prize."
+    },
+    {
+      "id": "Q141",
+      "type": 0,
+      "question": "Dans quelle situation 'each' est-il plus approprié qu''every' ?",
+      "options": [
+        "Quand on parle d'un grand groupe",
+        "Quand on insiste sur la séparation des éléments",
+        "Quand il n'y a qu'un seul élément",
+        "Quand on parle de choses abstraites"
+      ],
+      "correct_answer": "Quand on insiste sur la séparation des éléments"
+    },
+    {
+      "id": "Q142",
+      "type": 0,
+      "question": "Complétez : There is a tree on _____ side of the street.",
+      "options": [
+        "every",
+        "each",
+        "some",
+        "all"
+      ],
+      "correct_answer": "each"
+    },
+    {
+      "id": "Q143",
+      "type": 0,
+      "question": "Quelle phrase est incorrecte ?",
+      "options": [
+        "Every of the students passed.",
+        "Each of the students passed.",
+        "Every student passed.",
+        "Each student passed."
+      ],
+      "correct_answer": "Every of the students passed."
+    },
+    {
+      "id": "Q144",
+      "type": 0,
+      "question": "Complétez : _____ my parents are teachers.",
+      "options": [
+        "Both",
+        "Either",
+        "Neither",
+        "Each"
+      ],
+      "correct_answer": "Both"
+    },
+    {
+      "id": "Q145",
+      "type": 0,
+      "question": "Comment traduit-on 'either' dans la phrase 'You can choose either option' ?",
+      "options": [
+        "Chacun",
+        "Aucun",
+        "L’un ou l’autre",
+        "Les deux"
+      ],
+      "correct_answer": "L’un ou l’autre"
+    },
+    {
+      "id": "Q146",
+      "type": 0,
+      "question": "Quelle phrase exprime l’absence totale parmi deux options ?",
+      "options": [
+        "Neither answer is correct.",
+        "Either answer is correct.",
+        "Both answers are correct.",
+        "Each answer is correct."
+      ],
+      "correct_answer": "Neither answer is correct."
+    },
+    {
+      "id": "Q147",
+      "type": 0,
+      "question": "Complétez : _____ of the two roads leads to the station.",
+      "options": [
+        "Either",
+        "Both",
+        "Neither",
+        "Every"
+      ],
+      "correct_answer": "Either"
+    },
+    {
+      "id": "Q148",
+      "type": 0,
+      "question": "Quelle phrase est correcte ?",
+      "options": [
+        "Neither of my friends like pizza.",
+        "Either of my friends like pizza.",
+        "Both of my friends likes pizza.",
+        "Neither of my friends likes pizza."
+      ],
+      "correct_answer": "Neither of my friends likes pizza."
+    },
+    {
+      "id": "Q149",
+      "type": 0,
+      "question": "Dans quel cas utilise-t-on 'both' ?",
+      "options": [
+        "Pour parler de plus de deux éléments",
+        "Pour parler de deux éléments ensemble",
+        "Pour parler d’un seul élément",
+        "Pour nier deux éléments"
+      ],
+      "correct_answer": "Pour parler de deux éléments ensemble"
+    },
+    {
+      "id": "Q150",
+      "type": 0,
+      "question": "Complétez : _____ movie is interesting, I can’t choose.",
+      "options": [
+        "Both",
+        "Either",
+        "Neither",
+        "Every"
+      ],
+      "correct_answer": "Both"
+    },
+    {
+      "id": "Q151",
+      "type": 0,
+      "question": "Quelle phrase est incorrecte ?",
+      "options": [
+        "Neither student was late.",
+        "Both students were on time.",
+        "Either student are ready.",
+        "Either student is ready."
+      ],
+      "correct_answer": "Either student are ready."
+    },
+    {
+      "id": "Q152",
+      "type": 0,
+      "question": "Complétez : Look at the sky! It _____ (rain) soon.",
+      "options": [
+        "is going to rain",
+        "rains",
+        "is raining",
+        "will rain"
+      ],
+      "correct_answer": "is going to rain"
+    },
+    {
+      "id": "Q153",
+      "type": 0,
+      "question": "Choisissez la phrase qui exprime un arrangement futur avec le présent continu.",
+      "options": [
+        "I go to the dentist tomorrow.",
+        "I am going to the dentist tomorrow.",
+        "I will go to the dentist tomorrow.",
+        "I gone to the dentist tomorrow."
+      ],
+      "correct_answer": "I am going to the dentist tomorrow."
+    },
+    {
+      "id": "Q154",
+      "type": 0,
+      "question": "Dans laquelle de ces phrases 'I am doing' exprime-t-il le futur ?",
+      "options": [
+        "I am meeting Sarah at 5.",
+        "I am meeting Sarah now.",
+        "I am meeting Sarah every day.",
+        "I am meeting Sarah yesterday."
+      ],
+      "correct_answer": "I am meeting Sarah at 5."
+    },
+    {
+      "id": "Q155",
+      "type": 0,
+      "question": "Complétez : The train _____ at 8 o’clock tomorrow morning.",
+      "options": [
+        "leaves",
+        "is leaving",
+        "will leave",
+        "leave"
+      ],
+      "correct_answer": "leaves"
+    },
+    {
+      "id": "Q156",
+      "type": 0,
+      "question": "Dans quelle phrase le présent simple exprime-t-il le futur ?",
+      "options": [
+        "The school starts next week.",
+        "I am starting school now.",
+        "I start school now.",
+        "I am going to start school."
+      ],
+      "correct_answer": "The school starts next week."
+    },
+    {
+      "id": "Q157",
+      "type": 0,
+      "question": "Complétez : We _____ (have) a party on Saturday night.",
+      "options": [
+        "are having",
+        "will have",
+        "have",
+        "has"
+      ],
+      "correct_answer": "are having"
+    },
+    {
+      "id": "Q158",
+      "type": 0,
+      "question": "Quelle phrase parle d’un planning officiel ou d’un horaire avec le présent simple ?",
+      "options": [
+        "The bus leaves at 7.",
+        "I am leaving at 7.",
+        "The bus is leaving at 7.",
+        "I will leave at 7."
+      ],
+      "correct_answer": "The bus leaves at 7."
+    },
+    {
+      "id": "Q159",
+      "type": 0,
+      "question": "Complétez : I _____ (see) the doctor this afternoon.",
+      "options": [
+        "am seeing",
+        "see",
+        "will see",
+        "saw"
+      ],
+      "correct_answer": "am seeing"
+    },
+    {
+      "id": "Q160",
+      "type": 0,
+      "question": "Choisissez la phrase qui décrit une habitude.",
+      "options": [
+        "I am playing tennis every Tuesday.",
+        "I play tennis every Tuesday.",
+        "I am going to play tennis every Tuesday.",
+        "I will play tennis every Tuesday."
+      ],
+      "correct_answer": "I play tennis every Tuesday."
+    },
+    {
+      "id": "Q161",
+      "type": 0,
+      "question": "Complétez : Next week, they _____ (visit) their grandparents.",
+      "options": [
+        "are visiting",
+        "visit",
+        "will visit",
+        "visiting"
+      ],
+      "correct_answer": "are visiting"
+    },
+    {
+      "id": "Q162",
+      "type": 0,
+      "question": "Quelle phrase n’utilise PAS le présent pour exprimer le futur ?",
+      "options": [
+        "I am seeing my friend tomorrow.",
+        "The film starts at 9.",
+        "We will have lunch at noon.",
+        "She is flying to London next week."
+      ],
+      "correct_answer": "We will have lunch at noon."
+    },
+    {
+      "id": "Q163",
+      "type": 0,
+      "question": "Complétez : What time _____ (the concert / start)?",
+      "options": [
+        "does the concert start",
+        "is the concert starting",
+        "is the concert start",
+        "will the concert start"
+      ],
+      "correct_answer": "does the concert start"
+    },
+    {
+      "id": "Q164",
+      "type": 0,
+      "question": "Pour parler d’un arrangement personnel dans le futur, on utilise généralement :",
+      "options": [
+        "le présent simple",
+        "le présent continu",
+        "le prétérit",
+        "le futur en will"
+      ],
+      "correct_answer": "le présent continu"
+    },
+    {
+      "id": "Q165",
+      "type": 0,
+      "question": "Complétez : I think it _____ (rain) tomorrow.",
+      "options": [
+        "will rain",
+        "is raining",
+        "rains",
+        "is going to rain"
+      ],
+      "correct_answer": "will rain"
+    },
+    {
+      "id": "Q166",
+      "type": 0,
+      "question": "Quelle structure exprime une décision prise sur le moment ?",
+      "options": [
+        "I am going to call her.",
+        "I call her.",
+        "I am calling her.",
+        "I will call her."
+      ],
+      "correct_answer": "I will call her."
+    }
   ]
 }
