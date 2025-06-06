@@ -5,7 +5,7 @@
       "type": 1,
       "question": "La traduction en français : damned",
       "options": "",
-      "correct_answer": "Damné, maudit"
+      "correct_answer": ["Damné","Maudit"]
     },
     {
       "id": "Q2",
