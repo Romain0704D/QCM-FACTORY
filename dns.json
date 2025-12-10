@@ -1,0 +1,2440 @@
+{
+  "qcm": [
+    {
+      "id": "Q1-DNS",
+      "type": 0,
+      "question": "À quoi sert le DNS ?",
+      "options": [
+        "À chiffrer les communications réseau",
+        "À récupérer des informations à partir d’un nom, notamment la correspondance entre un nom de domaine et une adresse",
+        "À gérer les routeurs Internet",
+        "À stocker des fichiers sur Internet"
+      ],
+      "correct_answer": "À récupérer des informations à partir d’un nom, notamment la correspondance entre un nom de domaine et une adresse"
+    },
+    {
+      "id": "Q2-DNS",
+      "type": 0,
+      "question": "Pourquoi le DNS est-il considéré comme un protocole critique ?",
+      "options": [
+        "Parce qu’il consomme beaucoup de bande passante",
+        "Parce qu’il est nécessaire au fonctionnement de la majorité des programmes et infrastructures",
+        "Parce qu’il chiffre les données sensibles",
+        "Parce qu’il est obligatoire sur tous les réseaux locaux"
+      ],
+      "correct_answer": "Parce qu’il est nécessaire au fonctionnement de la majorité des programmes et infrastructures"
+    },
+    {
+      "id": "Q3-DNS",
+      "type": 0,
+      "question": "Le DNS est-il uniquement un protocole ?",
+      "options": [
+        "Oui, uniquement un protocole réseau",
+        "Oui, mais uniquement côté client",
+        "Non, c’est un système complet incluant protocoles, règles et gouvernance",
+        "Non, c’est uniquement une base de données"
+      ],
+      "correct_answer": "Non, c’est un système complet incluant protocoles, règles et gouvernance"
+    },
+    {
+      "id": "Q4-DNS",
+      "type": 0,
+      "question": "Qu’est-ce qu’un nom de domaine ?",
+      "options": [
+        "Une adresse IP écrite en texte",
+        "Un ensemble d’octets séparés par des points organisé de manière hiérarchique",
+        "Un identifiant chiffré unique",
+        "Un fichier de configuration réseau"
+      ],
+      "correct_answer": "Un ensemble d’octets séparés par des points organisé de manière hiérarchique"
+    },
+    {
+      "id": "Q5-DNS",
+      "type": 0,
+      "question": "Que signifie FQDN ?",
+      "options": [
+        "Fast Qualified Domain Network",
+        "Fully Query Domain Name",
+        "Full Qualified Domain Name",
+        "Final Quality Domain Number"
+      ],
+      "correct_answer": "Full Qualified Domain Name"
+    },
+    {
+      "id": "Q6-DNS",
+      "type": 0,
+      "question": "Quelle est la longueur maximale d’un FQDN dans le DNS ?",
+      "options": [
+        "128 octets",
+        "255 octets",
+        "63 octets",
+        "512 octets"
+      ],
+      "correct_answer": "255 octets"
+    },
+    {
+      "id": "Q7-DNS",
+      "type": 0,
+      "question": "Comment s’appelle la base de l’arbre DNS ?",
+      "options": [
+        "Le TLD",
+        "Le domaine principal",
+        "La racine représentée par un point",
+        "Le serveur maître"
+      ],
+      "correct_answer": "La racine représentée par un point"
+    },
+    {
+      "id": "Q8-DNS",
+      "type": 0,
+      "question": "Pourquoi le DNS est-il une base de données distribuée ?",
+      "options": [
+        "Parce qu’il fonctionne uniquement en pair à pair",
+        "Parce que chaque possesseur de domaine gère ses données et peut les répartir sur plusieurs serveurs",
+        "Parce qu’il est stocké uniquement sur les serveurs racine",
+        "Parce qu’il n’existe qu’une seule base centrale"
+      ],
+      "correct_answer": "Parce que chaque possesseur de domaine gère ses données et peut les répartir sur plusieurs serveurs"
+    },
+    {
+      "id": "Q9-DNS",
+      "type": 0,
+      "question": "Pourquoi le DNS ne peut-il pas être un système pair à pair (P2P) ?",
+      "options": [
+        "Parce qu’il est trop lent",
+        "Parce qu’il repose sur une hiérarchie avec une racine unique",
+        "Parce qu’il chiffre toutes les données",
+        "Parce qu’il nécessite un serveur central unique"
+      ],
+      "correct_answer": "Parce qu’il repose sur une hiérarchie avec une racine unique"
+    },
+    {
+      "id": "Q10-DNS",
+      "type": 0,
+      "question": "Qu’est-ce que le DNS mondial ?",
+      "options": [
+        "Un DNS privé réservé aux entreprises",
+        "Un DNS alternatif sans racine",
+        "Le DNS de référence utilisé sur Internet avec une racine unique",
+        "Un DNS spécifique aux réseaux locaux"
+      ],
+      "correct_answer": "Le DNS de référence utilisé sur Internet avec une racine unique"
+    },
+    {
+      "id": "Q11-DNS",
+      "type": 0,
+      "question": "Quel est le rôle le plus connu du DNS ?",
+      "options": [
+        "Chiffrer les communications",
+        "Associer un nom de domaine à une adresse",
+        "Gérer les routeurs",
+        "Filtrer le trafic réseau"
+      ],
+      "correct_answer": "Associer un nom de domaine à une adresse"
+    },
+    {
+      "id": "Q12-DNS",
+      "type": 0,
+      "question": "Que peut faire le DNS en plus de la résolution de noms ?",
+      "options": [
+        "Gérer des utilisateurs",
+        "Découvrir ou protéger des services",
+        "Fournir des coordonnées géographiques",
+        "Toutes les réponses"
+      ],
+      "correct_answer": "Toutes les réponses"
+    },
+    {
+      "id": "Q13-DNS",
+      "type": 0,
+      "question": "Les points (« . ») dans un nom de domaine :",
+      "options": [
+        "Sont transmis tels quels sur le réseau",
+        "Servent uniquement à la lecture humaine",
+        "Sont obligatoires dans le protocole DNS",
+        "Ne peuvent séparer que deux composants"
+      ],
+      "correct_answer": "Servent uniquement à la lecture humaine"
+    },
+    {
+      "id": "Q14-DNS",
+      "type": 0,
+      "question": "Le dernier composant d’un nom de domaine est appelé :",
+      "options": [
+        "SLD",
+        "Root",
+        "Composant principal",
+        "TLD"
+      ],
+      "correct_answer": "TLD"
+    },
+    {
+      "id": "Q15-DNS",
+      "type": 0,
+      "question": "Le DNS est insensible à :",
+      "options": [
+        "La hiérarchie",
+        "La longueur du nom",
+        "La casse",
+        "La langue"
+      ],
+      "correct_answer": "La casse"
+    },
+    {
+      "id": "Q16-DNS",
+      "type": 0,
+      "question": "Quelle est la taille maximale d’un composant d’un nom de domaine ?",
+      "options": [
+        "128 caractères",
+        "255 caractères",
+        "63 caractères",
+        "32 caractères"
+      ],
+      "correct_answer": "63 caractères"
+    },
+    {
+      "id": "Q17-DNS",
+      "type": 0,
+      "question": "Une défaillance d’un domaine DNS entraîne :",
+      "options": [
+        "La panne totale du DNS",
+        "La panne de la racine",
+        "La panne de ce domaine et de ses enfants",
+        "Aucun impact"
+      ],
+      "correct_answer": "La panne de ce domaine et de ses enfants"
+    },
+    {
+      "id": "Q18-DNS",
+      "type": 0,
+      "question": "Quelle affirmation est vraie concernant le protocole DNS ?",
+      "options": [
+        "Il est très sécurisé dès sa conception",
+        "Il a été pensé pour la performance",
+        "Il chiffre les réponses par défaut",
+        "Il fonctionne en P2P"
+      ],
+      "correct_answer": "Il a été pensé pour la performance"
+    },
+    {
+      "id": "Q19-DNS",
+      "type": 0,
+      "question": "Pourquoi est-il incorrect de dire simplement « serveur DNS » ?",
+      "options": [
+        "Le terme n’existe pas",
+        "Tous les serveurs ont les mêmes rôles",
+        "Il existe plusieurs rôles distincts (résolveur, serveur autoritaire, etc.)",
+        "Le DNS n’utilise pas de serveurs"
+      ],
+      "correct_answer": "Il existe plusieurs rôles distincts (résolveur, serveur autoritaire, etc.)"
+    },
+    {
+      "id": "Q20-DNS",
+      "type": 0,
+      "question": "Parmi ces systèmes, lequel n’est PAS basé sur le DNS mondial ?",
+      "options": [
+        "DNS global",
+        ".onion",
+        "Résolution via fichier hosts",
+        "mDNS"
+      ],
+      "correct_answer": "DNS global"
+    },
+    {
+      "id": "Q21-DNS",
+      "type": 0,
+      "question": "Quelle était une limitation du DNS dans les RFC originales ?",
+      "options": [
+        "Manque de hiérarchie",
+        "Manque de performance",
+        "Absence sérieuse de sécurité et de confidentialité",
+        "Absence de serveur racine"
+      ],
+      "correct_answer": "Absence sérieuse de sécurité et de confidentialité"
+    },
+    {
+      "id": "Q22-TLD",
+      "type": 0,
+      "question": "Que signifie l’acronyme TLD ?",
+      "options": [
+        "Top Local Domain",
+        "Terminal Level Domain",
+        "Top Level Domain",
+        "Trusted Level Domain"
+      ],
+      "correct_answer": "Top Level Domain"
+    },
+    {
+      "id": "Q23-TLD",
+      "type": 0,
+      "question": "Dans le nom de domaine www.unicaen.fr, quel est le TLD ?",
+      "options": [
+        "www",
+        "unicaen",
+        "unicaen.fr",
+        "fr"
+      ],
+      "correct_answer": "fr"
+    },
+    {
+      "id": "Q24-TLD",
+      "type": 0,
+      "question": "Quelle affirmation est vraie concernant les TLD dans le DNS mondial ?",
+      "options": [
+        "Il peut y avoir plusieurs TLD identiques dans la même racine",
+        "Les TLD sont situés directement sous la racine DNS",
+        "Les TLD peuvent dépasser 63 caractères",
+        "Les TLD ne font pas partie de la hiérarchie DNS"
+      ],
+      "correct_answer": "Les TLD sont situés directement sous la racine DNS"
+    },
+    {
+      "id": "Q25-DNS",
+      "type": 0,
+      "question": "Qui gère la racine du DNS mondial ?",
+      "options": [
+        "L’IETF",
+        "L’ICANN",
+        "L’ISO",
+        "Les registres nationaux"
+      ],
+      "correct_answer": "L’ICANN"
+    },
+    {
+      "id": "Q26-DNS",
+      "type": 0,
+      "question": "Quel est le rôle de l’ICANN concernant les TLD ?",
+      "options": [
+        "Héberger tous les TLD",
+        "Ajouter et déléguer les TLD à des registres",
+        "Gérer les noms de domaines finaux",
+        "Configurer les serveurs DNS locaux"
+      ],
+      "correct_answer": "Ajouter et déléguer les TLD à des registres"
+    },
+    {
+      "id": "Q27-DNS",
+      "type": 0,
+      "question": "Existe-t-il une différence technique entre les différents types de TLD ?",
+      "options": [
+        "Oui, les ccTLD sont plus rapides",
+        "Oui, les gTLD sont plus sécurisés",
+        "Non, seules des différences administratives existent",
+        "Oui, les TLD spéciaux utilisent un autre protocole"
+      ],
+      "correct_answer": "Non, seules des différences administratives existent"
+    },
+    {
+      "id": "Q28-DNS",
+      "type": 0,
+      "question": "Qu’est-ce qu’un ccTLD ?",
+      "options": [
+        "Un TLD commercial",
+        "Un TLD technique",
+        "Un TLD national associé à un pays ou une nation",
+        "Un TLD réservé aux entreprises"
+      ],
+      "correct_answer": "Un TLD national associé à un pays ou une nation"
+    },
+    {
+      "id": "Q29-DNS",
+      "type": 0,
+      "question": "Pourquoi le TLD .de est-il considéré comme un cas particulier ?",
+      "options": [
+        "Il est géré par l’Union européenne",
+        "Il n’existe plus aujourd’hui",
+        "Il a été créé avant l’IANA et n’est pas soumis aux règles établies ultérieurement",
+        "Il ne fait pas partie de la racine DNS"
+      ],
+      "correct_answer": "Il a été créé avant l’IANA et n’est pas soumis aux règles établies ultérieurement"
+    },
+    {
+      "id": "Q30-DNS",
+      "type": 0,
+      "question": "Que signifie le TLD .arpa ?",
+      "options": [
+        "Advanced Routing Practical Association",
+        "Un TLD réservé aux fournisseurs d’accès",
+        "Un TLD d’infrastructure utilisé à des fins techniques",
+        "Un ancien TLD abandonné"
+      ],
+      "correct_answer": "Un TLD d’infrastructure utilisé à des fins techniques"
+    },
+    {
+      "id": "Q31-DNS",
+      "type": 0,
+      "question": "Pourquoi certains TLD sont-ils qualifiés de « spéciaux » ?",
+      "options": [
+        "Parce qu’ils sont payants",
+        "Parce qu’ils utilisent un autre protocole",
+        "Parce qu’ils sont exclus du fonctionnement normal du DNS ou traités différemment",
+        "Parce qu’ils sont réservés aux gouvernements"
+      ],
+      "correct_answer": "Parce qu’ils sont exclus du fonctionnement normal du DNS ou traités différemment"
+    },
+    {
+      "id": "Q32-DNS",
+      "type": 0,
+      "question": "Quelle est la bonne pratique pour nommer un domaine interne ?",
+      "options": [
+        "Utiliser un TLD générique inexistant",
+        "Utiliser un nom court sans point",
+        "Utiliser un domaine enfant d’un domaine que l’on possède",
+        "Utiliser toujours .local"
+      ],
+      "correct_answer": "Utiliser un domaine enfant d’un domaine que l’on possède"
+    },
+    {
+      "id": "Q33-DNS",
+      "type": 0,
+      "question": "Pourquoi l’utilisation de TLD génériques en interne est-elle risquée ?",
+      "options": [
+        "Elle ralentit les performances DNS",
+        "Elle empêche le chiffrement",
+        "Elle peut provoquer des résolutions erronées ou malveillantes et du trafic vers la racine",
+        "Elle est interdite par les RFC"
+      ],
+      "correct_answer": "Elle peut provoquer des résolutions erronées ou malveillantes et du trafic vers la racine"
+    },
+    {
+      "id": "Q34-DNS",
+      "type": 0,
+      "question": "Sur quels ports fonctionne le DNS classique non chiffré ?",
+      "options": [
+        "TCP 80 et UDP 80",
+        "TCP 443 et UDP 443",
+        "TCP 53 et UDP 53",
+        "TCP 25 et UDP 25"
+      ],
+      "correct_answer": "TCP 53 et UDP 53"
+    },
+    {
+      "id": "Q35-DNS",
+      "type": 0,
+      "question": "Quel type de TLD correspond à .edu ou .int ?",
+      "options": [
+        "sTLD",
+        "ccTLD",
+        "gTLD ouvert",
+        "gTLD restreint"
+      ],
+      "correct_answer": "gTLD restreint"
+    },
+    {
+      "id": "Q36-DNS",
+      "type": 0,
+      "question": "Quelle catégorie de TLD possède un unique domaine : .arpa ?",
+      "options": [
+        "ccTLD",
+        "gTLD",
+        "Infrastructure",
+        "sTLD"
+      ],
+      "correct_answer": "Infrastructure"
+    },
+    {
+      "id": "Q37-DNS",
+      "type": 0,
+      "question": "Quel est l’impact principal de l’utilisation d’un TLD inexistant en interne ?",
+      "options": [
+        "Aucune conséquence",
+        "Génération de trafic vers la racine DNS",
+        "Amélioration des performances",
+        "Chiffrement automatique des requêtes"
+      ],
+      "correct_answer": "Génération de trafic vers la racine DNS"
+    },
+    {
+      "id": "Q38-DNS",
+      "type": 0,
+      "question": "Le DNS fonctionne sur quel modèle de communication ?",
+      "options": [
+        "Connexion persistante",
+        "Diffusion (broadcast)",
+        "Question / réponse sans maintien de connexion",
+        "Pair à pair"
+      ],
+      "correct_answer": "Question / réponse sans maintien de connexion"
+    },
+    {
+      "id": "Q39-DNS",
+      "type": 0,
+      "question": "Pourquoi les messages DNS utilisent-ils UDP par défaut ?",
+      "options": [
+        "Pour la sécurité",
+        "Pour la simplicité de configuration",
+        "Pour la performance",
+        "Pour contourner les pare-feux"
+      ],
+      "correct_answer": "Pour la performance"
+    },
+    {
+      "id": "Q40-DNS",
+      "type": 0,
+      "question": "Quelle limitation existait dans le DNS original sur UDP ?",
+      "options": [
+        "128 octets maximum",
+        "256 octets maximum",
+        "512 octets maximum",
+        "Aucune limite"
+      ],
+      "correct_answer": "512 octets maximum"
+    },
+    {
+      "id": "Q41-DNS",
+      "type": 0,
+      "question": "Quel type de transaction DNS utilise obligatoirement TCP ?",
+      "options": [
+        "Résolution A",
+        "Résolution MX",
+        "Transfert de zone (AXFR)",
+        "Requête TXT"
+      ],
+      "correct_answer": "Transfert de zone (AXFR)"
+    },
+    {
+      "id": "Q42-DNS",
+      "type": 0,
+      "question": "Quelle est la classe DNS utilisée dans la quasi-totalité des requêtes ?",
+      "options": [
+        "CH",
+        "HS",
+        "LOCAL",
+        "IN"
+      ],
+      "correct_answer": "IN"
+    },
+    {
+      "id": "Q43-DNS",
+      "type": 0,
+      "question": "Quel enregistrement DNS associe un nom à une adresse IPv6 ?",
+      "options": [
+        "A",
+        "AAAA",
+        "NS",
+        "MX"
+      ],
+      "correct_answer": "AAAA"
+    },
+    {
+      "id": "Q44-DNS",
+      "type": 0,
+      "question": "Quel type de serveur suit l’intégralité du chemin de résolution DNS ?",
+      "options": [
+        "Serveur autoritaire",
+        "Stub resolver",
+        "Résolveur récursif",
+        "Forwarder"
+      ],
+      "correct_answer": "Résolveur récursif"
+    },
+    {
+      "id": "Q45-DNS",
+      "type": 0,
+      "question": "Pourquoi n’est-il pas recommandé de cumuler résolveur et serveur faisant autorité ?",
+      "options": [
+        "Pour des raisons de performance uniquement",
+        "À cause des limitations du protocole",
+        "Pour des raisons de sécurité et de bonnes pratiques",
+        "Parce que c’est interdit par les RFC"
+      ],
+      "correct_answer": "Pour des raisons de sécurité et de bonnes pratiques"
+    },
+    {
+      "id": "Q46-DNS",
+      "type": 0,
+      "question": "Quel est l’intérêt principal d’un maître caché (hidden master) ?",
+      "options": [
+        "Réduire la charge réseau",
+        "Chiffrer les réponses DNS",
+        "Protéger les données originales et les clés DNSSEC",
+        "Accélérer les réponses DNS"
+      ],
+      "correct_answer": "Protéger les données originales et les clés DNSSEC"
+    },
+    {
+      "id": "Q47-DNS",
+      "type": 0,
+      "question": "Quel est le rôle d’un résolveur récursif ?",
+      "options": [
+        "Fournir les données officielles d’une zone DNS",
+        "Effectuer la résolution complète des noms de domaine et renvoyer la réponse finale au client",
+        "Rediriger uniquement les requêtes DNS vers un autre serveur",
+        "Stocker les zones DNS localement sans résolution"
+      ],
+      "correct_answer": "Effectuer la résolution complète des noms de domaine et renvoyer la réponse finale au client"
+    },
+    {
+      "id": "Q48-DNS",
+      "type": 0,
+      "question": "Quelle directive permet d’activer ou de désactiver la récursion dans BIND ?",
+      "options": [
+        "allow-recursion yes/no;",
+        "recursion yes/no;",
+        "enable recursion;",
+        "recursive on/off;"
+      ],
+      "correct_answer": "recursion yes/no;"
+    },
+    {
+      "id": "Q49-DNS",
+      "type": 0,
+      "question": "À quoi sert un redirecteur (forwarder) DNS ?",
+      "options": [
+        "À résoudre localement toutes les requêtes DNS",
+        "À transmettre les requêtes DNS à un autre résolveur",
+        "À fournir les zones faisant autorité",
+        "À chiffrer les requêtes DNS"
+      ],
+      "correct_answer": "À transmettre les requêtes DNS à un autre résolveur"
+    },
+    {
+      "id": "Q50-DNS",
+      "type": 0,
+      "question": "Quel est le rôle d’un serveur faisant autorité ?",
+      "options": [
+        "Résoudre récursivement les requêtes DNS",
+        "Mettre en cache les réponses",
+        "Fournir les données officielles d’une ou plusieurs zones DNS",
+        "Rediriger les requêtes vers Internet"
+      ],
+      "correct_answer": "Fournir les données officielles d’une ou plusieurs zones DNS"
+    },
+    {
+      "id": "Q51-DNS",
+      "type": 0,
+      "question": "Qu’est-ce qu’un maître caché (hidden master) ?",
+      "options": [
+        "Un résolveur interne",
+        "Un serveur secondaire sans zone",
+        "Un serveur primaire non exposé qui fournit la zone uniquement aux secondaires",
+        "Un serveur public optimisé pour la performance"
+      ],
+      "correct_answer": "Un serveur primaire non exposé qui fournit la zone uniquement aux secondaires"
+    },
+    {
+      "id": "Q52-DNS",
+      "type": 0,
+      "question": "Pourquoi est-il recommandé de disposer de plusieurs serveurs faisant autorité ?",
+      "options": [
+        "Pour accélérer les requêtes DNS",
+        "Pour réduire la taille des zones",
+        "Pour garantir la disponibilité du service DNS",
+        "Pour chiffrer automatiquement les réponses"
+      ],
+      "correct_answer": "Pour garantir la disponibilité du service DNS"
+    },
+    {
+      "id": "Q53-DNS",
+      "type": 0,
+      "question": "Quels enregistrements sont indispensables au fonctionnement d’une zone DNS ?",
+      "options": [
+        "A, AAAA et MX",
+        "TTL par défaut, SOA et au moins un NS",
+        "PTR et CNAME",
+        "SRV et TXT"
+      ],
+      "correct_answer": "TTL par défaut, SOA et au moins un NS"
+    },
+    {
+      "id": "Q54-DNS",
+      "type": 0,
+      "question": "Quelle est la structure correcte d’un Resource Record (RR) ?",
+      "options": [
+        "Type – Classe – Valeur",
+        "Clef – TTL – Classe – Type – Valeur",
+        "Nom – Valeur – TTL",
+        "Classe – Type – TTL – Nom"
+      ],
+      "correct_answer": "Clef – TTL – Classe – Type – Valeur"
+    },
+    {
+      "id": "Q55-DNS",
+      "type": 0,
+      "question": "À quoi correspond le symbole @ dans un fichier de zone DNS ?",
+      "options": [
+        "Au serveur maître",
+        "À l’adresse email de l’administrateur",
+        "À l’apex de la zone",
+        "À la racine DNS"
+      ],
+      "correct_answer": "À l’apex de la zone"
+    },
+    {
+      "id": "Q56-DNS",
+      "type": 0,
+      "question": "Quel est le rôle des enregistrements GLUE ?",
+      "options": [
+        "Rediriger les requêtes DNS",
+        "Fournir les adresses IP des serveurs DNS appartenant au sous-domaine délégué",
+        "Chiffrer les échanges DNS",
+        "Définir les serveurs secondaires"
+      ],
+      "correct_answer": "Fournir les adresses IP des serveurs DNS appartenant au sous-domaine délégué"
+    },
+    {
+      "id": "Q57-DNS",
+      "type": 0,
+      "question": "Quel fichier contient principalement la configuration de BIND ?",
+      "options": [
+        "zone.db",
+        "resolv.conf",
+        "named.conf",
+        "dns.conf"
+      ],
+      "correct_answer": "named.conf"
+    },
+    {
+      "id": "Q58-DNS",
+      "type": 0,
+      "question": "Quel type de serveur DNS utilise obligatoirement AXFR ?",
+      "options": [
+        "Résolveur récursif",
+        "Redirecteur",
+        "Serveur secondaire",
+        "Stub resolver"
+      ],
+      "correct_answer": "Serveur secondaire"
+    },
+    {
+      "id": "Q59-DNS",
+      "type": 0,
+      "question": "Quelle est la fonction du champ Serial dans un enregistrement SOA ?",
+      "options": [
+        "Définir la durée de cache",
+        "Identifier la version de la zone",
+        "Indiquer le serveur maître",
+        "Définir la priorité des serveurs NS"
+      ],
+      "correct_answer": "Identifier la version de la zone"
+    },
+    {
+      "id": "Q60-DNS",
+      "type": 0,
+      "question": "Quel champ du SOA définit le délai avant qu’un serveur esclave considère la zone invalide ?",
+      "options": [
+        "Retry",
+        "Refresh",
+        "Expire",
+        "Negative TTL"
+      ],
+      "correct_answer": "Expire"
+    },
+    {
+      "id": "Q61-DNS",
+      "type": 0,
+      "question": "Quel enregistrement DNS associe un nom à une adresse IPv4 ?",
+      "options": [
+        "AAAA",
+        "PTR",
+        "A",
+        "NS"
+      ],
+      "correct_answer": "A"
+    },
+    {
+      "id": "Q62-DNS",
+      "type": 0,
+      "question": "Quelle affirmation est vraie à propos des enregistrements CNAME ?",
+      "options": [
+        "Ils redirigent le trafic HTTP",
+        "Ils copient dynamiquement les enregistrements de la cible",
+        "Ils peuvent être définis à l’apex d’une zone",
+        "Ils pointent uniquement vers des adresses IP"
+      ],
+      "correct_answer": "Ils copient dynamiquement les enregistrements de la cible"
+    },
+    {
+      "id": "Q63-DNS",
+      "type": 0,
+      "question": "Quel enregistrement permet de créer un alias pour tout un domaine et ses sous-domaines ?",
+      "options": [
+        "CNAME",
+        "SRV",
+        "PTR",
+        "DNAME"
+      ],
+      "correct_answer": "DNAME"
+    },
+    {
+      "id": "Q64-DNS",
+      "type": 0,
+      "question": "Quel type d’enregistrement est indispensable au fonctionnement d’Active Directory ?",
+      "options": [
+        "TXT",
+        "MX",
+        "SRV",
+        "CAA"
+      ],
+      "correct_answer": "SRV"
+    },
+    {
+      "id": "Q65-DNS",
+      "type": 0,
+      "question": "À quoi sert l’enregistrement DNS CAA ?",
+      "options": [
+        "Bloquer les certificats TLS",
+        "Autoriser certaines autorités de certification à émettre des certificats",
+        "Chiffrer les requêtes DNS",
+        "Définir les serveurs HTTPS"
+      ],
+      "correct_answer": "Autoriser certaines autorités de certification à émettre des certificats"
+    },
+    {
+      "id": "Q66-DNS",
+      "type": 0,
+      "question": "Quel est le rôle principal d’un enregistrement PTR ?",
+      "options": [
+        "Associer un nom à une IP",
+        "Associer une IP à un nom",
+        "Définir un serveur de messagerie",
+        "Découvrir un service réseau"
+      ],
+      "correct_answer": "Associer une IP à un nom"
+    },
+    {
+      "id": "Q67-DNS",
+      "type": 0,
+      "question": "Quelle est la différence principale entre SRV et SVCB ?",
+      "options": [
+        "SRV chiffre les connexions",
+        "SVCB remplace complètement SRV",
+        "SRV découvre un service, SVCB décrit comment s’y connecter",
+        "SVCB fonctionne uniquement en HTTPS"
+      ],
+      "correct_answer": "SRV découvre un service, SVCB décrit comment s’y connecter"
+    },
+    {
+      "id": "Q68-DNS",
+      "type": 0,
+      "question": "Quel mécanisme est utilisé par un DNS « menteur » ?",
+      "options": [
+        "DNSSEC",
+        "RPZ (Response Policy Zone)",
+        "Forwarding",
+        "AXFR"
+      ],
+      "correct_answer": "RPZ (Response Policy Zone)"
+    },
+    {
+      "id": "Q69-TLS",
+      "type": 0,
+      "question": "Quel est le principal problème des protocoles réseau historiques ?",
+      "options": [
+        "Ils sont trop lents",
+        "Ils font transiter les données en clair sans confidentialité ni intégrité",
+        "Ils utilisent uniquement TCP",
+        "Ils sont incompatibles avec Internet"
+      ],
+      "correct_answer": "Ils font transiter les données en clair sans confidentialité ni intégrité"
+    },
+    {
+      "id": "Q70-TLS",
+      "type": 0,
+      "question": "Quels sont les deux objectifs majeurs de la sécurisation des communications ?",
+      "options": [
+        "Performance et scalabilité",
+        "Authentification et routage",
+        "Confidentialité et intégrité des données",
+        "Disponibilité et redondance"
+      ],
+      "correct_answer": "Confidentialité et intégrité des données"
+    },
+    {
+      "id": "Q71-TLS",
+      "type": 0,
+      "question": "Quelle est l’unique méthode permettant de garantir la confidentialité des échanges ?",
+      "options": [
+        "La compression",
+        "L’authentification",
+        "Le chiffrement des communications",
+        "Le filtrage réseau"
+      ],
+      "correct_answer": "Le chiffrement des communications"
+    },
+    {
+      "id": "Q72-TLS",
+      "type": 0,
+      "question": "Que protège réellement le chiffrement TLS ?",
+      "options": [
+        "Les données contre tout serveur malveillant",
+        "Les données contre l’écoute sur le chemin réseau",
+        "Les applications contre les failles logicielles",
+        "Les utilisateurs contre le phishing"
+      ],
+      "correct_answer": "Les données contre l’écoute sur le chemin réseau"
+    },
+    {
+      "id": "Q73-TLS",
+      "type": 0,
+      "question": "Pourquoi est-il incorrect de parler encore de « SSL » aujourd’hui ?",
+      "options": [
+        "Parce que SSL est propriétaire",
+        "Parce que SSL est plus lent que TLS",
+        "Parce que SSL est obsolète et remplacé par TLS",
+        "Parce que SSL est réservé au web"
+      ],
+      "correct_answer": "Parce que SSL est obsolète et remplacé par TLS"
+    },
+    {
+      "id": "Q74-TLS",
+      "type": 0,
+      "question": "Dans quelle couche du modèle OSI se situe généralement TLS ?",
+      "options": [
+        "Couche 4 (Transport)",
+        "Couche 5 (Session)",
+        "Couche 6 (Présentation)",
+        "Couche 7 (Application)"
+      ],
+      "correct_answer": "Couche 5 (Session)"
+    },
+    {
+      "id": "Q75-TLS",
+      "type": 0,
+      "question": "Sur quels protocoles de transport TLS peut-il fonctionner ?",
+      "options": [
+        "Uniquement TCP",
+        "Uniquement UDP",
+        "TCP et UDP",
+        "ICMP uniquement"
+      ],
+      "correct_answer": "TCP et UDP"
+    },
+    {
+      "id": "Q76-TLS",
+      "type": 0,
+      "question": "Comment s’appelle TLS lorsqu’il est utilisé au-dessus d’UDP ?",
+      "options": [
+        "UTLS",
+        "TLS-UDP",
+        "DTLS",
+        "QUIC"
+      ],
+      "correct_answer": "DTLS"
+    },
+    {
+      "id": "Q77-TLS",
+      "type": 0,
+      "question": "Comment TLS est-il généralement représenté pour les protocoles applicatifs ?",
+      "options": [
+        "Par le changement de port uniquement",
+        "Par l’ajout d’un \"s\" au nom du protocole",
+        "Par l’utilisation d’un suffixe .secure",
+        "Par une extension spécifique"
+      ],
+      "correct_answer": "Par l’ajout d’un \"s\" au nom du protocole"
+    },
+    {
+      "id": "Q78-TLS",
+      "type": 0,
+      "question": "Sur quoi repose le mécanisme de confiance de TLS ?",
+      "options": [
+        "Un mot de passe unique",
+        "Des certificats X.509 ou des clés pré-partagées (PSK)",
+        "Un serveur central unique",
+        "Un algorithme propriétaire"
+      ],
+      "correct_answer": "Des certificats X.509 ou des clés pré-partagées (PSK)"
+    },
+    {
+      "id": "Q79-TLS",
+      "type": 0,
+      "question": "Quel problème le chiffrement TLS ne résout PAS ?",
+      "options": [
+        "L’écoute du trafic réseau",
+        "L’usurpation d’identité sur le réseau",
+        "L’exploitation des données par un serveur malveillant",
+        "L’altération des données en transit"
+      ],
+      "correct_answer": "L’exploitation des données par un serveur malveillant"
+    },
+    {
+      "id": "Q80-TLS",
+      "type": 0,
+      "question": "Quel protocole a officiellement remplacé SSL ?",
+      "options": [
+        "IPsec",
+        "HTTPS",
+        "TLS",
+        "QUIC"
+      ],
+      "correct_answer": "TLS"
+    },
+    {
+      "id": "Q81-TLS",
+      "type": 0,
+      "question": "TLS peut être utilisé :",
+      "options": [
+        "Uniquement avec TCP",
+        "Uniquement avec UDP",
+        "Avec TCP et UDP",
+        "Sans protocole de transport"
+      ],
+      "correct_answer": "Avec TCP et UDP"
+    },
+    {
+      "id": "Q82-TLS",
+      "type": 0,
+      "question": "QUIC se distingue car :",
+      "options": [
+        "Il n’utilise pas de chiffrement",
+        "Il utilise TLS uniquement en couche 7",
+        "Il intègre TLS directement dès la couche 4",
+        "Il remplace complètement TLS"
+      ],
+      "correct_answer": "Il intègre TLS directement dès la couche 4"
+    },
+    {
+      "id": "Q83-TLS",
+      "type": 0,
+      "question": "Quelle est la version de TLS la plus récente normalisée ?",
+      "options": [
+        "TLS 1.0",
+        "TLS 1.1",
+        "TLS 1.2",
+        "TLS 1.3"
+      ],
+      "correct_answer": "TLS 1.3"
+    },
+    {
+      "id": "Q84-TLS",
+      "type": 0,
+      "question": "Quelle version de TLS reste encore très utilisée malgré son ancienneté ?",
+      "options": [
+        "TLS 1.0",
+        "TLS 1.1",
+        "TLS 1.2",
+        "SSL 3.0"
+      ],
+      "correct_answer": "TLS 1.2"
+    },
+    {
+      "id": "Q85-TLS",
+      "type": 0,
+      "question": "Quel document définit TLS 1.3 ?",
+      "options": [
+        "RFC 2616",
+        "RFC 5246",
+        "RFC 8446",
+        "RFC 1035"
+      ],
+      "correct_answer": "RFC 8446"
+    },
+    {
+      "id": "Q86-TLS",
+      "type": 0,
+      "question": "Quel est un effet négatif du chiffrement généralisé des communications ?",
+      "options": [
+        "Perte de performance uniquement",
+        "Impossibilité totale de communiquer",
+        "Difficulté de filtrage et d’analyse du trafic",
+        "Incompatibilité avec TCP"
+      ],
+      "correct_answer": "Difficulté de filtrage et d’analyse du trafic"
+    },
+    {
+      "id": "Q87-TLS",
+      "type": 0,
+      "question": "Pourquoi le chiffrement est-il considéré comme positif pour les utilisateurs ?",
+      "options": [
+        "Il accélère les communications",
+        "Il empêche la censure et la surveillance de masse",
+        "Il remplace les pare-feux",
+        "Il simplifie les protocoles"
+      ],
+      "correct_answer": "Il empêche la censure et la surveillance de masse"
+    },
+    {
+      "id": "Q88-TLS",
+      "type": 0,
+      "question": "Quelle affirmation est vraie concernant le DNS en 2024 ?",
+      "options": [
+        "Toutes les communications DNS sont chiffrées",
+        "Le DNS chiffré est généralisé",
+        "Le DNS chiffré reste encore marginal",
+        "Le DNS ne peut pas être chiffré"
+      ],
+      "correct_answer": "Le DNS chiffré reste encore marginal"
+    },
+    {
+      "id": "Q89-TLS",
+      "type": 0,
+      "question": "Concernant les communications entre serveurs de messagerie :",
+      "options": [
+        "Elles sont toutes chiffrées",
+        "Elles ne peuvent pas être chiffrées",
+        "Elles sont encore souvent non chiffrées",
+        "Elles utilisent exclusivement QUIC"
+      ],
+      "correct_answer": "Elles sont encore souvent non chiffrées"
+    },
+    {
+      "id": "Q90-DNSSEC",
+      "type": 0,
+      "question": "Quel est le principal défaut du DNS à l’origine ?",
+      "options": [
+        "Il est trop lent",
+        "Il ne prévoit ni contrôle d’intégrité, ni authentification, ni chiffrement",
+        "Il ne supporte pas IPv6",
+        "Il ne fonctionne que sur TCP"
+      ],
+      "correct_answer": "Il ne prévoit ni contrôle d’intégrité, ni authentification, ni chiffrement"
+    },
+    {
+      "id": "Q91-DNSSEC",
+      "type": 0,
+      "question": "Pourquoi les caches DNS aggravent-ils les attaques ?",
+      "options": [
+        "Ils ralentissent la résolution",
+        "Ils suppriment les signatures DNSSEC",
+        "Une réponse falsifiée peut être mise en cache et propagée",
+        "Ils désactivent la récursion"
+      ],
+      "correct_answer": "Une réponse falsifiée peut être mise en cache et propagée"
+    },
+    {
+      "id": "Q92-DNSSEC",
+      "type": 0,
+      "question": "Quel RFC décrit les vulnérabilités historiques du DNS ?",
+      "options": [
+        "RFC 1035",
+        "RFC 4033",
+        "RFC 3833",
+        "RFC 8446"
+      ],
+      "correct_answer": "RFC 3833"
+    },
+    {
+      "id": "Q93-DNSSEC",
+      "type": 0,
+      "question": "Le chiffrement DNS garantit-il que l’information reçue est correcte ?",
+      "options": [
+        "Oui, toujours",
+        "Oui, avec DNSSEC",
+        "Non, il protège la communication mais pas l’authenticité",
+        "Uniquement avec TLS 1.3"
+      ],
+      "correct_answer": "Non, il protège la communication mais pas l’authenticité"
+    },
+    {
+      "id": "Q94-DNSSEC",
+      "type": 0,
+      "question": "Quel est l’objectif principal de DNSSEC ?",
+      "options": [
+        "Chiffrer les requêtes DNS",
+        "Accélérer la résolution",
+        "Garantir l’intégrité et l’authenticité des données DNS",
+        "Rendre DNS anonyme"
+      ],
+      "correct_answer": "Garantir l’intégrité et l’authenticité des données DNS"
+    },
+    {
+      "id": "Q95-DNSSEC",
+      "type": 0,
+      "question": "Sur quel principe DNSSEC s’appuie-t-il ?",
+      "options": [
+        "Un serveur central de confiance",
+        "Une liste de clés pré-partagées",
+        "La hiérarchie DNS validée jusqu’à la racine",
+        "Le chiffrement symétrique"
+      ],
+      "correct_answer": "La hiérarchie DNS validée jusqu’à la racine"
+    },
+    {
+      "id": "Q96-DNSSEC",
+      "type": 0,
+      "question": "Quels enregistrements sont principalement ajoutés par DNSSEC ?",
+      "options": [
+        "A, AAAA et PTR",
+        "SOA et NS",
+        "RRSIG, DNSKEY et DS",
+        "TXT et CAA"
+      ],
+      "correct_answer": "RRSIG, DNSKEY et DS"
+    },
+    {
+      "id": "Q97-DNSSEC",
+      "type": 0,
+      "question": "À quoi sert un enregistrement DS ?",
+      "options": [
+        "À signer une zone DNS",
+        "À stocker la clé privée du domaine",
+        "À contenir le condensat de la clé publique du domaine enfant",
+        "À chiffrer les réponses DNS"
+      ],
+      "correct_answer": "À contenir le condensat de la clé publique du domaine enfant"
+    },
+    {
+      "id": "Q98-DNSSEC",
+      "type": 0,
+      "question": "Quelle est la différence entre une ZSK et une KSK ?",
+      "options": [
+        "ZSK est publique, KSK est privée",
+        "ZSK signe les enregistrements, KSK signe les ZSK",
+        "KSK signe la zone complète",
+        "ZSK est transmise au parent"
+      ],
+      "correct_answer": "ZSK signe les enregistrements, KSK signe les ZSK"
+    },
+    {
+      "id": "Q99-DNSSEC",
+      "type": 0,
+      "question": "Pourquoi les enregistrements DNSSEC doivent-ils être régulièrement resignés ?",
+      "options": [
+        "À cause de la rotation des serveurs DNS",
+        "Parce que les clés privées expirent",
+        "Parce que les signatures RRSIG ont une date d’expiration",
+        "Pour améliorer les performances"
+      ],
+      "correct_answer": "Parce que les signatures RRSIG ont une date d’expiration"
+    },
+    {
+      "id": "Q100-DNSSEC",
+      "type": 0,
+      "question": "DNSSEC permet de :",
+      "options": [
+        "Chiffrer les requêtes DNS",
+        "Garantir l’intégrité des réponses DNS",
+        "Rendre DNS anonyme",
+        "Accélérer les résolutions"
+      ],
+      "correct_answer": "Garantir l’intégrité des réponses DNS"
+    },
+    {
+      "id": "Q101-DNSSEC",
+      "type": 0,
+      "question": "Quel mécanisme DNSSEC permet de prouver qu’un nom n’existe pas ?",
+      "options": [
+        "RRSIG",
+        "DNSKEY",
+        "NSEC / NSEC3",
+        "CAA"
+      ],
+      "correct_answer": "NSEC / NSEC3"
+    },
+    {
+      "id": "Q102-DNSSEC",
+      "type": 0,
+      "question": "Pourquoi NSEC est-il considéré comme obsolète ?",
+      "options": [
+        "Il est trop lent",
+        "Il permet l’usurpation d’identité",
+        "Il permet de cartographier entièrement une zone",
+        "Il est incompatible avec IPv6"
+      ],
+      "correct_answer": "Il permet de cartographier entièrement une zone"
+    },
+    {
+      "id": "Q103-DNSSEC",
+      "type": 0,
+      "question": "Quel type de clé DNSKEY possède l’identifiant 257 ?",
+      "options": [
+        "ZSK",
+        "CSK",
+        "KSK",
+        "DS"
+      ],
+      "correct_answer": "KSK"
+    },
+    {
+      "id": "Q104-DNSSEC",
+      "type": 0,
+      "question": "Que contient un enregistrement RRSIG ?",
+      "options": [
+        "Une clé privée",
+        "La liste des serveurs DNS",
+        "La signature cryptographique d’un ou plusieurs RR (RRSET)",
+        "Une clé symétrique"
+      ],
+      "correct_answer": "La signature cryptographique d’un ou plusieurs RR (RRSET)"
+    },
+    {
+      "id": "Q105-DNSSEC",
+      "type": 0,
+      "question": "Que se passe-t-il si un seul maillon DNSSEC est manquant ?",
+      "options": [
+        "La résolution échoue toujours",
+        "La signature est ignorée",
+        "L’intégrité ne peut pas être validée",
+        "Le cache DNS est vidé"
+      ],
+      "correct_answer": "L’intégrité ne peut pas être validée"
+    },
+    {
+      "id": "Q106-DNSSEC",
+      "type": 0,
+      "question": "Quel événement réel illustre les risques d’une mauvaise rotation de clé DNSSEC ?",
+      "options": [
+        "La panne du DNS racine",
+        "Un incident sur le .fr",
+        "L’échec de rotation DNSSEC du .ru en 2024",
+        "Une attaque contre l’ICANN"
+      ],
+      "correct_answer": "L’échec de rotation DNSSEC du .ru en 2024"
+    },
+    {
+      "id": "Q107-DNSSEC",
+      "type": 0,
+      "question": "Depuis quelle version de BIND la signature automatique DNSSEC est-elle réellement utilisable ?",
+      "options": [
+        "BIND 9.3",
+        "BIND 9.7",
+        "BIND 9.9",
+        "BIND 9.11"
+      ],
+      "correct_answer": "BIND 9.11"
+    },
+    {
+      "id": "Q108-DNSSEC",
+      "type": 0,
+      "question": "Quel type de DNS chiffré est le plus largement déployé aujourd’hui ?",
+      "options": [
+        "DoT",
+        "DoQ",
+        "DoH",
+        "AXFR sur TLS"
+      ],
+      "correct_answer": "DoH"
+    },
+    {
+      "id": "Q109-DNSSEC",
+      "type": 0,
+      "question": "Quel est le principal inconvénient du DNS chiffré ?",
+      "options": [
+        "Incompatibilité avec DNSSEC",
+        "Augmentation de la charge et complexité du débogage",
+        "Perte d’intégrité",
+        "Obligation d’utiliser HTTPS"
+      ],
+      "correct_answer": "Augmentation de la charge et complexité du débogage"
+    },
+    {
+      "id": "Q110-DNSSEC",
+      "type": 0,
+      "question": "À propos du chiffrement DNS, quelle affirmation est vraie ?",
+      "options": [
+        "Il masque totalement l’activité de l’utilisateur",
+        "Il s’effectue toujours de bout en bout",
+        "Le résolveur voit toujours les requêtes",
+        "Il remplace DNSSEC"
+      ],
+      "correct_answer": "Le résolveur voit toujours les requêtes"
+    },
+    {
+      "id": "Q111-DNSSEC",
+      "type": 0,
+      "question": "Pourquoi DNSSEC est-il devenu indispensable aujourd’hui ?",
+      "options": [
+        "Pour accélérer DNS",
+        "Pour chiffrer les communications",
+        "Pour garantir que les réponses DNS ne sont pas modifiées",
+        "Pour remplacer les pare-feux"
+      ],
+      "correct_answer": "Pour garantir que les réponses DNS ne sont pas modifiées"
+    },
+    {
+      "id": "Q112-SMTP",
+      "type": 0,
+      "question": "Qu’est-ce qu’un service de messagerie électronique ?",
+      "options": [
+        "Un service de communication synchrone en temps réel",
+        "Un service permettant l’échange asynchrone de messages électroniques",
+        "Un protocole de transport réseau",
+        "Un service réservé au transfert de fichiers"
+      ],
+      "correct_answer": "Un service permettant l’échange asynchrone de messages électroniques"
+    },
+    {
+      "id": "Q113-SMTP",
+      "type": 0,
+      "question": "Pourquoi dit-on que la messagerie électronique est asynchrone ?",
+      "options": [
+        "Parce qu’elle ne fonctionne que hors ligne",
+        "Parce que l’émetteur et le destinataire n’ont pas besoin d’être connectés en même temps",
+        "Parce qu’elle repose sur UDP",
+        "Parce qu’elle est lente"
+      ],
+      "correct_answer": "Parce que l’émetteur et le destinataire n’ont pas besoin d’être connectés en même temps"
+    },
+    {
+      "id": "Q114-SMTP",
+      "type": 0,
+      "question": "Quelles sont les fonctions principales d’un service de messagerie ?",
+      "options": [
+        "Chiffrement et compression uniquement",
+        "Désignation des destinataires, composition, émission, lecture et archivage",
+        "Routage IP et résolution DNS",
+        "Authentification et filtrage réseau"
+      ],
+      "correct_answer": "Désignation des destinataires, composition, émission, lecture et archivage"
+    },
+    {
+      "id": "Q115-SMTP",
+      "type": 0,
+      "question": "Que signifie l’acronyme MUA ?",
+      "options": [
+        "Mail Unified Application",
+        "Message User Access",
+        "Mail User Agent",
+        "Multi User Agent"
+      ],
+      "correct_answer": "Mail User Agent"
+    },
+    {
+      "id": "Q116-SMTP",
+      "type": 0,
+      "question": "Que signifie l’acronyme MTA ?",
+      "options": [
+        "Mail Transport Application",
+        "Mail Transfer Agent",
+        "Message Transfer Access",
+        "Multi Transfer Agent"
+      ],
+      "correct_answer": "Mail Transfer Agent"
+    },
+    {
+      "id": "Q117-SMTP",
+      "type": 0,
+      "question": "Quel est le rôle du MDA ?",
+      "options": [
+        "Transférer les mails entre domaines",
+        "Lire les messages pour l’utilisateur",
+        "Distribuer et stocker le courrier dans les boîtes aux lettres",
+        "Signer les emails"
+      ],
+      "correct_answer": "Distribuer et stocker le courrier dans les boîtes aux lettres"
+    },
+    {
+      "id": "Q118-SMTP",
+      "type": 0,
+      "question": "Quel rôle joue le DNS dans la messagerie électronique ?",
+      "options": [
+        "Chiffrer les emails",
+        "Identifier les utilisateurs",
+        "Déterminer les serveurs de courrier via les enregistrements MX",
+        "Filtrer le spam"
+      ],
+      "correct_answer": "Déterminer les serveurs de courrier via les enregistrements MX"
+    },
+    {
+      "id": "Q119-SMTP",
+      "type": 0,
+      "question": "Quelle est la forme générale d’une adresse électronique ?",
+      "options": [
+        "utilisateur@serveur",
+        "boite@domaine_DNS",
+        "login@ip",
+        "mail://domaine"
+      ],
+      "correct_answer": "boite@domaine_DNS"
+    },
+    {
+      "id": "Q120-SMTP",
+      "type": 0,
+      "question": "Quelle est la version actuelle de référence du protocole SMTP ?",
+      "options": [
+        "RFC 821",
+        "RFC 2821",
+        "RFC 5321",
+        "RFC 1035"
+      ],
+      "correct_answer": "RFC 5321"
+    },
+    {
+      "id": "Q121-SMTP",
+      "type": 0,
+      "question": "Quel est le principe de fonctionnement de SMTP ?",
+      "options": [
+        "Un modèle pair-à-pair chiffré",
+        "Un modèle client/serveur basé sur des commandes textuelles",
+        "Un protocole binaire orienté message",
+        "Un protocole sans état en UDP"
+      ],
+      "correct_answer": "Un modèle client/serveur basé sur des commandes textuelles"
+    },
+    {
+      "id": "Q122-SMTP",
+      "type": 0,
+      "question": "SMTP permet :",
+      "options": [
+        "La lecture des emails",
+        "Le transfert des messages",
+        "Le stockage des messages",
+        "Le classement des emails"
+      ],
+      "correct_answer": "Le transfert des messages"
+    },
+    {
+      "id": "Q123-SMTP",
+      "type": 0,
+      "question": "Sur quels ports SMTP fonctionne-t-il principalement ?",
+      "options": [
+        "TCP 21, 22",
+        "TCP 80, 443",
+        "TCP 25, 465, 587",
+        "TCP 110, 143"
+      ],
+      "correct_answer": "TCP 25, 465, 587"
+    },
+    {
+      "id": "Q124-SMTP",
+      "type": 0,
+      "question": "Quelle commande SMTP démarre la session en mode classique ?",
+      "options": [
+        "EHLO",
+        "STARTTLS",
+        "HELO",
+        "AUTH"
+      ],
+      "correct_answer": "HELO"
+    },
+    {
+      "id": "Q125-SMTP",
+      "type": 0,
+      "question": "Quelle commande SMTP indique l’expéditeur du message ?",
+      "options": [
+        "RCPT TO",
+        "FROM",
+        "MAIL FROM",
+        "DATA"
+      ],
+      "correct_answer": "MAIL FROM"
+    },
+    {
+      "id": "Q126-SMTP",
+      "type": 0,
+      "question": "Que signifie le code de réponse SMTP 250 ?",
+      "options": [
+        "Erreur définitive",
+        "Erreur temporaire",
+        "Requête acceptée",
+        "Fermeture de connexion"
+      ],
+      "correct_answer": "Requête acceptée"
+    },
+    {
+      "id": "Q127-SMTP",
+      "type": 0,
+      "question": "Quelle commande SMTP permet de transmettre le contenu du message ?",
+      "options": [
+        "SEND",
+        "BODY",
+        "DATA",
+        "TEXT"
+      ],
+      "correct_answer": "DATA"
+    },
+    {
+      "id": "Q128-SMTP",
+      "type": 0,
+      "question": "ESMTP se distingue de SMTP car :",
+      "options": [
+        "Il remplace SMTP",
+        "Il supprime les commandes historiques",
+        "Il ajoute des extensions",
+        "Il fonctionne en UDP"
+      ],
+      "correct_answer": "Il ajoute des extensions"
+    },
+    {
+      "id": "Q129-SMTP",
+      "type": 0,
+      "question": "Quelle extension ESMTP permet l’authentification ?",
+      "options": [
+        "SIZE",
+        "AUTH",
+        "DSN",
+        "PIPELINING"
+      ],
+      "correct_answer": "AUTH"
+    },
+    {
+      "id": "Q130-SMTP",
+      "type": 0,
+      "question": "Pourquoi le format MIME a-t-il été introduit ?",
+      "options": [
+        "Pour accélérer SMTP",
+        "Pour transmettre des contenus non ASCII et multimédia",
+        "Pour chiffrer les emails",
+        "Pour remplacer SMTP"
+      ],
+      "correct_answer": "Pour transmettre des contenus non ASCII et multimédia"
+    },
+    {
+      "id": "Q131-SMTP",
+      "type": 0,
+      "question": "Quel champ est obligatoire dans l’en-tête d’un email ?",
+      "options": [
+        "Subject",
+        "Reply-To",
+        "Message-ID",
+        "From"
+      ],
+      "correct_answer": "From"
+    },
+    {
+      "id": "Q132-SMTP",
+      "type": 0,
+      "question": "Quelle est la principale différence entre POP et IMAP ?",
+      "options": [
+        "POP est chiffré, IMAP non",
+        "IMAP conserve les messages sur le serveur",
+        "POP permet le multi-appareils",
+        "IMAP télécharge tout en local"
+      ],
+      "correct_answer": "IMAP conserve les messages sur le serveur"
+    },
+    {
+      "id": "Q133-SMTP",
+      "type": 0,
+      "question": "Pourquoi le protocole POP est-il considéré comme obsolète ?",
+      "options": [
+        "Il est trop lent",
+        "Il n’est pas standardisé",
+        "Il est peu adapté à l’utilisation multi-appareils",
+        "Il ne fonctionne que sur UDP"
+      ],
+      "correct_answer": "Il est peu adapté à l’utilisation multi-appareils"
+    },
+    {
+      "id": "Q134-SMTP",
+      "type": 0,
+      "question": "Quel est l’avantage principal d’un webmail ?",
+      "options": [
+        "Le travail hors ligne",
+        "Le stockage local",
+        "Aucune installation requise",
+        "Une sécurité intrinsèque supérieure"
+      ],
+      "correct_answer": "Aucune installation requise"
+    },
+    {
+      "id": "Q135-SMTP",
+      "type": 0,
+      "question": "Quelle affirmation est vraie concernant l’email aujourd’hui ?",
+      "options": [
+        "Il est chiffré par défaut",
+        "Il garantit l’identité de l’expéditeur",
+        "Il est juridiquement reconnu",
+        "Il est peu utilisé"
+      ],
+      "correct_answer": "Il est juridiquement reconnu"
+    },
+    {
+      "id": "Q136-SMTP",
+      "type": 0,
+      "question": "Pourquoi le spam est-il un problème majeur du courrier électronique ?",
+      "options": [
+        "À cause de SMTP chiffré",
+        "À cause de l’absence d’authentification native de SMTP",
+        "À cause du format MIME",
+        "À cause du protocole POP"
+      ],
+      "correct_answer": "À cause de l’absence d’authentification native de SMTP"
+    },
+    {
+      "id": "Q137-SPAM",
+      "type": 0,
+      "question": "Pourquoi la confiance des utilisateurs est-elle essentielle pour un service de messagerie ?",
+      "options": [
+        "Pour accélérer l’envoi des messages",
+        "Pour garantir la livraison, la confidentialité et limiter le spam",
+        "Parce qu’elle est imposée par le DNS",
+        "Pour réduire les coûts de stockage"
+      ],
+      "correct_answer": "Pour garantir la livraison, la confidentialité et limiter le spam"
+    },
+    {
+      "id": "Q138-SPAM",
+      "type": 0,
+      "question": "Pourquoi SMTP seul ne suffit-il pas à sécuriser la messagerie électronique ?",
+      "options": [
+        "Il ne supporte pas les pièces jointes",
+        "Il ne gère pas l’authentification fiable, la confidentialité ni l’intégrité",
+        "Il fonctionne uniquement en UDP",
+        "Il est obsolète"
+      ],
+      "correct_answer": "Il ne gère pas l’authentification fiable, la confidentialité ni l’intégrité"
+    },
+    {
+      "id": "Q139-SPAM",
+      "type": 0,
+      "question": "Qu’est-ce qu’un Open Relay ?",
+      "options": [
+        "Un serveur SMTP chiffré",
+        "Un serveur SMTP acceptant de relayer les mails de n’importe quel expéditeur",
+        "Un serveur dédié au webmail",
+        "Un serveur de secours MX"
+      ],
+      "correct_answer": "Un serveur SMTP acceptant de relayer les mails de n’importe quel expéditeur"
+    },
+    {
+      "id": "Q140-SPAM",
+      "type": 0,
+      "question": "Comment sécurise-t-on l’envoi de mails par ses propres utilisateurs ?",
+      "options": [
+        "En supprimant SMTP",
+        "Par authentification, restriction IP et chiffrement TLS",
+        "En utilisant uniquement POP",
+        "Par DNSSEC uniquement"
+      ],
+      "correct_answer": "Par authentification, restriction IP et chiffrement TLS"
+    },
+    {
+      "id": "Q141-SPAM",
+      "type": 0,
+      "question": "Quel est l’objectif principal du mécanisme SPF ?",
+      "options": [
+        "Chiffrer les emails",
+        "Signer les messages",
+        "Indiquer quels serveurs sont autorisés à envoyer des mails pour un domaine",
+        "Filtrer le contenu des messages"
+      ],
+      "correct_answer": "Indiquer quels serveurs sont autorisés à envoyer des mails pour un domaine"
+    },
+    {
+      "id": "Q142-SPAM",
+      "type": 0,
+      "question": "Où sont publiées les informations SPF ?",
+      "options": [
+        "Dans les en-têtes SMTP",
+        "Dans le serveur IMAP",
+        "Dans le DNS sous forme d’enregistrements TXT",
+        "Dans les certificats TLS"
+      ],
+      "correct_answer": "Dans le DNS sous forme d’enregistrements TXT"
+    },
+    {
+      "id": "Q143-SPAM",
+      "type": 0,
+      "question": "Quel est le rôle principal de DKIM ?",
+      "options": [
+        "Chiffrer le message",
+        "Garantir l’authenticité du domaine expéditeur et l’intégrité du message",
+        "Bloquer les relais ouverts",
+        "Identifier l’utilisateur"
+      ],
+      "correct_answer": "Garantir l’authenticité du domaine expéditeur et l’intégrité du message"
+    },
+    {
+      "id": "Q144-SPAM",
+      "type": 0,
+      "question": "Pourquoi DNSSEC est-il recommandé avec SPF et DKIM ?",
+      "options": [
+        "Pour améliorer les performances",
+        "Pour chiffrer les emails",
+        "Pour garantir l’intégrité et l’authenticité des données DNS",
+        "Pour remplacer TLS"
+      ],
+      "correct_answer": "Pour garantir l’intégrité et l’authenticité des données DNS"
+    },
+    {
+      "id": "Q145-SPAM",
+      "type": 0,
+      "question": "Quelle est la différence entre intégrité et confidentialité ?",
+      "options": [
+        "Elles sont identiques",
+        "L’intégrité empêche l’interception, la confidentialité empêche la modification",
+        "L’intégrité garantit que le message n’est pas modifié, la confidentialité empêche sa lecture",
+        "La confidentialité est fournie par DNSSEC"
+      ],
+      "correct_answer": "L’intégrité garantit que le message n’est pas modifié, la confidentialité empêche sa lecture"
+    },
+    {
+      "id": "Q146-SPAM",
+      "type": 0,
+      "question": "Pourquoi le chiffrement de bout en bout des mails est-il peu utilisé ?",
+      "options": [
+        "Il est interdit par SMTP",
+        "Il est trop coûteux",
+        "Il est complexe à configurer pour les utilisateurs",
+        "Il est incompatible avec TLS"
+      ],
+      "correct_answer": "Il est complexe à configurer pour les utilisateurs"
+    },
+    {
+      "id": "Q147-SPAM",
+      "type": 0,
+      "question": "Quel mécanisme empêche une machine externe d’envoyer des mails en se faisant passer pour votre domaine ?",
+      "options": [
+        "TLS",
+        "DKIM",
+        "SPF",
+        "IMAP"
+      ],
+      "correct_answer": "SPF"
+    },
+    {
+      "id": "Q148-SPAM",
+      "type": 0,
+      "question": "DKIM fonctionne en :",
+      "options": [
+        "Chiffrant le message",
+        "Signant cryptographiquement le message",
+        "Compressant le message",
+        "Bloquant les connexions SMTP"
+      ],
+      "correct_answer": "Signant cryptographiquement le message"
+    },
+    {
+      "id": "Q149-SPAM",
+      "type": 0,
+      "question": "Quelle clé est publiée dans le DNS pour DKIM ?",
+      "options": [
+        "La clé privée",
+        "Une clé symétrique",
+        "La clé publique",
+        "Une clé temporaire"
+      ],
+      "correct_answer": "La clé publique"
+    },
+    {
+      "id": "Q150-SPAM",
+      "type": 0,
+      "question": "Où se fait généralement la signature DKIM ?",
+      "options": [
+        "Sur le poste utilisateur",
+        "Sur le MTA",
+        "Sur le serveur DNS",
+        "Sur le client IMAP"
+      ],
+      "correct_answer": "Sur le MTA"
+    },
+    {
+      "id": "Q151-SPAM",
+      "type": 0,
+      "question": "Quels sont les deux principaux mécanismes de chiffrement de bout en bout des emails ?",
+      "options": [
+        "TLS et SSL",
+        "SPF et DKIM",
+        "S/MIME et GPG",
+        "DNSSEC et TLS"
+      ],
+      "correct_answer": "S/MIME et GPG"
+    },
+    {
+      "id": "Q152-SPAM",
+      "type": 0,
+      "question": "Quelle est une limite majeure du chiffrement de bout en bout ?",
+      "options": [
+        "Incompatibilité avec SMTP",
+        "Problèmes de performance",
+        "Difficulté d’utilisation pour les utilisateurs",
+        "Absence de standards"
+      ],
+      "correct_answer": "Difficulté d’utilisation pour les utilisateurs"
+    },
+    {
+      "id": "Q153-SPAM",
+      "type": 0,
+      "question": "Pourquoi un antivirus ne peut-il pas analyser un mail chiffré de bout en bout ?",
+      "options": [
+        "Par manque de signature virale",
+        "Parce que le contenu n’est pas accessible",
+        "À cause de SMTP",
+        "Parce que le message est compressé"
+      ],
+      "correct_answer": "Parce que le contenu n’est pas accessible"
+    },
+    {
+      "id": "Q154-SPAM",
+      "type": 0,
+      "question": "Quel est le principe du greylisting ?",
+      "options": [
+        "Bloquer définitivement un serveur",
+        "Supprimer le message",
+        "Rejeter temporairement le mail",
+        "Chiffrer l’email"
+      ],
+      "correct_answer": "Rejeter temporairement le mail"
+    },
+    {
+      "id": "Q155-SPAM",
+      "type": 0,
+      "question": "Quel code SMTP est utilisé pour le greylisting ?",
+      "options": [
+        "Code 2xx",
+        "Code 3xx",
+        "Code 4xx",
+        "Code 5xx"
+      ],
+      "correct_answer": "Code 4xx"
+    },
+    {
+      "id": "Q156-SPAM",
+      "type": 0,
+      "question": "Quelle technique antispam repose sur une notation cumulative ?",
+      "options": [
+        "Liste noire simple",
+        "RBL",
+        "Greylisting",
+        "SPF"
+      ],
+      "correct_answer": "RBL"
+    },
+    {
+      "id": "Q157-SPAM",
+      "type": 0,
+      "question": "Quel filtrage s’appuie sur l’apprentissage à partir de messages légitimes et indésirables ?",
+      "options": [
+        "Syntaxique",
+        "SPF",
+        "Filtrage bayésien",
+        "Greylisting"
+      ],
+      "correct_answer": "Filtrage bayésien"
+    },
+    {
+      "id": "Q158-SPAM",
+      "type": 0,
+      "question": "Quelle est une bonne pratique SMTP ?",
+      "options": [
+        "Accepter toutes les connexions",
+        "Ignorer la commande HELO",
+        "Vérifier le reverse DNS",
+        "Désactiver TLS"
+      ],
+      "correct_answer": "Vérifier le reverse DNS"
+    },
+    {
+      "id": "Q159-SPAM",
+      "type": 0,
+      "question": "Quel logiciel est un moteur antispam moderne ?",
+      "options": [
+        "Bind",
+        "Postfix",
+        "Rspamd",
+        "Dovecot"
+      ],
+      "correct_answer": "Rspamd"
+    },
+    {
+      "id": "Q160-SPAM",
+      "type": 0,
+      "question": "Pourquoi n’existe-t-il pas de solution antispam parfaite ?",
+      "options": [
+        "À cause de SMTP uniquement",
+        "Les spammeurs adaptent constamment leurs techniques",
+        "Les antivirus sont inefficaces",
+        "Le DNS est instable"
+      ],
+      "correct_answer": "Les spammeurs adaptent constamment leurs techniques"
+    },
+    {
+      "id": "Q161-SPAM",
+      "type": 0,
+      "question": "Quelle affirmation est correcte concernant la messagerie électronique aujourd’hui ?",
+      "options": [
+        "Elle est facilement remplaçable",
+        "Elle est parfaitement sécurisée",
+        "Elle reste incontournable malgré ses limites",
+        "Elle est en déclin"
+      ],
+      "correct_answer": "Elle reste incontournable malgré ses limites"
+    },
+    {
+      "id": "TP01-Q1",
+      "type": 0,
+      "question": "Quelle commande permet d’installer le serveur BIND et l’outil dig sous Debian ?",
+      "options": [
+        "[code]apt install dnsutils bind[/code]",
+        "[code]apt install bind9 dnsutils[/code]",
+        "[code]dnf install bind9 dig[/code]",
+        "[code]yum install bind dns[/code]"
+      ],
+      "correct_answer": "[code]apt install bind9 dnsutils[/code]"
+    },
+    {
+      "id": "TP01-Q2",
+      "type": 0,
+      "question": "Quelle modification permet de forcer l’utilisation du résolveur DNS local ?",
+      "options": [
+        "Mettre 8.8.8.8 dans resolv.conf",
+        "Configurer 127.0.0.1 comme DNS",
+        "Désactiver systemd-resolved",
+        "Modifier /etc/hosts"
+      ],
+      "correct_answer": "Configurer 127.0.0.1 comme DNS"
+    },
+    {
+      "id": "TP01-Q3",
+      "type": 0,
+      "question": "Quelle commande permet de vérifier qu’un nom est résolu par votre propre serveur DNS ?",
+      "options": [
+        "[code]ping domaine.test[/code]",
+        "[code]host domaine.test[/code]",
+        "[code]dig domaine.test[/code]",
+        "[code]curl domaine.test[/code]"
+      ],
+      "correct_answer": "[code]dig domaine.test[/code]"
+    },
+    {
+      "id": "TP01-Q4",
+      "type": 0,
+      "question": "Quelle option de dig permet de vérifier quel serveur DNS répond ?",
+      "options": [
+        "+short",
+        "+trace",
+        "+stats",
+        "+identify"
+      ],
+      "correct_answer": "+stats"
+    },
+    {
+      "id": "TP01-Q5",
+      "type": 0,
+      "question": "Où déclare-t-on une zone DNS dans BIND ?",
+      "options": [
+        "/etc/bind/named.conf.options",
+        "/etc/bind/named.conf.local",
+        "/var/cache/bind/",
+        "/etc/resolv.conf"
+      ],
+      "correct_answer": "/etc/bind/named.conf.local"
+    },
+    {
+      "id": "TP01-Q6",
+      "type": 0,
+      "question": "Quelle commande permet de tester la présence des serveurs NS d’une zone distante ?",
+      "options": [
+        "[code]dig MX domaine.test[/code]",
+        "[code]dig NS domaine.test[/code]",
+        "[code]dig A domaine.test[/code]",
+        "[code]dig SOA domaine.test[/code]"
+      ],
+      "correct_answer": "[code]dig NS domaine.test[/code]"
+    },
+    {
+      "id": "TP01-Q7",
+      "type": 0,
+      "question": "Quel mécanisme permet de sécuriser un transfert de zone AXFR ?",
+      "options": [
+        "DNSSEC",
+        "TLS",
+        "TSIG",
+        "SPF"
+      ],
+      "correct_answer": "TSIG"
+    },
+    {
+      "id": "TP01-Q8",
+      "type": 0,
+      "question": "Quelle directive permet de limiter la récursion aux réseaux privés ?",
+      "options": [
+        "allow-transfer",
+        "allow-query",
+        "recursion",
+        "allow-recursion"
+      ],
+      "correct_answer": "allow-recursion"
+    },
+    {
+      "id": "TP02-Q1",
+      "type": 0,
+      "question": "Quelle commande permet de générer une clé privée RSA pour une autorité de certification ?",
+      "options": [
+        "[code]openssl req -newkey[/code]",
+        "[code]openssl genrsa -out certificat-ca.key 4096[/code]",
+        "[code]openssl x509 -genkey[/code]",
+        "[code]openssl keytool[/code]"
+      ],
+      "correct_answer": "[code]openssl genrsa -out certificat-ca.key 4096[/code]"
+    },
+    {
+      "id": "TP02-Q2",
+      "type": 0,
+      "question": "Quelle commande permet de vérifier qu’un certificat est signé par une autorité donnée ?",
+      "options": [
+        "[code]openssl showcert[/code]",
+        "[code]openssl verify -CAfile certificat-ca.pem certificat.pem[/code]",
+        "[code]openssl x509 -check[/code]",
+        "[code]openssl certtool[/code]"
+      ],
+      "correct_answer": "[code]openssl verify -CAfile certificat-ca.pem certificat.pem[/code]"
+    },
+    {
+      "id": "TP02-Q3",
+      "type": 0,
+      "question": "Quel type de clé DNSSEC signe les enregistrements de la zone ?",
+      "options": [
+        "KSK",
+        "ZSK",
+        "DS",
+        "RRSIG"
+      ],
+      "correct_answer": "ZSK"
+    },
+    {
+      "id": "TP02-Q4",
+      "type": 0,
+      "question": "Quelle commande permet de vérifier que des enregistrements sont signés DNSSEC ?",
+      "options": [
+        "[code]dig domaine.test[/code]",
+        "[code]dig +dnssec domaine.test[/code]",
+        "[code]dig +trace domaine.test[/code]",
+        "[code]dnssec-check domaine.test[/code]"
+      ],
+      "correct_answer": "[code]dig +dnssec domaine.test[/code]"
+    },
+    {
+      "id": "TP02-Q5",
+      "type": 0,
+      "question": "Quel fichier généré par BIND contient réellement la zone signée ?",
+      "options": [
+        "[code]zone.db[/code]",
+        "[code]zone.conf[/code]",
+        "[code]zone.db.signed[/code]",
+        "[code]zone.sec[/code]"
+      ],
+      "correct_answer": "[code]zone.db.signed[/code]"
+    },
+    {
+      "id": "TP02-Q6",
+      "type": 0,
+      "question": "Quelle option dig permet de tester DNS over TLS ?",
+      "options": [
+        "+https",
+        "+tls",
+        "+dnssec",
+        "+tcp"
+      ],
+      "correct_answer": "+tls"
+    },
+    {
+      "id": "TP02-Q7",
+      "type": 0,
+      "question": "Quel protocole est utilisé pour DNS over HTTPS ?",
+      "options": [
+        "UDP",
+        "TCP 53",
+        "HTTPS",
+        "QUIC uniquement"
+      ],
+      "correct_answer": "HTTPS"
+    },
+    {
+      "id": "TP03-Q1",
+      "type": 0,
+      "question": "Quels sont les deux fichiers principaux de configuration de Postfix ?",
+      "options": [
+        "main.cf et master.cf",
+        "postfix.conf et smtp.conf",
+        "mail.cf et master.conf",
+        "postfix.yml et postfix.cfg"
+      ],
+      "correct_answer": "main.cf et master.cf"
+    },
+    {
+      "id": "TP03-Q2",
+      "type": 0,
+      "question": "Dans quel fichier sont stockés les logs de Postfix par défaut sous Debian ?",
+      "options": [
+        "/var/log/postfix.log",
+        "/var/log/syslog",
+        "/var/log/mail.err",
+        "/var/log/mail.log"
+      ],
+      "correct_answer": "/var/log/mail.log"
+    },
+    {
+      "id": "TP03-Q3",
+      "type": 0,
+      "question": "Quelle commande permet d’envoyer un mail de test en ligne de commande ?",
+      "options": [
+        "sendmail",
+        "mailx utilisateur@domaine",
+        "imap-send",
+        "smtp-test"
+      ],
+      "correct_answer": "mailx utilisateur@domaine"
+    },
+    {
+      "id": "TP03-Q4",
+      "type": 0,
+      "question": "Quel serveur permet la consultation des mails via IMAP ?",
+      "options": [
+        "Postfix",
+        "Amavis",
+        "Dovecot",
+        "SpamAssassin"
+      ],
+      "correct_answer": "Dovecot"
+    },
+    {
+      "id": "TP03-Q5",
+      "type": 0,
+      "question": "Sur quel port écoute Amavis par défaut ?",
+      "options": [
+        "25",
+        "587",
+        "10024",
+        "110"
+      ],
+      "correct_answer": "10024"
+    },
+    {
+      "id": "TP03-Q6",
+      "type": 0,
+      "question": "Quelle commande permet de tester la clé DKIM générée par Amavis ?",
+      "options": [
+        "[code]dkim-test[/code]",
+        "[code]amavisd-new testkeys[/code]",
+        "[code]openssl verify[/code]",
+        "[code]postfix check[/code]"
+      ],
+      "correct_answer": "[code]amavisd-new testkeys[/code]"
+    },
+    {
+      "id": "TP03-Q7",
+      "type": 0,
+      "question": "Quel enregistrement DNS est utilisé pour SPF ?",
+      "options": [
+        "MX",
+        "TXT",
+        "SRV",
+        "CAA"
+      ],
+      "correct_answer": "TXT"
+    },
+    {
+      "id": "Q162",
+      "type": 0,
+      "question": "Quel est le rôle de rsyslog dans le TP Mail ?",
+      "options": [
+        "Acheminer les emails",
+        "Collecter et stocker les logs système et applicatifs",
+        "Filtrer le spam",
+        "Gérer les boîtes aux lettres"
+      ],
+      "correct_answer": "Collecter et stocker les logs système et applicatifs"
+    },
+    {
+      "id": "Q163",
+      "type": 0,
+      "question": "Lors de l’installation de Postfix, quel type de configuration doit être choisi ?",
+      "options": [
+        "Satellite system",
+        "No configuration",
+        "Internet Site",
+        "Local only"
+      ],
+      "correct_answer": "Internet Site"
+    },
+    {
+      "id": "Q164",
+      "type": 0,
+      "question": "Quels sont les deux fichiers principaux de configuration de Postfix ?",
+      "options": [
+        "postfix.cf et smtp.cf",
+        "main.cf et master.cf",
+        "mail.conf et smtp.conf",
+        "dns.cf et mail.cf"
+      ],
+      "correct_answer": "main.cf et master.cf"
+    },
+    {
+      "id": "Q165",
+      "type": 0,
+      "question": "Dans quel fichier système consulte-t-on les logs de Postfix sous Debian ?",
+      "options": [
+        "/var/log/syslog",
+        "/var/log/postfix.log",
+        "/var/log/mail.log",
+        "/var/log/messages"
+      ],
+      "correct_answer": "/var/log/mail.log"
+    },
+    {
+      "id": "Q166",
+      "type": 0,
+      "question": "Quel enregistrement DNS est indispensable pour que le domaine accepte les emails ?",
+      "options": [
+        "A",
+        "AAAA",
+        "MX",
+        "CNAME"
+      ],
+      "correct_answer": "MX"
+    },
+    {
+      "id": "Q167",
+      "type": 0,
+      "question": "Quel symbole représente l’apex (racine) d’une zone DNS dans un fichier de zone ?",
+      "options": [
+        "*",
+        ".",
+        "@",
+        "$TTL"
+      ],
+      "correct_answer": "@"
+    },
+    {
+      "id": "Q168",
+      "type": 0,
+      "question": "Pourquoi faut-il incrémenter le champ Serial d’un SOA après modification de zone ?",
+      "options": [
+        "Pour améliorer les performances",
+        "Pour permettre la propagation et la prise en compte des changements",
+        "Pour éviter les conflits SMTP",
+        "Pour activer DNSSEC"
+      ],
+      "correct_answer": "Pour permettre la propagation et la prise en compte des changements"
+    },
+    {
+      "id": "Q169",
+      "type": 0,
+      "question": "Quelle commande permet de vérifier qu’un enregistrement DNS a été correctement créé ?",
+      "options": [
+        "[code]ping[/code]",
+        "[code]traceroute[/code]",
+        "[code]dig[/code]",
+        "[code]ifconfig[/code]"
+      ],
+      "correct_answer": "[code]dig[/code]"
+    },
+    {
+      "id": "Q170",
+      "type": 0,
+      "question": "Quelle directive Postfix définit quels réseaux sont autorisés à envoyer des mails sans authentification ?",
+      "options": [
+        "mydestination",
+        "myhostname",
+        "mynetworks",
+        "relayhost"
+      ],
+      "correct_answer": "mynetworks"
+    },
+    {
+      "id": "Q171",
+      "type": 0,
+      "question": "Quelle directive Postfix définit le nom DNS du serveur de messagerie ?",
+      "options": [
+        "myorigin",
+        "myhostname",
+        "mydomain",
+        "mydestination"
+      ],
+      "correct_answer": "myhostname"
+    },
+    {
+      "id": "Q172",
+      "type": 0,
+      "question": "Quelle commande permet de redémarrer Postfix après modification de sa configuration ?",
+      "options": [
+        "[code]service postfix reload[/code]",
+        "[code]systemctl reload mail[/code]",
+        "[code]systemctl restart postfix[/code]",
+        "[code]postfix restart-all[/code]"
+      ],
+      "correct_answer": "[code]systemctl restart postfix[/code]"
+    },
+    {
+      "id": "Q173",
+      "type": 0,
+      "question": "Dans quel répertoire se trouve la boîte mail personnelle d’un utilisateur local ?",
+      "options": [
+        "/var/mail/",
+        "/var/spool/mail/",
+        "$HOME/mbox",
+        "/etc/mail/"
+      ],
+      "correct_answer": "$HOME/mbox"
+    },
+    {
+      "id": "Q174",
+      "type": 0,
+      "question": "Quel logiciel permet la consultation des emails via IMAP ?",
+      "options": [
+        "Postfix",
+        "Amavis",
+        "Dovecot",
+        "SpamAssassin"
+      ],
+      "correct_answer": "Dovecot"
+    },
+    {
+      "id": "Q175",
+      "type": 0,
+      "question": "Quel port est utilisé par Amavis pour recevoir les mails à analyser ?",
+      "options": [
+        "25",
+        "587",
+        "10024",
+        "10025"
+      ],
+      "correct_answer": "10024"
+    },
+    {
+      "id": "Q176",
+      "type": 0,
+      "question": "Quelle directive dans Postfix permet de rediriger les mails vers Amavis ?",
+      "options": [
+        "relayhost",
+        "content_filter",
+        "transport_maps",
+        "mail_filter"
+      ],
+      "correct_answer": "content_filter"
+    },
+    {
+      "id": "Q177",
+      "type": 0,
+      "question": "Quelle commande permet de vérifier qu’Amavis écoute bien sur son port ?",
+      "options": [
+        "[code]ss -u[/code]",
+        "[code]iptables -L[/code]",
+        "[code]netstat -tlnp[/code]",
+        "[code]ps aux | grep amavis[/code]"
+      ],
+      "correct_answer": "[code]netstat -tlnp[/code]"
+    },
+    {
+      "id": "Q178",
+      "type": 0,
+      "question": "Pourquoi faut-il retirer les commentaires des lignes bypass_virus_checks dans Amavis ?",
+      "options": [
+        "Pour désactiver ClamAV",
+        "Pour activer le filtrage antivirus",
+        "Pour améliorer les performances SMTP",
+        "Pour activer DKIM"
+      ],
+      "correct_answer": "Pour activer le filtrage antivirus"
+    },
+    {
+      "id": "Q179",
+      "type": 0,
+      "question": "Pourquoi ajoute-t-on l’utilisateur clamav au groupe amavis ?",
+      "options": [
+        "Pour accélérer la signature DKIM",
+        "Pour permettre l’accès aux sockets et fichiers nécessaires",
+        "Pour autoriser l’envoi de mails",
+        "Pour gérer les comptes utilisateurs"
+      ],
+      "correct_answer": "Pour permettre l’accès aux sockets et fichiers nécessaires"
+    },
+    {
+      "id": "Q180",
+      "type": 0,
+      "question": "Quelle commande permet de consulter les logs spécifiques d’Amavis ?",
+      "options": [
+        "[code]journalctl -eu postfix[/code]",
+        "[code]journalctl -eu amavis[/code]",
+        "[code]tail -f /var/log/syslog[/code]",
+        "[code]amavis --debug[/code]"
+      ],
+      "correct_answer": "[code]journalctl -eu amavis[/code]"
+    },
+    {
+      "id": "Q181",
+      "type": 0,
+      "question": "Pourquoi faut-il activer SpamAssassin via Amavis et non directement dans Postfix ?",
+      "options": [
+        "Postfix ne gère pas le SMTP",
+        "Amavis centralise antivirus et antispam",
+        "SpamAssassin remplace Postfix",
+        "Postfix est incompatible avec les filtres"
+      ],
+      "correct_answer": "Amavis centralise antivirus et antispam"
+    }
+  ]
+}
